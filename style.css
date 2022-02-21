@@ -1,0 +1,98 @@
+@font-face{
+  font-family: 'Pentameter VF';
+  src: url('fonts/Pentameter-VF.woff2') format('woff2-variations'), url('fonts/Pentameter-VF.ttf') format('truetype');
+  font-style: normal;
+}
+
+:root{
+  --wght: 400;
+  --wdth: 80;
+  --slnt: 50;
+  --ss01: 0;
+  --ss03: 1;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  font-variation-settings: 'wdth' var(--wdth), 'wght' var(--wght), 'slnt' var(--slnt);
+}
+
+body{
+	font-size: 24px;
+  line-height: 1.4;
+  margin: 3rem;
+  font-family: "Pentameter VF";
+  font-weight: normal;
+  background: black;
+  color: white;
+}
+
+
+#refresh{
+  color: blue;
+  display: inline;
+  font-feature-settings: "ss03" 1;
+}
+#refresh:hover{
+  cursor: pointer;
+}
+
+
+#poem{
+  --ss01: 0;
+  font-feature-settings: "ss01" var(--ss01);
+}
+h1{
+  font-size: 45px;
+  font-weight: normal;
+} 
+
+#author{
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  margin: 1em 0;
+}
+a{
+  color: blue;
+  text-decoration: none;
+  --ss03: 1;
+  font-feature-settings: "ss01" var(--ss01), "ss03" var(--ss03);
+}
+
+header, footer, main{
+  padding: 1rem 0;
+}
+
+#colophon{
+  font-size: 14px;
+  text-align: right;
+}
+
+.loading{
+  opacity: 0.3;
+}
+
+#sliders{
+  font-size: 16px;
+  margin-top: 1em;
+  --wdth: 100;
+  --wght: 500;
+  --slnt: 0;        
+}
+#sliders ul li{
+  list-style-type: none;
+  display: inline-block;
+  margin-right: 2em;
+}
+.range-name{
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.range-name, .min, .max, input{
+  display: inline-block;
+}
+
+input:hover{
+  cursor: pointer;
+}
