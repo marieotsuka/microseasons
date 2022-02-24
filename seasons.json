@@ -1,434 +1,938 @@
 [
   {
-    "start": "2/4/2022",
-    "end": "2/8/2022",
-    "sekki": "Beginning of spring",
-    "ko": "The easterly wind begins to thaw thick ice"
-  },
-  {
-    "start": "2/9/2022",
-    "end": "2/13/2022",
-    "sekki": "Beginning of spring",
-    "ko": "The bush warbler begins to cry in the mountain village"
-  },
-  {
-    "start": "2/14/2022",
-    "end": "2/18/2022",
-    "sekki": "Beginning of spring",
-    "ko": "A fish pops out between the broken ice"
-  },
-  {
-    "start": "2/19/2022",
-    "end": "2/23/2022",
-    "sekki": "Rainwater",
-    "ko": "It’s raining and the soil is moist"
-  },
-  {
-    "start": "2/24/2022",
-    "end": "2/28/2022",
-    "sekki": "Rainwater",
-    "ko": "The haze begins to flutter"
-  },
-  {
-    "start": "3/1/2022",
-    "end": "3/5/2022",
-    "sekki": "Rainwater",
-    "ko": "Plants begin to sprout"
-  },
-  {
-    "start": "3/6/2022",
-    "end": "3/10/2022",
-    "sekki": "Insects awaken",
-    "ko": "Insects come out from winter cages"
-  },
-  {
-    "start": "3/11/2022",
-    "end": "3/15/2022",
-    "sekki": "Insects awaken",
-    "ko": "Peach blossoms begin to bloom"
-  },
-  {
-    "start": "3/16/2022",
-    "end": "3/20/2022",
-    "sekki": "Insects awaken",
-    "ko": "The green worm emerges and becomes a cabbage white butterfly"
-  },
-  {
-    "start": "3/21/2022",
-    "end": "3/25/2022",
-    "sekki": "Spring equinox",
-    "ko": "The sparrow begins to set up its nest"
-  },
-  {
-    "start": "3/26/2022",
-    "end": "3/30/2022",
-    "sekki": "Spring equinox",
-    "ko": "Cherry blossoms begin to bloom"
-  },
-  {
-    "start": "3/31/2022",
-    "end": "4/4/2022",
-    "sekki": "Spring equinox",
-    "ko": "The sound of thunder begins to be heard in the distance"
-  },
-  {
-    "start": "4/5/2022",
-    "end": "4/9/2022",
-    "sekki": "Pure and clear",
-    "ko": "Swallow comes from the south"
-  },
-  {
-    "start": "4/10/2022",
-    "end": "4/14/2022",
-    "sekki": "Pure and clear",
-    "ko": "Goose crosses north"
-  },
-  {
-    "start": "4/15/2022",
-    "end": "4/19/2022",
-    "sekki": "Pure and clear",
-    "ko": "A rainbow begins to appear after the rain"
-  },
-  {
-    "start": "4/20/2022",
-    "end": "4/24/2022",
-    "sekki": "Grain rains",
-    "ko": "Reeds begin to sprout"
-  },
-  {
-    "start": "4/25/2022",
-    "end": "4/29/2022",
-    "sekki": "Grain rains",
-    "ko": "Frost is over and rice seedlings grow"
-  },
-  {
-    "start": "4/30/2022",
-    "end": "5/4/2022",
-    "sekki": "Grain rains",
-    "ko": "Peony flowers bloom"
-  },
-  {
-    "start": "5/5/2022",
-    "end": "5/9/2022",
-    "sekki": "Beginning of summer",
-    "ko": "The frog begins to cry"
-  },
-  {
-    "start": "5/10/2022",
-    "end": "5/14/2022",
-    "sekki": "Beginning of summer",
-    "ko": "Earthworms crawl on the ground"
-  },
-  {
-    "start": "5/15/2022",
-    "end": "5/20/2022",
-    "sekki": "Beginning of summer",
-    "ko": "Bamboo shoots grow"
-  },
-  {
-    "start": "5/21/2022",
-    "end": "5/25/2022",
-    "sekki": "Lesser ripening",
-    "ko": "Silk moths start eating morus alba"
-  },
-  {
-    "start": "5/26/2022",
-    "end": "5/30/2022",
-    "sekki": "Lesser ripening",
-    "ko": "Safflower blooms actively"
-  },
-  {
-    "start": "5/31/2022",
-    "end": "6/5/2022",
-    "sekki": "Lesser ripening",
-    "ko": "Wheat ripens and becomes wheat autumn"
-  },
-  {
-    "start": "6/6/2022",
-    "end": "6/10/2022",
-    "sekki": "Grain beards and seeds",
-    "ko": "Mantis is born"
-  },
-  {
-    "start": "6/11/2022",
-    "end": "6/15/2022",
-    "sekki": "Grain beards and seeds",
-    "ko": "Rotten grass becomes stuffy fireflies"
-  },
-  {
-    "start": "6/16/2022",
-    "end": "6/20/2022",
-    "sekki": "Grain beards and seeds",
-    "ko": "Plum fruits turn yellow and ripen"
-  },
-  {
-    "start": "6/21/2022",
-    "end": "6/26/2022",
-    "sekki": "Summer solstice",
-    "ko": "Summer dead grass withers"
-  },
-  {
-    "start": "6/27/2022",
-    "end": "7/1/2022",
-    "sekki": "Summer solstice",
-    "ko": "The iris blooms"
-  },
-  {
-    "start": "7/2/2022",
-    "end": "7/6/2022",
-    "sekki": "Summer solstice",
-    "ko": "A lark grows"
-  },
-  {
-    "start": "7/7/2022",
-    "end": "7/11/2022",
-    "sekki": "Lesser heat",
-    "ko": "A warm breeze is blowing"
-  },
-  {
-    "start": "7/12/2022",
-    "end": "7/16/2022",
-    "sekki": "Lesser heat",
-    "ko": "Lotus flowers begin to open"
-  },
-  {
-    "start": "7/17/2022",
-    "end": "7/22/2022",
-    "sekki": "Lesser heat",
-    "ko": "Remember that young hawks fly"
-  },
-  {
-    "start": "7/23/2022",
-    "end": "7/28/2022",
-    "sekki": "Greater heat",
-    "ko": "Paulownia flowers bud for the next year"
-  },
-  {
-    "start": "7/29/2022",
-    "end": "8/2/2022",
-    "sekki": "Greater heat",
-    "ko": "The soil gets damp and hot and humid"
-  },
-  {
-    "start": "8/3/2022",
-    "end": "8/7/2022",
-    "sekki": "Greater heat",
-    "ko": "Sometimes heavy rain"
-  },
-  {
-    "start": "8/8/2022",
-    "end": "8/12/2022",
-    "sekki": "Beginning of autumn",
-    "ko": "A cool breeze begins to rise"
-  },
-  {
-    "start": "8/13/2022",
-    "end": "8/17/2022",
-    "sekki": "Beginning of autumn",
-    "ko": "Evening cicadas sing"
-  },
-  {
-    "start": "8/18/2022",
-    "end": "8/22/2022",
-    "sekki": "Beginning of autumn",
-    "ko": "Deep fog can enter"
-  },
-  {
-    "start": "8/23/2022",
-    "end": "8/27/2022",
-    "sekki": "Manageable heat",
-    "ko": "The calyx that wraps the cotton opens"
-  },
-  {
-    "start": "8/28/2022",
-    "end": "9/1/2022",
-    "sekki": "Manageable heat",
-    "ko": "The heat finally subsides"
-  },
-  {
-    "start": "9/2/2022",
-    "end": "9/7/2022",
-    "sekki": "Manageable heat",
-    "ko": "Rice grows"
-  },
-  {
-    "start": "9/8/2022",
-    "end": "9/12/2022",
-    "sekki": "White dew",
-    "ko": "The dew that fell on the grass glows white"
-  },
-  {
-    "start": "9/13/2022",
-    "end": "9/17/2022",
-    "sekki": "White dew",
-    "ko": "Minnets begin to caw."
-  },
-  {
-    "start": "9/18/2022",
-    "end": "9/22/2022",
-    "sekki": "White dew",
-    "ko": "Swallow returns to the south"
-  },
-  {
-    "start": "9/23/2022",
-    "end": "9/27/2022",
-    "sekki": "Autumn equinox",
-    "ko": "Thunder stops ringing"
-  },
-  {
-    "start": "9/28/2022",
-    "end": "10/2/2022",
-    "sekki": "Autumn equinox",
-    "ko": "Block the holes that insects dug in the soil"
-  },
-  {
-    "start": "10/3/2022",
-    "end": "10/7/2022",
-    "sekki": "Autumn equinox",
-    "ko": "Start drying the water in the fields"
-  },
-  {
-    "start": "10/8/2022",
-    "end": "10/12/2022",
-    "sekki": "Cold dew",
-    "ko": "Goose begins to fly"
-  },
-  {
-    "start": "10/13/2022",
-    "end": "10/17/2022",
-    "sekki": "Cold dew",
-    "ko": "Chrysanthemum flowers bloom"
-  },
-  {
-    "start": "10/18/2022",
-    "end": "10/22/2022",
-    "sekki": "Cold dew",
-    "ko": "Crickets crow around the door"
-  },
-  {
-    "start": "10/23/2022",
-    "end": "10/27/2022",
-    "sekki": "Frost falls",
-    "ko": "Frost begins"
-  },
-  {
-    "start": "10/28/2022",
-    "end": "11/1/2022",
-    "sekki": "Frost falls",
-    "ko": "It rains lightly"
-  },
-  {
-    "start": "11/2/2022",
-    "end": "11/6/2022",
-    "sekki": "Frost falls",
-    "ko": "Maple and ivy turn yellow"
-  },
-  {
-    "start": "11/7/2022",
-    "end": "11/11/2022",
-    "sekki": "Beginning of winter",
-    "ko": "Camellias bloom"
-  },
-  {
-    "start": "11/12/2022",
-    "end": "11/16/2022",
-    "sekki": "Beginning of winter",
-    "ko": "The earth begins to freeze"
-  },
-  {
-    "start": "11/17/2022",
-    "end": "11/21/2022",
-    "sekki": "Beginning of winter",
-    "ko": "Narcissus flowers bloom"
-  },
-  {
-    "start": "11/22/2022",
-    "end": "11/26/2022",
-    "sekki": "Lesser snow",
-    "ko": "I can't see the rainbow"
-  },
-  {
-    "start": "11/27/2022",
-    "end": "12/1/2022",
-    "sekki": "Lesser snow",
-    "ko": "The north wind can get rid of the leaves"
-  },
-  {
-    "start": "12/2/2022",
-    "end": "12/6/2022",
-    "sekki": "Lesser snow",
-    "ko": "Tachibana fruit begins to turn yellow"
-  },
-  {
-    "start": "12/7/2022",
-    "end": "12/11/2022",
-    "sekki": "Greater snow",
-    "ko": "It’s winter when the heavens and the earth are closed"
-  },
-  {
-    "start": "12/12/2022",
-    "end": "12/16/2022",
-    "sekki": "Greater snow",
-    "ko": "Bear hides in a hole for hibernation"
-  },
-  {
-    "start": "12/17/2022",
-    "end": "12/21/2022",
-    "sekki": "Greater snow",
-    "ko": "Salmon flock up the river"
-  },
-  {
-    "start": "12/22/2022",
-    "end": "12/26/2022",
-    "sekki": "Winter solstice",
-    "ko": "Summer grass sprouts"
-  },
-  {
-    "start": "12/27/2022",
-    "end": "12/31/2022",
-    "sekki": "Winter solstice",
-    "ko": "The big deer drops their antlers"
-  },
-  {
-    "start": "1/1/2022",
-    "end": "1/4/2022",
-    "sekki": "Winter solstice",
-    "ko": "Wheat sprouts under the snow"
-  },
-  {
-    "start": "1/5/2022",
-    "end": "1/9/2022",
-    "sekki": "Lesser cold",
-    "ko": "Parsley flourishes"
-  },
-  {
-    "start": "1/10/2022",
-    "end": "1/14/2022",
-    "sekki": "Lesser cold",
-    "ko": "Frozen springs start to move in the ground"
-  },
-  {
-    "start": "1/15/2022",
-    "end": "1/19/2022",
-    "sekki": "Lesser cold",
-    "ko": "The male pheasant begins to cry"
-  },
-  {
-    "start": "1/20/2022",
-    "end": "1/24/2022",
-    "sekki": "Greater cold",
-    "ko": "The butterbur sprout produces buds"
-  },
-  {
-    "start": "1/25/2022",
-    "end": "1/29/2022",
-    "sekki": "Greater cold",
-    "ko": "Thick ice in the swamp"
-  },
-  {
-    "start": "1/30/2022",
-    "end": "2/3/2022",
-    "sekki": "Greater cold",
-    "ko": "Chickens start laying eggs"
+    "weight": 133.33,
+    "start": "2/4",
+    "end": "2/8",
+    "sekki-jp": "立春",
+    "sekki-en": "Beginning of spring",
+    "ko": "*",
+    "ko-jp": "初候",
+    "name-jp": "東風解凍",
+    "furigana": "はるかぜこおりをとく",
+    "meaning-jp": "東風が厚い氷を解かし始める",
+    "en": "The easterly wind begins to thaw thick ice"
+  },
+  {
+    "weight": 150,
+    "start": "2/9",
+    "end": "2/13",
+    "sekki-jp": "立春",
+    "sekki-en": "Beginning of spring",
+    "ko": "**",
+    "ko-jp": "次候",
+    "name-jp": "黄鶯睍睆",
+    "furigana": "うぐいすなく",
+    "meaning-jp": "鶯が山里で鳴き始める",
+    "en": "The bush warbler begins to cry in the mountain village"
+  },
+  {
+    "weight": 166.67,
+    "start": "2/14",
+    "end": "2/18",
+    "sekki-jp": "立春",
+    "sekki-en": "Beginning of spring",
+    "ko": "***",
+    "ko-jp": "末候",
+    "name-jp": "魚上氷",
+    "furigana": "うおこおりをいずる",
+    "meaning-jp": "割れた氷の間から魚が飛び出る",
+    "en": "A fish pops out between the broken ice"
+  },
+  {
+    "weight": 183.33,
+    "start": "2/19",
+    "end": "2/23",
+    "sekki-jp": "雨水",
+    "sekki-en": "Rainwater",
+    "ko": "*",
+    "ko-jp": "初候",
+    "name-jp": "土脉潤起",
+    "furigana": "つちのしょううるおいおこる",
+    "meaning-jp": "雨が降って土が湿り気を含む",
+    "en": "It’s raining and the soil is moist"
+  },
+  {
+    "weight": 200,
+    "start": "2/24",
+    "end": "2/28",
+    "sekki-jp": "雨水",
+    "sekki-en": "Rainwater",
+    "ko": "**",
+    "ko-jp": "次候",
+    "name-jp": "霞始靆",
+    "furigana": "かすみはじめてたなびく",
+    "meaning-jp": "霞がたなびき始める",
+    "en": "Mist starts to linger"
+  },
+  {
+    "weight": 216.67,
+    "start": "3/1",
+    "end": "3/5",
+    "sekki-jp": "雨水",
+    "sekki-en": "Rainwater",
+    "ko": "***",
+    "ko-jp": "末候",
+    "name-jp": "草木萌動",
+    "furigana": "そうもくめばえいずる",
+    "meaning-jp": "草木が芽吹き始める",
+    "en": "Plants begin to sprout"
+  },
+  {
+    "weight": 233.33,
+    "start": "3/6",
+    "end": "3/10",
+    "sekki-jp": "啓蟄",
+    "sekki-en": "Insects awaken",
+    "ko": "*",
+    "ko-jp": "初候",
+    "name-jp": "蟄虫啓戸",
+    "furigana": "すごもりむしとをひらく",
+    "meaning-jp": "冬籠りの虫が出て来る",
+    "en": "Insects come out from winter cages"
+  },
+  {
+    "weight": 250,
+    "start": "3/11",
+    "end": "3/15",
+    "sekki-jp": "啓蟄",
+    "sekki-en": "Insects awaken",
+    "ko": "**",
+    "ko-jp": "次候",
+    "name-jp": "桃始笑",
+    "furigana": "ももはじめてさく",
+    "meaning-jp": "桃の花が咲き始める",
+    "en": "Peach blossoms begin to bloom"
+  },
+  {
+    "weight": 266.67,
+    "start": "3/16",
+    "end": "3/20",
+    "sekki-jp": "啓蟄",
+    "sekki-en": "Insects awaken",
+    "ko": "***",
+    "ko-jp": "末候",
+    "name-jp": "菜虫化蝶",
+    "furigana": "なむしちょうとなる",
+    "meaning-jp": "青虫が羽化して紋白蝶になる",
+    "en": "The green worm emerges and becomes a cabbage white butterfly"
+  },
+  {
+    "weight": 283.33,
+    "start": "3/21",
+    "end": "3/25",
+    "sekki-jp": "春分",
+    "sekki-en": "Spring equinox",
+    "ko": "*",
+    "ko-jp": "初候",
+    "name-jp": "雀始巣",
+    "furigana": "すずめはじめてすくう",
+    "meaning-jp": "雀が巣を構え始める",
+    "en": "The sparrow begins to set up its nest"
+  },
+  {
+    "weight": 300,
+    "start": "3/26",
+    "end": "3/30",
+    "sekki-jp": "春分",
+    "sekki-en": "Spring equinox",
+    "ko": "**",
+    "ko-jp": "次候",
+    "name-jp": "桜始開",
+    "furigana": "さくらはじめてひらく",
+    "meaning-jp": "桜の花が咲き始める",
+    "en": "Cherry blossoms begin to bloom"
+  },
+  {
+    "weight": 316.67,
+    "start": "3/31",
+    "end": "4/4",
+    "sekki-jp": "春分",
+    "sekki-en": "Spring equinox",
+    "ko": "***",
+    "ko-jp": "末候",
+    "name-jp": "雷乃発声",
+    "furigana": "かみなりすなわちこえをはっす",
+    "meaning-jp": "遠くで雷の音がし始める",
+    "en": "The sound of thunder begins to be heard in the distance"
+  },
+  {
+    "weight": 333.33,
+    "start": "4/5",
+    "end": "4/9",
+    "sekki-jp": "清明",
+    "sekki-en": "Pure and clear",
+    "ko": "*",
+    "ko-jp": "初候",
+    "name-jp": "玄鳥至",
+    "furigana": "つばめきたる",
+    "meaning-jp": "燕が南からやって来る",
+    "en": "Swallow comes from the south"
+  },
+  {
+    "weight": 350,
+    "start": "4/10",
+    "end": "4/14",
+    "sekki-jp": "清明",
+    "sekki-en": "Pure and clear",
+    "ko": "**",
+    "ko-jp": "次候",
+    "name-jp": "鴻雁北",
+    "furigana": "こうがんきたへかえる",
+    "meaning-jp": "雁が北へ渡って行く",
+    "en": "Goose crosses north"
+  },
+  {
+    "weight": 366.67,
+    "start": "4/15",
+    "end": "4/19",
+    "sekki-jp": "清明",
+    "sekki-en": "Pure and clear",
+    "ko": "***",
+    "ko-jp": "末候",
+    "name-jp": "虹始見",
+    "furigana": "にじはじめてあらわる",
+    "meaning-jp": "雨の後に虹が出始める",
+    "en": "A rainbow begins to appear after the rain"
+  },
+  {
+    "weight": 383.33,
+    "start": "4/20",
+    "end": "4/24",
+    "sekki-jp": "穀雨",
+    "sekki-en": "Grain rains",
+    "ko": "*",
+    "ko-jp": "初候",
+    "name-jp": "葭始生",
+    "furigana": "あしはじめてしょうず",
+    "meaning-jp": "葦が芽を吹き始める",
+    "en": "Reeds begin to sprout"
+  },
+  {
+    "weight": 400,
+    "start": "4/25",
+    "end": "4/29",
+    "sekki-jp": "穀雨",
+    "sekki-en": "Grain rains",
+    "ko": "**",
+    "ko-jp": "次候",
+    "name-jp": "霜止出苗",
+    "furigana": "しもやんでなえいづる",
+    "meaning-jp": "霜が終り稲の苗が生長する",
+    "en": "Frost is over and rice seedlings grow"
+  },
+  {
+    "weight": 416.67,
+    "start": "4/30",
+    "end": "5/4",
+    "sekki-jp": "末候",
+    "sekki-en": "Grain rains",
+    "ko": "***",
+    "ko-jp": "穀雨",
+    "name-jp": "牡丹華",
+    "furigana": "ぼたんはなさく",
+    "meaning-jp": "牡丹の花が咲く",
+    "en": "Peony flowers bloom"
+  },
+  {
+    "weight": 433.33,
+    "start": "5/5",
+    "end": "5/9",
+    "sekki-jp": "立夏",
+    "sekki-en": "Beginning of summer",
+    "ko": "*",
+    "ko-jp": "初候",
+    "name-jp": "蛙始鳴",
+    "furigana": "かわずはじめてなく",
+    "meaning-jp": "蛙が鳴き始める",
+    "en": "The frog begins to cry"
+  },
+  {
+    "weight": 450,
+    "start": "5/10",
+    "end": "5/14",
+    "sekki-jp": "立夏",
+    "sekki-en": "Beginning of summer",
+    "ko": "**",
+    "ko-jp": "次候",
+    "name-jp": "蚯蚓出",
+    "furigana": "みみずいづる",
+    "meaning-jp": "蚯蚓が地上に這出る",
+    "en": "Earthworms crawl on the ground"
+  },
+  {
+    "weight": 466.67,
+    "start": "5/15",
+    "end": "5/20",
+    "sekki-jp": "立夏",
+    "sekki-en": "Beginning of summer",
+    "ko": "***",
+    "ko-jp": "末候",
+    "name-jp": "竹笋生",
+    "furigana": "たけのこしょうず",
+    "meaning-jp": "筍が生えて来る",
+    "en": "Bamboo shoots grow"
+  },
+  {
+    "weight": 483.33,
+    "start": "5/21",
+    "end": "5/25",
+    "sekki-jp": "小満",
+    "sekki-en": "Lesser ripening",
+    "ko": "*",
+    "ko-jp": "初候",
+    "name-jp": "蚕起食桑",
+    "furigana": "かいこおきてくわをはむ",
+    "meaning-jp": "蚕が桑を盛んに食べ始める",
+    "en": "Silk moths start eating morus alba"
+  },
+  {
+    "weight": 500,
+    "start": "5/26",
+    "end": "5/30",
+    "sekki-jp": "小満",
+    "sekki-en": "Lesser ripening",
+    "ko": "**",
+    "ko-jp": "次候",
+    "name-jp": "紅花栄",
+    "furigana": "べにばなさかう",
+    "meaning-jp": "紅花が盛んに咲く",
+    "en": "Safflower blooms actively"
+  },
+  {
+    "weight": 516.67,
+    "start": "5/31",
+    "end": "6/5",
+    "sekki-jp": "小満",
+    "sekki-en": "Lesser ripening",
+    "ko": "***",
+    "ko-jp": "末候",
+    "name-jp": "麦秋至",
+    "furigana": "むぎのときいたる",
+    "meaning-jp": "麦が熟し麦秋となる",
+    "en": "Wheat ripens and becomes wheat autumn"
+  },
+  {
+    "weight": 533.33,
+    "start": "6/6",
+    "end": "6/10",
+    "sekki-jp": "芒種",
+    "sekki-en": "Grain beards and seeds",
+    "ko": "*",
+    "ko-jp": "初候",
+    "name-jp": "螳螂生",
+    "furigana": "かまきりしょうず",
+    "meaning-jp": "螳螂が生まれ出る",
+    "en": "Praying mantises are born"
+  },
+  {
+    "weight": 550,
+    "start": "6/11",
+    "end": "6/15",
+    "sekki-jp": "芒種",
+    "sekki-en": "Grain beards and seeds",
+    "ko": "**",
+    "ko-jp": "次候",
+    "name-jp": "腐草為蛍",
+    "furigana": "くされたるくさほたるとなる",
+    "meaning-jp": "腐った草が蒸れ蛍になる",
+    "en": "Rotten grass becomes flocks of fireflies"
+  },
+  {
+    "weight": 566.67,
+    "start": "6/16",
+    "end": "6/20",
+    "sekki-jp": "芒種",
+    "sekki-en": "Grain beards and seeds",
+    "ko": "***",
+    "ko-jp": "末候",
+    "name-jp": "梅子黄",
+    "furigana": "うめのみきばむ",
+    "meaning-jp": "梅の実が黄ばんで熟す",
+    "en": "Plum fruits turn yellow and ripen"
+  },
+  {
+    "weight": 583.33,
+    "start": "6/21",
+    "end": "6/26",
+    "sekki-jp": "夏至",
+    "sekki-en": "Summer solstice",
+    "ko": "*",
+    "ko-jp": "初候",
+    "name-jp": "乃東枯",
+    "furigana": "なつかれくさかるる",
+    "meaning-jp": "夏枯草が枯れる",
+    "en": "Summer dead grass withers"
+  },
+  {
+    "weight": 600,
+    "start": "6/27",
+    "end": "7/1",
+    "sekki-jp": "夏至",
+    "sekki-en": "Summer solstice",
+    "ko": "**",
+    "ko-jp": "次候",
+    "name-jp": "菖蒲華",
+    "furigana": "あやめはなさく",
+    "meaning-jp": "あやめの花が咲く",
+    "en": "Irises bloom"
+  },
+  {
+    "weight": 616.67,
+    "start": "7/2",
+    "end": "7/6",
+    "sekki-jp": "夏至",
+    "sekki-en": "Summer solstice",
+    "ko": "***",
+    "ko-jp": "末候",
+    "name-jp": "半夏生",
+    "furigana": "はんげしょうず",
+    "meaning-jp": "烏柄杓が生える",
+    "en": "A lark grows"
+  },
+  {
+    "weight": 633.33,
+    "start": "7/7",
+    "end": "7/11",
+    "sekki-jp": "小暑",
+    "sekki-en": "Lesser heat",
+    "ko": "*",
+    "ko-jp": "初候",
+    "name-jp": "温風至",
+    "furigana": "あつかぜいたる",
+    "meaning-jp": "暖い風が吹いて来る",
+    "en": "A warm breeze is blowing"
+  },
+  {
+    "weight": 650,
+    "start": "7/12",
+    "end": "7/16",
+    "sekki-jp": "小暑",
+    "sekki-en": "Lesser heat",
+    "ko": "**",
+    "ko-jp": "次候",
+    "name-jp": "蓮始開",
+    "furigana": "はすはじめてひらく",
+    "meaning-jp": "蓮の花が開き始める",
+    "en": "Lotus flowers begin to open"
+  },
+  {
+    "weight": 666.67,
+    "start": "7/17",
+    "end": "7/22",
+    "sekki-jp": "小暑",
+    "sekki-en": "Lesser heat",
+    "ko": "***",
+    "ko-jp": "末候",
+    "name-jp": "鷹乃学習",
+    "furigana": "たかすなわちわざをなす",
+    "meaning-jp": "鷹の幼鳥が飛ぶことを覚える",
+    "en": "Young hawks learn to fly"
+  },
+  {
+    "weight": 683.33,
+    "start": "7/23",
+    "end": "7/28",
+    "sekki-jp": "大暑",
+    "sekki-en": "Greater heat",
+    "ko": "*",
+    "ko-jp": "初候",
+    "name-jp": "桐始結花",
+    "furigana": "きりはじめてはなをむすぶ",
+    "meaning-jp": "桐の花が(来年の)蕾をつける",
+    "en": "Paulownia flowers bud for the next year"
+  },
+  {
+    "weight": 700,
+    "start": "7/29",
+    "end": "8/2",
+    "sekki-jp": "大暑",
+    "sekki-en": "Greater heat",
+    "ko": "**",
+    "ko-jp": "次候",
+    "name-jp": "土潤溽暑",
+    "furigana": "つちうるおうてむしあつし",
+    "meaning-jp": "土が湿って蒸暑くなる",
+    "en": "The soil gets damp and hot and humid"
+  },
+  {
+    "weight": 683.33,
+    "start": "8/3",
+    "end": "8/7",
+    "sekki-jp": "大暑",
+    "sekki-en": "Greater heat",
+    "ko": "***",
+    "ko-jp": "末候",
+    "name-jp": "大雨時行",
+    "furigana": "たいうときどきにふる",
+    "meaning-jp": "時として大雨が降る",
+    "en": "Sometimes heavy rain"
+  },
+  {
+    "weight": 666.67,
+    "start": "8/8",
+    "end": "8/12",
+    "sekki-jp": "立秋",
+    "sekki-en": "Beginning of autumn",
+    "ko": "*",
+    "ko-jp": "初候",
+    "name-jp": "涼風至",
+    "furigana": "すづかぜいたる",
+    "meaning-jp": "涼しい風が立ち始める",
+    "en": "A cool breeze begins to rise"
+  },
+  {
+    "weight": 650,
+    "start": "8/13",
+    "end": "8/17",
+    "sekki-jp": "立秋",
+    "sekki-en": "Beginning of autumn",
+    "ko": "**",
+    "ko-jp": "次候",
+    "name-jp": "寒蝉鳴",
+    "furigana": "ひぐらしなく",
+    "meaning-jp": "蜩が鳴き始める",
+    "en": "Evening cicadas sing"
+  },
+  {
+    "weight": 633.33,
+    "start": "8/18",
+    "end": "8/22",
+    "sekki-jp": "立秋",
+    "sekki-en": "Beginning of autumn",
+    "ko": "***",
+    "ko-jp": "末候",
+    "name-jp": "蒙霧升降",
+    "furigana": "ふかききりまとう",
+    "meaning-jp": "深い霧が立ち込める",
+    "en": "Deep fog can enter"
+  },
+  {
+    "weight": 616.67,
+    "start": "8/23",
+    "end": "8/27",
+    "sekki-jp": "処暑",
+    "sekki-en": "Manageable heat",
+    "ko": "*",
+    "ko-jp": "初候",
+    "name-jp": "綿柎開",
+    "furigana": "わたのはなしべひらく",
+    "meaning-jp": "綿を包む萼（がく）が開く",
+    "en": "The calyx that wraps the cotton opens"
+  },
+  {
+    "weight": 600,
+    "start": "8/28",
+    "end": "9/1",
+    "sekki-jp": "処暑",
+    "sekki-en": "Manageable heat",
+    "ko": "**",
+    "ko-jp": "次候",
+    "name-jp": "天地始粛",
+    "furigana": "てんちはじめてさむし",
+    "meaning-jp": "ようやく暑さが鎮まる",
+    "en": "The heat finally subsides"
+  },
+  {
+    "weight": 583.33,
+    "start": "9/2",
+    "end": "9/7",
+    "sekki-jp": "処暑",
+    "sekki-en": "Manageable heat",
+    "ko": "***",
+    "ko-jp": "末候",
+    "name-jp": "禾乃登",
+    "furigana": "こくものすなわちみのる",
+    "meaning-jp": "稲が実る",
+    "en": "Rice grows"
+  },
+  {
+    "weight": 566.67,
+    "start": "9/8",
+    "end": "9/12",
+    "sekki-jp": "白露",
+    "sekki-en": "White dew",
+    "ko": "*",
+    "ko-jp": "初候",
+    "name-jp": "草露白",
+    "furigana": "くさのつゆしろし",
+    "meaning-jp": "草に降りた露が白く光る",
+    "en": "The dew that fell on the grass glows white"
+  },
+  {
+    "weight": 550,
+    "start": "9/13",
+    "end": "9/17",
+    "sekki-jp": "白露",
+    "sekki-en": "White dew",
+    "ko": "**",
+    "ko-jp": "次候",
+    "name-jp": "鶺鴒鳴",
+    "furigana": "せきれいなく",
+    "meaning-jp": "鶺鴒（せきれい）が鳴き始める",
+    "en": "Minnets begin to caw"
+  },
+  {
+    "weight": 533.33,
+    "start": "9/18",
+    "end": "9/22",
+    "sekki-jp": "白露",
+    "sekki-en": "White dew",
+    "ko": "***",
+    "ko-jp": "末候",
+    "name-jp": "玄鳥去",
+    "furigana": "つばめさる",
+    "meaning-jp": "燕が南へ帰って行く",
+    "en": "Swallow returns to the south"
+  },
+  {
+    "weight": 516.67,
+    "start": "9/23",
+    "end": "9/27",
+    "sekki-jp": "秋分",
+    "sekki-en": "Autumn equinox",
+    "ko": "*",
+    "ko-jp": "初候",
+    "name-jp": "雷乃収声",
+    "furigana": "かみなりすなわちこえをおさむ",
+    "meaning-jp": "雷が鳴り響かなくなる",
+    "en": "Thunder stops ringing"
+  },
+  {
+    "weight": 500,
+    "start": "9/28",
+    "end": "10/2",
+    "sekki-jp": "秋分",
+    "sekki-en": "Autumn equinox",
+    "ko": "**",
+    "ko-jp": "次候",
+    "name-jp": "蟄虫坏戸",
+    "furigana": "むしかくれてとをふさぐ",
+    "meaning-jp": "虫が土中に掘った穴をふさぐ",
+    "en": "Block the holes that insects dug in the soil"
+  },
+  {
+    "weight": 483.33,
+    "start": "10/3",
+    "end": "10/7",
+    "sekki-jp": "秋分",
+    "sekki-en": "Autumn equinox",
+    "ko": "***",
+    "ko-jp": "末候",
+    "name-jp": "水始涸",
+    "furigana": "みずはじめてかる",
+    "meaning-jp": "田畑の水を干し始める",
+    "en": "Start drying the water in the fields"
+  },
+  {
+    "weight": 466.67,
+    "start": "10/8",
+    "end": "10/12",
+    "sekki-jp": "寒露",
+    "sekki-en": "Cold dew",
+    "ko": "*",
+    "ko-jp": "初候",
+    "name-jp": "鴻雁来",
+    "furigana": "こうがんきたる",
+    "meaning-jp": "雁が飛来し始める",
+    "en": "Goose begins to fly"
+  },
+  {
+    "weight": 450,
+    "start": "10/13",
+    "end": "10/17",
+    "sekki-jp": "寒露",
+    "sekki-en": "Cold dew",
+    "ko": "**",
+    "ko-jp": "次候",
+    "name-jp": "菊花開",
+    "furigana": "きくのはなひらく",
+    "meaning-jp": "菊の花が咲く",
+    "en": "Chrysanthemum flowers bloom"
+  },
+  {
+    "weight": 433.33,
+    "start": "10/18",
+    "end": "10/22",
+    "sekki-jp": "寒露",
+    "sekki-en": "Cold dew",
+    "ko": "***",
+    "ko-jp": "末候",
+    "name-jp": "蟋蟀在戸",
+    "furigana": "きりぎりすとにあり",
+    "meaning-jp": "蟋蟀が戸の辺りで鳴く",
+    "en": "Crickets crow around the door"
+  },
+  {
+    "weight": 416.67,
+    "start": "10/23",
+    "end": "10/27",
+    "sekki-jp": "霜降",
+    "sekki-en": "Frost falls",
+    "ko": "*",
+    "ko-jp": "初候",
+    "name-jp": "霜始降",
+    "furigana": "しもはじめてふる",
+    "meaning-jp": "霜が降り始める",
+    "en": "Frost begins"
+  },
+  {
+    "weight": 400,
+    "start": "10/28",
+    "end": "11/1",
+    "sekki-jp": "霜降",
+    "sekki-en": "Frost falls",
+    "ko": "**",
+    "ko-jp": "次候",
+    "name-jp": "霎時施",
+    "furigana": "こさめときどきふる",
+    "meaning-jp": "小雨がしとしと降る",
+    "en": "It rains lightly"
+  },
+  {
+    "weight": 383.33,
+    "start": "11/2",
+    "end": "11/6",
+    "sekki-jp": "霜降",
+    "sekki-en": "Frost falls",
+    "ko": "***",
+    "ko-jp": "末候",
+    "name-jp": "楓蔦黄",
+    "furigana": "もみじつたきばむ",
+    "meaning-jp": "もみじや蔦が黄葉する",
+    "en": "Maple and ivy turn yellow"
+  },
+  {
+    "weight": 366.67,
+    "start": "11/7",
+    "end": "11/11",
+    "sekki-jp": "立冬",
+    "sekki-en": "Beginning of winter",
+    "ko": "*",
+    "ko-jp": "初候",
+    "name-jp": "山茶始開",
+    "furigana": "つばきはじめてひらく",
+    "meaning-jp": "山茶花が咲き始める",
+    "en": "Camellias bloom"
+  },
+  {
+    "weight": 350,
+    "start": "11/12",
+    "end": "11/16",
+    "sekki-jp": "立冬",
+    "sekki-en": "Beginning of winter",
+    "ko": "**",
+    "ko-jp": "次候",
+    "name-jp": "地始凍",
+    "furigana": "ちはじめてこおる",
+    "meaning-jp": "大地が凍り始める",
+    "en": "The earth begins to freeze"
+  },
+  {
+    "weight": 333.33,
+    "start": "11/17",
+    "end": "11/21",
+    "sekki-jp": "立冬",
+    "sekki-en": "Beginning of winter",
+    "ko": "***",
+    "ko-jp": "末候",
+    "name-jp": "金盞香",
+    "furigana": "きんせんかさく",
+    "meaning-jp": "水仙の花が咲く",
+    "en": "Narcissus flowers bloom"
+  },
+  {
+    "weight": 316.67,
+    "start": "11/22",
+    "end": "11/26",
+    "sekki-jp": "小雪",
+    "sekki-en": "Lesser snow",
+    "ko": "*",
+    "ko-jp": "初候",
+    "name-jp": "虹蔵不見",
+    "furigana": "にじかくれてみえず",
+    "meaning-jp": "虹を見かけなくなる",
+    "en": "I can’t see the rainbow"
+  },
+  {
+    "weight": 300,
+    "start": "11/27",
+    "end": "12/1",
+    "sekki-jp": "小雪",
+    "sekki-en": "Lesser snow",
+    "ko": "**",
+    "ko-jp": "次候",
+    "name-jp": "朔風払葉",
+    "furigana": "きたかぜこのはをはらう",
+    "meaning-jp": "北風が木の葉を払い除ける",
+    "en": "The north wind can get rid of the leaves"
+  },
+  {
+    "weight": 283.33,
+    "start": "12/2",
+    "end": "12/6",
+    "sekki-jp": "小雪",
+    "sekki-en": "Lesser snow",
+    "ko": "***",
+    "ko-jp": "末候",
+    "name-jp": "橘始黄",
+    "furigana": "たちばなはじめてきばむ",
+    "meaning-jp": "橘の実が黄色くなり始める",
+    "en": "Mandarins begin to yellow"
+  },
+  {
+    "weight": 266.67,
+    "start": "12/7",
+    "end": "12/11",
+    "sekki-jp": "大雪",
+    "sekki-en": "Greater snow",
+    "ko": "*",
+    "ko-jp": "初候",
+    "name-jp": "閉塞成冬",
+    "furigana": "そらさむくふゆとなる",
+    "meaning-jp": "天地の気が塞がって冬となる",
+    "en": "It’s winter when the heavens and the earth are closed"
+  },
+  {
+    "weight": 250,
+    "start": "12/12",
+    "end": "12/16",
+    "sekki-jp": "大雪",
+    "sekki-en": "Greater snow",
+    "ko": "**",
+    "ko-jp": "次候",
+    "name-jp": "熊蟄穴",
+    "furigana": "くまあなにこもる",
+    "meaning-jp": "熊が冬眠のために穴に隠れる",
+    "en": "Bear hides in a hole for hibernation"
+  },
+  {
+    "weight": 233.33,
+    "start": "12/17",
+    "end": "12/21",
+    "sekki-jp": "大雪",
+    "sekki-en": "Greater snow",
+    "ko": "***",
+    "ko-jp": "末候",
+    "name-jp": "鱖魚群",
+    "furigana": "さけのうおむらがる",
+    "meaning-jp": "鮭が群がり川を上る",
+    "en": "Salmon flock up the river"
+  },
+  {
+    "weight": 216.67,
+    "start": "12/22",
+    "end": "12/26",
+    "sekki-jp": "冬至",
+    "sekki-en": "Winter solstice",
+    "ko": "*",
+    "ko-jp": "初候",
+    "name-jp": "乃東生",
+    "furigana": "なつかれくさしょうず",
+    "meaning-jp": "夏枯草が芽を出す",
+    "en": "Summer grass sprouts"
+  },
+  {
+    "weight": 200,
+    "start": "12/27",
+    "end": "12/31",
+    "sekki-jp": "冬至",
+    "sekki-en": "Winter solstice",
+    "ko": "**",
+    "ko-jp": "次候",
+    "name-jp": "麋角解",
+    "furigana": "おおしかのつのおつる",
+    "meaning-jp": "大鹿が角を落とす",
+    "en": "The big deer drops their antlers"
+  },
+  {
+    "weight": 183.33,
+    "start": "1/1",
+    "end": "1/4",
+    "sekki-jp": "冬至",
+    "sekki-en": "Winter solstice",
+    "ko": "***",
+    "ko-jp": "末候",
+    "name-jp": "雪下出麦",
+    "furigana": "ゆきわたりてむぎいづる",
+    "meaning-jp": "雪の下で麦が芽を出す",
+    "en": "Wheat sprouts under the snow"
+  },
+  {
+    "weight": 166.67,
+    "start": "1/5",
+    "end": "1/9",
+    "sekki-jp": "小寒",
+    "sekki-en": "Lesser cold",
+    "ko": "*",
+    "ko-jp": "初候",
+    "name-jp": "芹乃栄",
+    "furigana": "せりすなわちさかう",
+    "meaning-jp": "芹がよく生育する",
+    "en": "Parsley flourishes"
+  },
+  {
+    "weight": 150,
+    "start": "1/10",
+    "end": "1/14",
+    "sekki-jp": "小寒",
+    "sekki-en": "Lesser cold",
+    "ko": "**",
+    "ko-jp": "次候",
+    "name-jp": "水泉動",
+    "furigana": "しみずあたたかをふくむ",
+    "meaning-jp": "地中で凍った泉が動き始める",
+    "en": "Frozen springs start to move in the ground"
+  },
+  {
+    "weight": 133.33,
+    "start": "1/15",
+    "end": "1/19",
+    "sekki-jp": "小寒",
+    "sekki-en": "Lesser cold",
+    "ko": "***",
+    "ko-jp": "末候",
+    "name-jp": "雉始雊",
+    "furigana": "きじはじめてなく",
+    "meaning-jp": "雄の雉が鳴き始める",
+    "en": "The male pheasant begins to cry"
+  },
+  {
+    "weight": 116.67,
+    "start": "1/20",
+    "end": "1/24",
+    "sekki-jp": "大寒",
+    "sekki-en": "Greater cold",
+    "ko": "*",
+    "ko-jp": "初候",
+    "name-jp": "款冬華",
+    "furigana": "ふきのはなさく",
+    "meaning-jp": "蕗の薹（ふきのとう）が蕾を出す",
+    "en": "The butterbur sprout produces buds"
+  },
+  {
+    "weight": 100,
+    "start": "1/25",
+    "end": "1/29",
+    "sekki-jp": "大寒",
+    "sekki-en": "Greater cold",
+    "ko": "**",
+    "ko-jp": "次候",
+    "name-jp": "水沢腹堅",
+    "furigana": "さわみずこおりつめる",
+    "meaning-jp": "沢に氷が厚く張りつめる",
+    "en": "Ice thickens on the streams"
+  },
+  {
+    "weight": 116.67,
+    "start": "1/30",
+    "end": "2/3",
+    "sekki-jp": "大寒",
+    "sekki-en": "Greater cold",
+    "ko": "***",
+    "ko-jp": "末候",
+    "name-jp": "鶏始乳",
+    "furigana": "にわとりはじめてとやにつく",
+    "meaning-jp": "鶏が卵を産み始める",
+    "en": "Chickens start laying eggs"
   }
 ]

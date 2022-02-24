@@ -5,9 +5,9 @@
 }
 
 :root{
-  --wght: 400;
-  --wdth: 80;
-  --slnt: 50;
+  --wght: 300;
+  --wdth: 100;
+  --slnt: 0;
   --ss01: 0;
   --ss03: 1;
 }
@@ -19,80 +19,60 @@
 }
 
 body{
-	font-size: 24px;
+	font-size: 18px;
   line-height: 1.4;
-  margin: 3rem;
   font-family: "Pentameter VF";
   font-weight: normal;
   background: black;
   color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 
-#refresh{
-  color: blue;
-  display: inline;
-  font-feature-settings: "ss03" 1;
-}
-#refresh:hover{
-  cursor: pointer;
+header{
+  display: flex;
+  justify-content: space-between;
 }
 
+main{
+  flex:  1;
+  display: flex;
+  align-items: center;
+}
+
+header, footer{
+  height: 50px;
+  margin: 2rem 3rem;
+  flex: none;
+  --slnt: 0;
+}
+
+footer{
+  text-align: center;
+}
 
 #poem{
+  margin: auto;
+  padding: 0 5%;
+  font-size: 40px;
   --ss01: 0;
+  --slnt: 50;
   font-feature-settings: "ss01" var(--ss01);
+  text-align: center;
 }
-h1{
-  font-size: 45px;
-  font-weight: normal;
-} 
 
-#author{
-  text-transform: uppercase;
-  letter-spacing: .02em;
-  margin: 1em 0;
-}
 a{
-  color: blue;
   text-decoration: none;
-  --ss03: 1;
-  font-feature-settings: "ss01" var(--ss01), "ss03" var(--ss03);
+  color: white;
 }
 
-header, footer, main{
-  padding: 1rem 0;
-}
-
-#colophon{
-  font-size: 14px;
-  text-align: right;
-}
-
-.loading{
-  opacity: 0.3;
-}
-
-#sliders{
-  font-size: 16px;
-  margin-top: 1em;
-  --wdth: 100;
-  --wght: 500;
-  --slnt: 0;        
-}
-#sliders ul li{
-  list-style-type: none;
-  display: inline-block;
-  margin-right: 2em;
-}
-.range-name{
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-.range-name, .min, .max, input{
-  display: inline-block;
-}
-
-input:hover{
+.controls{
+  font-size: 30px;
+  padding: 1em;
+  padding-top: 1.5em;
   cursor: pointer;
 }
+
+
