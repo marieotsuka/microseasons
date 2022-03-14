@@ -82,4 +82,11 @@ a{
   cursor: pointer;
 }
 
+#playbutton{
+  position: fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 
