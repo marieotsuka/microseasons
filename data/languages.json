@@ -1,0 +1,194 @@
+[
+  {
+    "language": "English",
+    "iso": "en"
+  },
+  {
+    "language": "Spanish",
+    "iso": "es"
+  },
+  {
+    "language": "French",
+    "iso": "fr"
+  },
+  {
+    "language": "Portuguese",
+    "iso": "pt"
+  },
+  {
+    "language": "Azerbaijani",
+    "iso": "az"
+  },
+  {
+    "language": "Afrikaans",
+    "iso": "af"
+  },
+  {
+    "language": "Albanian",
+    "iso": "sq"
+  },
+  {
+    "language": "Basque",
+    "iso": "eu"
+  },
+  {
+    "language": "Belarusian",
+    "iso": "be"
+  },
+  {
+    "language": "Bosnian",
+    "iso": "ba"
+  },
+  {
+    "language": "Bulgarian",
+    "iso": "bg"
+  },
+  {
+    "language": "Catalan",
+    "iso": "ca"
+  },
+  {
+    "language": "Croatian",
+    "iso": "hr"
+  },
+  {
+    "language": "Czech",
+    "iso": "cs"
+  },
+  {
+    "language": "Danish",
+    "iso": "da"
+  },
+  {
+    "language": "Dutch",
+    "iso": "nl"
+  },
+  {
+    "language": "Estonian",
+    "iso": "et"
+  },
+  {
+    "language": "Faroese",
+    "iso": "fo"
+  },
+  {
+    "language": "Tagalog",
+    "iso": "tl"
+  },
+  {
+    "language": "Finnish",
+    "iso": "fi"
+  },
+  {
+    "language": "Galician",
+    "iso": "gl"
+  },
+  {
+    "language": "German",
+    "iso": "de"
+  },
+  {
+    "language": "Greek",
+    "iso": "el"
+  },
+  {
+    "language": "Hungarian",
+    "iso": "hu"
+  },
+  {
+    "language": "Icelandic",
+    "iso": "is"
+  },
+  {
+    "language": "Indonesian",
+    "iso": "id"
+  },
+  {
+    "language": "Irish",
+    "iso": "ga"
+  },
+  {
+    "language": "Italian",
+    "iso": "it"
+  },
+  {
+    "language": "Kazakh",
+    "iso": "kk"
+  },
+  {
+    "language": "Latvian",
+    "iso": "lv"
+  },
+  {
+    "language": "Lithuanian",
+    "iso": "lt"
+  },
+  {
+    "language": "Macedonian",
+    "iso": "mk"
+  },
+  {
+    "language": "Malay",
+    "iso": "ms"
+  },
+  {
+    "language": "Mongolian",
+    "iso": "mn"
+  },
+  {
+    "language": "Norwegian",
+    "iso": "nb"
+  },
+  {
+    "language": "Polish",
+    "iso": "pl"
+  },
+  {
+    "language": "Portuguese",
+    "iso": "pt"
+  },
+  {
+    "language": "Romanian",
+    "iso": "ro"
+  },
+  {
+    "language": "Russian",
+    "iso": "ru"
+  },
+  {
+    "language": "Serbian",
+    "iso": "sr"
+  },
+  {
+    "language": "Slovak",
+    "iso": "sk"
+  },
+  {
+    "language": "Slovenian",
+    "iso": "sl"
+  },
+  {
+    "language": "Swahili",
+    "iso": "sw"
+  },
+  {
+    "language": "Swedish",
+    "iso": "sv"
+  },
+  {
+    "language": "Turkish",
+    "iso": "tr"
+  },
+  {
+    "language": "Ukrainian",
+    "iso": "uk"
+  },
+  {
+    "language": "Welsh",
+    "iso": "cy"
+  },
+  {
+    "language": "Zulu",
+    "iso": "zu"
+  }
+]

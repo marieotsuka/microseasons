@@ -10,6 +10,7 @@ elms.forEach(function(elm) {
   window[elm] = document.getElementById(elm);
 });
 
+
 /* seasons data */
 let data;
 let season_index = 0;
@@ -18,6 +19,8 @@ let season_index = 0;
 let t = 0;
 const speed = 100; 
 let text = ""; 
+let daystext = ""; //days left text placeholder
+let current = false;
 
 function getPoem( ){
   fetch("data/seasons.json")
@@ -39,10 +42,12 @@ function getPoem( ){
           if( today.isBetween(from, toplus, null, '[)') ){
             console.log(season);
             season_index = i; // store index of current season
-            displayPoem(season);
 
             let days = toplus.diff(today, 'day');
-            displayDaysLeft(days);
+            assignDaysLeft(days);
+
+            displayPoem(season);
+            current = true;
             break;
           }
       }
@@ -51,12 +56,21 @@ function getPoem( ){
 
 function displayPoem(season){
   resetTypeWriter();
-  text = season['English'];
+  //only display "days left" on current
+  if(current == true){
+     text = `${season['English']} *
+          ${dayjs(season.start).format('MMMM D')} — ${dayjs(season.end).format('MMMM D')}`;
+  }else{
+    text = `${season['English']} *
+            ${dayjs(season.start).format('MMMM D')} — ${dayjs(season.end).format('MMMM D')} *
+            (${daystext})`;
+  }
+
   typeWriter();
 
   poem.style.setProperty('--wght', season.weight);
-  fromdate.innerHTML = dayjs(season.start).format('MMMM D');
-  todate.innerHTML = dayjs(season.end).format('MMMM D');
+  // fromdate.innerHTML = ;
+  // todate.innerHTML = dayjs(season.end).format('MMMM D');
   ko.innerHTML = season.ko;
   weather.innerHTML = season['sekki-en'];
 }
@@ -69,7 +83,11 @@ function resetTypeWriter(){
 
 function typeWriter( ) {
   if (t < text.length) {
-    poem.innerHTML += text.charAt(t);
+    if( text.charAt(t) == "*"){
+      poem.innerHTML += '<br>'
+    }else{
+      poem.innerHTML += text.charAt(t);
+    }  
     t++;
     setTimeout(typeWriter, speed);
   }else{
@@ -80,15 +98,15 @@ function typeWriter( ) {
   }
 }
 
-function displayDaysLeft(days){
+function assignDaysLeft(days){
   if (days == 1){
-    daysleft.innerHTML = "one day left";
+    daystext = "one day left";
   }else if (days == 0){
-    daysleft.innerHTML = "today is the last day";
+    daystext = "today is the last day";
   }else{
     let numwords = ["two", "three", "four"];
     let dayindex = days-2;
-    daysleft.innerHTML = numwords[dayindex] + " days left";
+    daystext = numwords[dayindex] + " days left";
   }
 }
 
@@ -105,7 +123,6 @@ next.addEventListener('click', function(){
     season_index = 0;
   }
   displayPoem(data[season_index]);
-  daysleft.innerHTML = "";
 }, false);
 
 const back = document.getElementById('back');
@@ -116,5 +133,4 @@ back.addEventListener('click', function(){
     season_index = 71;
   }
   displayPoem(data[season_index]);
-  daysleft.innerHTML = "";
 }, false);

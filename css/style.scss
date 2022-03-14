@@ -1,0 +1,85 @@
+@font-face{
+  font-family: 'Pentameter VF';
+  src: url('../fonts/Pentameter-VF.woff2') format('woff2-variations');
+  font-style: normal;
+}
+
+:root{
+  --wght: 300;
+  --wdth: 100;
+  --slnt: 0;
+  --ss01: 0;
+  --ss03: 1;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  font-variation-settings: 'wdth' var(--wdth), 'wght' var(--wght), 'slnt' var(--slnt);
+}
+
+body{
+	font-size: 18px;
+  line-height: 1.4;
+  font-family: "Pentameter VF";
+  font-weight: normal;
+  background: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  &[data-typed=done]{
+    header, footer, .controls{
+      visibility: visible;
+    }
+  }
+}
+
+header, footer, .controls{
+  visibility: hidden;
+}
+header{
+  display: flex;
+  justify-content: space-between;
+}
+
+main{
+  flex:  1;
+  display: flex;
+  align-items: center;
+}
+
+header, footer{
+  height: 50px;
+  margin: 2rem 3rem;
+  flex: none;
+  --slnt: 0;
+}
+
+footer{
+  text-align: center;
+}
+
+#content{
+  margin: auto;
+  padding: 0 5%;
+  font-size: 40px;
+  --ss01: 0;
+  --slnt: 50;
+  font-feature-settings: "ss01" var(--ss01);
+  text-align: center;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+.controls{
+  font-size: 30px;
+  padding: 1em;
+  padding-top: 1.5em;
+  cursor: pointer;
+}
+
+

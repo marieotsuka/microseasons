@@ -1,10 +1,9 @@
-@font-face{
-  font-family: 'Pentameter VF';
-  src: url('fonts/Pentameter-VF.woff2') format('woff2-variations'), url('fonts/Pentameter-VF.ttf') format('truetype');
+@font-face {
+  font-family: "Pentameter VF";
+  src: url("../fonts/Pentameter-VF.woff2") format("woff2-variations");
   font-style: normal;
 }
-
-:root{
+:root {
   --wght: 300;
   --wdth: 100;
   --slnt: 0;
@@ -12,14 +11,14 @@
   --ss03: 1;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
-  font-variation-settings: 'wdth' var(--wdth), 'wght' var(--wght), 'slnt' var(--slnt);
+  font-variation-settings: "wdth" var(--wdth), "wght" var(--wght), "slnt" var(--slnt);
 }
 
-body{
-	font-size: 18px;
+body {
+  font-size: 18px;
   line-height: 1.4;
   font-family: "Pentameter VF";
   font-weight: normal;
@@ -29,31 +28,37 @@ body{
   flex-direction: column;
   height: 100vh;
 }
+body[data-typed=done] header, body[data-typed=done] footer, body[data-typed=done] .controls {
+  visibility: visible;
+}
 
+header, footer, .controls {
+  visibility: hidden;
+}
 
-header{
+header {
   display: flex;
   justify-content: space-between;
 }
 
-main{
-  flex:  1;
+main {
+  flex: 1;
   display: flex;
   align-items: center;
 }
 
-header, footer{
+header, footer {
   height: 50px;
   margin: 2rem 3rem;
   flex: none;
   --slnt: 0;
 }
 
-footer{
+footer {
   text-align: center;
 }
 
-#poem{
+#content {
   margin: auto;
   padding: 0 5%;
   font-size: 40px;
@@ -63,16 +68,16 @@ footer{
   text-align: center;
 }
 
-a{
+a {
   text-decoration: none;
   color: white;
 }
 
-.controls{
+.controls {
   font-size: 30px;
   padding: 1em;
   padding-top: 1.5em;
   cursor: pointer;
 }
 
-
+/*# sourceMappingURL=style.css.map */
