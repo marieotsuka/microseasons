@@ -199,7 +199,7 @@ Player.prototype = {
       sound = data.howl = new Howl({
         src: ['audio/' + data.file ],
         autoplay: true,
-        volume: 0.7,
+        volume: 0.3,
         loop: true,
         html5: true // Force to HTML5 so that the audio can stream in (best for large files).
       });
@@ -267,17 +267,6 @@ Player.prototype = {
 
     // Play the new track.
     self.play(index);
-  },
-  /**
-   * Format the time from seconds to M:SS.
-   * @param  {Number} secs Seconds to format.
-   * @return {String}      Formatted time.
-   */
-  formatTime: function(secs) {
-    var minutes = Math.floor(secs / 60) || 0;
-    var seconds = (secs - minutes * 60) || 0;
-
-    return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
   }
 };
 
@@ -292,9 +281,3 @@ playbutton.addEventListener('click', function() {
   } 
 });
 
-// prevBtn.addEventListener('click', function() {
-//   player.skip('prev');
-// });
-// nextBtn.addEventListener('click', function() {
-//   player.skip('next');
-// });

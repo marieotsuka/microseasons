@@ -80,4 +80,10 @@ a {
   cursor: pointer;
 }
 
+#playbutton {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+}
+
 /*# sourceMappingURL=style.css.map */
