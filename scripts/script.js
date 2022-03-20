@@ -19,6 +19,7 @@ let this_season;
 /* audio tracks */
 let player;
 let tracklist = [];
+let sound_id = 0;
 
 /* typewriter options */
 let t = 0;
@@ -228,8 +229,10 @@ Player.prototype = {
       });
     }
 
+    sound_id = sound.play();
+
     // Begin playing the sound.
-    sound.play();
+    sound.fade(0, 0.3, 800, sound_id);
     playbutton.setAttribute('data-playing', 'true');
 
     // Update the track display.
@@ -247,10 +250,12 @@ Player.prototype = {
    */
   pause: function() {
     var self = this;
-    // Get the Howl we want to manipulate.
+    // Get the Howl we want to manipulate
     var sound = self.playlist[self.index].howl;
-    // Puase the sound.
-    sound.pause();
+    
+    // fadeout the sound
+    sound.fade(0.3, 0, 800, sound_id);
+    playbutton.setAttribute('data-playing', 'false');
   },
 
   /**
