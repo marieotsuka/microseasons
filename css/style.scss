@@ -18,6 +18,9 @@
   font-variation-settings: 'wdth' var(--wdth), 'wght' var(--wght), 'slnt' var(--slnt);
 }
 
+h1,h2,h3,h4,h5,h6{
+  font-weight: normal;
+}
 body{
 	font-size: 18px;
   line-height: 1.4;
@@ -25,9 +28,7 @@ body{
   font-weight: normal;
   background: black;
   color: white;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+
   &[data-typed=done]{
     header, footer, .controls{
       visibility: visible;
@@ -60,12 +61,51 @@ footer{
   text-align: center;
 }
 
+section{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+//intro splash
+#overlay{
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+
+  .intro{
+    width: 500px;
+  }
+  
+  text-align: center;
+  letter-spacing: 0.02em;
+  --wght: 480;
+  --wdth: 100;
+
+  h1{
+    font-size: 45px;
+    --wght: 200;
+  }
+  cursor: pointer;
+}
+//main area
+#stage{
+  display: flex;
+  flex-direction: column;
+}
+[data-mode=stage] #overlay{
+  display: none;
+}
+
 #content{
   margin: auto;
   padding: 0 5%;
   font-size: 40px;
   --ss01: 0;
-  --slnt: 50;
+  --slnt: 10;
   font-feature-settings: "ss01" var(--ss01);
   text-align: center;
 }

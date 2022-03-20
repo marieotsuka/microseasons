@@ -7,73 +7,85 @@
   <script src="scripts/isBetween.min.js"></script>
   <script src="scripts/howler.min.js"></script>
 </head>
-<body data-typed="">
-    <div id="playbutton">[play]</div>
-    <header>
-        <div class="about"><a href="/">[ * ]</a>
+<body data-mode="intro" data-typed="">
+    <section id="overlay">
+        <div class="intro">
+            <h1>*</h1>
+            <p>
+                This website displays the current season of the 72 pentads, each a five-day microseason in the Japanese calendar. <br>
+                ( Sound on recommended )
+            </p>
         </div>
-        <div class="date">
-            <span id="fromdate"></span> —
-            <span id="todate"></span>
-            …
-            <span id="daysleft"></span>
+    </section>
+
+    <section id="stage">
+        <div id="playbutton">[ ♪ ]</div>
+        <header>
+            <div class="about"><a href="/">[ * ]</a>
+            </div>
+            <div class="date">
+                <span id="fromdate"></span> —
+                <span id="todate"></span>
+                …
+                <span id="daysleft"></span>
+            </div>
+            <div class="lang">(en)
+            </div>
+        </header>
+    <!--     <div class="title">
+          Seasons in Pentameter
+        </div>  -->
+
+        <main>
+            <div class="controls" id="back">←</div>
+            <div id="content">
+                <div id="poem"></div>
+            </div>
+            <div class="controls" id="next">→</div>
+        </main>
+
+        <!-- <section id="sliders">
+            <ul>                   
+                <li data-axes="wght">
+                    <div class="range-name">wght</div>
+                    <div class="min">100</div>
+                    <input data-type="wght" class="range axis-range menu" type="range" min="100" max="700" value="500">
+                    <div class="max">700</div>
+                </li> 
+                <li data-axes="wdth">
+                    <div class="range-name">wdth</div>
+                    <div class="min">75</div>
+                    <input data-type="wdth" class="range axis-range menu" type="range" min="75" max="125" value="100">
+                    <div class="max">125</div>
+                </li>   
+                <li data-axes="XHGT">
+                    <div class="range-name">slnt</div>
+                    <div class="min">0</div>
+                    <input data-type="slnt" class="range axis-range menu" type="range" min="0" max="100" value="50">
+                    <div class="max">100</div>
+                </li>
+                <li class="ss">
+                    <div class="range-name">Alternate F (ss01)</div>
+                    <input type="checkbox" class="ss-toggle" id="ss01" value="ss01">
+                </li>
+                <li class="ss">
+                    <div class="range-name">Weighted Underline (ss03)</div>
+                    <input type="checkbox" class="ss-toggle" id="ss03" value="ss03" checked>
+                </li>
+            </ul>
+        </section> -->
+
+
+    <footer>
+        <div class="seki">
+            <span id="ko"></span><br>
+            <span id="weather"></span>
         </div>
-        <div class="lang">(en)
-        </div>
-    </header>
-<!--     <div class="title">
-      Seasons in Pentameter
-    </div>  -->
-
-    <main>
-        <div class="controls" id="back">←</div>
-        <div id="content">
-            <div id="poem"></div>
-        </div>
-        <div class="controls" id="next">→</div>
-    </main>
-
-    <!-- <section id="sliders">
-        <ul>                   
-            <li data-axes="wght">
-                <div class="range-name">wght</div>
-                <div class="min">100</div>
-                <input data-type="wght" class="range axis-range menu" type="range" min="100" max="700" value="500">
-                <div class="max">700</div>
-            </li> 
-            <li data-axes="wdth">
-                <div class="range-name">wdth</div>
-                <div class="min">75</div>
-                <input data-type="wdth" class="range axis-range menu" type="range" min="75" max="125" value="100">
-                <div class="max">125</div>
-            </li>   
-            <li data-axes="XHGT">
-                <div class="range-name">slnt</div>
-                <div class="min">0</div>
-                <input data-type="slnt" class="range axis-range menu" type="range" min="0" max="100" value="50">
-                <div class="max">100</div>
-            </li>
-            <li class="ss">
-                <div class="range-name">Alternate F (ss01)</div>
-                <input type="checkbox" class="ss-toggle" id="ss01" value="ss01">
-            </li>
-            <li class="ss">
-                <div class="range-name">Weighted Underline (ss03)</div>
-                <input type="checkbox" class="ss-toggle" id="ss03" value="ss03" checked>
-            </li>
-        </ul>
-    </section> -->
-
-
-<footer>
-    <div class="seki">
-        <span id="ko"></span><br>
-        <span id="weather"></span>
-    </div>
-  <!-- <div id="colophon">
-    Random poems pulled from <a href="https://www.poemist.com/">Poemist</a> via the <a href="https://poemist.github.io/poemist-apidoc/">Poemist API</a>.
-  </div> -->
-</footer>
+      <!-- <div id="colophon">
+        Random poems pulled from <a href="https://www.poemist.com/">Poemist</a> via the <a href="https://poemist.github.io/poemist-apidoc/">Poemist API</a>.
+      </div> -->
+    </footer>
+</section>
 <script src="scripts/script.js"></script>
 </body>
 </html>
