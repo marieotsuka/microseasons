@@ -5,7 +5,7 @@ dayjs.extend(window.dayjs_plugin_isBetween);
 
 /* DOM elements */
 // Cache references to DOM elements.
-const elms = ['splash', 'content', 'poem', 'home', 'dateinfo', 'langbutton', 'ko', 'weather', 'prev', 'next', 'playbutton', 'languages', 'langmenu'];
+const elms = ['splash', 'content', 'poem', 'home', 'dateinfo', 'langbutton', 'ko', 'weather', 'prev', 'next', 'playbutton', 'languages', 'langmenu', 'infotable', 'info'];
 elms.forEach(function(elm) {
   window[elm] = document.getElementById(elm);
 });
@@ -24,6 +24,7 @@ let daysleft = "";
 let player;
 let tracklist = [];
 let sound_id = 0;
+let audio = false;
 
 /* typewriter options */
 let first = true; //toggle this off after first poem
@@ -41,7 +42,18 @@ function getPoem( ){
     .then(json => {
       data = json;
       // console.log(data);
-
+      let tablehtml = `<div class="row">
+                <dt>
+                  <div class="heading jp">Kō</div>
+                  <div class="heading range">Dates</div>
+                </dt>
+                <dd class="description">
+                  <div class="heading text">Microseason (English)</div>
+                  <div class="heading weight">Font weight (wght value)</div>
+                  
+                  <div class="heading sound">Sound</div>
+                </dd>
+            </div>`;
 
       for(var i = 0; i<json.length; i++){
           //setup tracklist
@@ -50,10 +62,25 @@ function getPoem( ){
             howl: null
           });
 
+          let season = json[i];
+
+          //setup info table
+          tablehtml += `
+            <div class="row">
+                <dt>
+                  <div class="cell jp">${season['name-jp']}</div>
+                  <div class="cell range">${season['start']}—<br>${season['end']}</div>
+                </dt>
+                <dd class="description">
+                  <div class="cell text" style="--wght: ${season['weight']};">${season['English']}</div>
+                  <div class="cell weight" style="--wght: ${season['weight']};">{${season['weight']}} </div>
+                  <div class="cell sound"> sound keys </div>
+                </dd>
+            </div>
+          `
+
           if(typeof this_season == "undefined"){
-            //only evaluate if season hasn't been determined yet
-            let season = json[i];
-            
+            //only evaluate if season hasn’t been determined yet            
             //setup current year dates
             let from_date = dayjs(year+'/'+season.start);  
             let to_date = dayjs(year+'/'+season.end);
@@ -75,6 +102,9 @@ function getPoem( ){
             }
           }
       }
+
+      
+      infotable.innerHTML = tablehtml;
 
       console.log(tracklist);
       player = new Player(tracklist, season_index); //initialize player
@@ -284,17 +314,11 @@ Player.prototype = {
     }
 
     sound_id = sound.play();
-
     // Begin playing the sound.
     sound.fade(0, 0.3, 800, sound_id);
     playbutton.setAttribute('data-playing', 'true');
+    audio = true;
 
-    // Update the track display.
-    // track.innerHTML = data.num + '. ' + data.title;
-    // navtrack.innerHTML = data.title;
-    // artist.innerHTML = data.artist;
-    // duration.innerHTML = data.length;
-    console.log('playing track', index)
     // Keep track of the index we are currently playing.
     self.index = index;
   },
@@ -310,6 +334,7 @@ Player.prototype = {
     // fadeout the sound
     sound.fade(0.3, 0, 800, sound_id);
     playbutton.setAttribute('data-playing', 'false');
+    audio = false;
   },
 
   /**
@@ -332,6 +357,7 @@ Player.prototype = {
         index = 0;
       }
     }
+
     self.skipTo(index);
   },
 
@@ -341,14 +367,16 @@ Player.prototype = {
    */
   skipTo: function(index) {
     var self = this;
-
     // Stop the current track.
     if (self.playlist[self.index].howl) {
       self.playlist[self.index].howl.stop();
     }
 
-    // Play the new track.
-    self.play(index);
+    self.index = index;
+    if (audio){
+      // Play the new track.
+      self.play(index);
+    }
   }
 };
 
@@ -361,6 +389,11 @@ playbutton.addEventListener('click', function() {
   } 
 });
 
+// About section
+
+aboutbutton.addEventListener('click', function(){
+  body.setAttribute('data-mode', 'info');
+});
 
 // Language controls
 
@@ -401,7 +434,21 @@ function setupLanguages(){
 
 setupLanguages();
 
-let backbutton = document.querySelector('.back');
-backbutton.addEventListener('click', function(){
+let backbutton1 = document.querySelector('#info .back');
+backbutton1.addEventListener('click', function(){
   body.setAttribute('data-mode', 'stage');
 });
+let backbutton2 = document.querySelector('#langmenu .back');
+backbutton2.addEventListener('click', function(){
+  body.setAttribute('data-mode', 'stage');
+});
+
+//TOGGLE ABOUT INFO
+let infobuttons = document.querySelectorAll('#info .button');
+infobuttons.forEach(function(el){
+  el.addEventListener('click', function(){
+    let infotype = el.getAttribute('id');
+    info.setAttribute('data-infomode', infotype);
+  });
+});
+

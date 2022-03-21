@@ -18,8 +18,7 @@
         </div>
     </section>
 
-    <section id="stage" data-typed="">
-        
+    <section id="stage">
         <header>
             <div class="button"><a href="/" id="home"></a>
             </div>
@@ -28,9 +27,6 @@
             <div class="button" id="aboutbutton">
             </div>
         </header>
-    <!--     <div class="title">
-          Seasons in Pentameter
-        </div>  -->
 
         <main>
             <div class="controls" id="prev"></div>
@@ -40,56 +36,58 @@
             <div class="controls" id="next"></div>
         </main>
 
-        <!-- <section id="sliders">
-            <ul>                   
-                <li data-axes="wght">
-                    <div class="range-name">wght</div>
-                    <div class="min">100</div>
-                    <input data-type="wght" class="range axis-range menu" type="range" min="100" max="700" value="500">
-                    <div class="max">700</div>
-                </li> 
-                <li data-axes="wdth">
-                    <div class="range-name">wdth</div>
-                    <div class="min">75</div>
-                    <input data-type="wdth" class="range axis-range menu" type="range" min="75" max="125" value="100">
-                    <div class="max">125</div>
-                </li>   
-                <li data-axes="XHGT">
-                    <div class="range-name">slnt</div>
-                    <div class="min">0</div>
-                    <input data-type="slnt" class="range axis-range menu" type="range" min="0" max="100" value="50">
-                    <div class="max">100</div>
-                </li>
-                <li class="ss">
-                    <div class="range-name">Alternate F (ss01)</div>
-                    <input type="checkbox" class="ss-toggle" id="ss01" value="ss01">
-                </li>
-                <li class="ss">
-                    <div class="range-name">Weighted Underline (ss03)</div>
-                    <input type="checkbox" class="ss-toggle" id="ss03" value="ss03" checked>
-                </li>
-            </ul>
-        </section> -->
-
-
-    <footer>
-        <div class="button lang" id="langbutton">
+        <footer>
+            <div class="button lang" id="langbutton">
+            </div>
+            <div class="seki" id="weather">
+            </div>
+            <div class="button" id="playbutton"></div>
+        </footer>
+    </section>
+    <section id="info" class="overlay" data-infomode="text">
+        <div class="texts">
+            <div class="button back">[ < ]</div>
+            <h2>about the <span class="button" id="text">[ text ]</span></h2>
+            <div class="about" data-info="text">
+                <p> 
+                    This website displays the current phase of the 72 kō or microseasons of Japan, each lasting five days. Also called 72 pentads, they originated in China and was adapted to better match the seasonality of Japan in the Edo period by court astronomer Shibukawa Shunkai. The current version is from the abbreviated traditional calendar of 1874. Three pentads (about 15 days) make up a *sekki, and the bottom of the website displays whether we are in the beginning (*), middle (**), or end (***) of the 24 sekki within the year. 
+                </p>
+                <p> This site was designed by <a href="https://laurelschwulst.com/">Laurel Schwulst</a>.
+                    Japanese descriptions from the wikipedia article were converted to English via Google translate, then further edited by Laurel. Additional language versions are based on Google translated results of the edited English phrases.
+                </p>
+            </div>
+            <h2>about the <span class="button" id="sound">[ sound ]</span></h2>
+            <div class="about" data-info="sound">
+                <p> 
+                    Lorem ipsum dolor sit ceatio debis reiurios dis parum vit, sent quia volorio et ea quid quid  <a href="https://www.tiger.exposed/index">Tiger Dingsun</a> conseque con plant hita debitas dolupti busdanihit quam faceatia voleceruntia cusant, voluptatia eum sedis nonse sapit iducia consed eatus dolorumquid quia dolorrorem volupta quiant autent int, offictia pra as molenis di dolorib usandis illab il inctotas aspelliquam.
+                </p>
+            </div> 
+            <h2>about the <span class="button" id="font">[ font ]</span></h2>
+            <div class="about" data-info="font">
+                <p> 
+                    The typeface used is <a href="">Pentameter</a>, an expressive monospace with variable axes across width (wdth: 75–125), weight (wght: 100–700) and slant (slnt: 0–16), designed by Marie Otsuka and released at <a href="https://occupantfonts.com/" target="_blank">Occupant Fonts</a> in 2021. As a typeface that celebrates the creative agency in hand-coding, its syncopated rhythm merges rigid monolinear mechanics with an exaggerated skeleton of italic forms. 
+                </p>
+                <p>
+                    The variation settings for each phrase are set to a Width of 100, a Slant of 10, and a Weight that corresponds to each microseason, ranging from the minimum of 100 for the coldest days of the year, to the maximum of 700 for the hottest days. 
+                </p>
+                <p>
+                    
+                    Read more about the <a href="https://occupantfonts.com/articles/design/monospace-in-motion/" target="_blank">design process</a> of Pentameter, view a <a href="https://occupantfonts.com/" target="_blank">PDF Specimen</a> or 
+                    <a href="https://occupantfonts.com/fonts/pentameter" target="_blank">font details</a>, purchase at <a href="https://store.typenetwork.com/foundry/occupant/fonts/pentameter" target="_blank">Type Network</a>, or checkout other typefaces at <a href="https://occupantfonts.com/" target="_blank">Occupant Fonts</a>.               
+                </p>
+            </div> 
         </div>
-        <div class="seki" id="weather">
+        <div class="table">
+            <dl id="infotable">
+                
+            </dl>
         </div>
-        <div class="button" id="playbutton"></div>
-    </footer>
-</section>
-<!-- <section id="about" class="overlay">
-    <div class="button back">[ < ]</div>
-
-    
-</section> -->
-<section id="langmenu" class="overlay">
-    <div class="button back">[ < ]</div>
-    <div id="languages"></div>
-    <p>We are using automatic translations via Google Translate. For any suggestions on text translation, please contact us at (xx?)</p>
-</section>
+    </section>
+    <section id="langmenu" class="overlay">
+        <div class="button back">[ < ]</div>
+        <div id="languages"></div>
+        <p>We are using automatic translations via Google Translate. For any suggestions or contributions, please contact us at (xx?)</p>
+    </section>
 <script src="scripts/script.js"></script>
 </body>
 </html>

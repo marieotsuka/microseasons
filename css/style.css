@@ -16,11 +16,13 @@
   --ss07: 0;
   --ss08: 0;
   --ss09: 0;
+  --grey: rgb(60,60,60);
 }
 
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-variation-settings: "wdth" var(--wdth), "wght" var(--wght), "slnt" var(--slnt);
 }
 
@@ -28,7 +30,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
 }
 
-body {
+body, h2 {
   font-size: 18px;
   line-height: 1.4;
   font-family: "Pentameter VF";
@@ -89,6 +91,9 @@ section {
   flex-direction: column;
 }
 
+/*-----------------------
+OVERLAY SHOW/HIDE TOGGLE
+-----------------------*/
 [data-mode=stage] .overlay {
   display: none;
 }
@@ -98,6 +103,10 @@ section {
 
 [data-mode=lang] #langmenu {
   display: block;
+}
+
+[data-mode=info] #info {
+  display: flex;
 }
 
 #content {
@@ -160,11 +169,103 @@ a {
 }
 
 /*---------------
+ABOUT INFO
+---------------*/
+h2 {
+  margin: 1em 0;
+}
+
+#info {
+  display: none;
+}
+#info .texts, #info .table {
+  flex: 1;
+  padding: 2em;
+}
+#info .table {
+  height: 100vh;
+  padding-top: 4em;
+  overflow: scroll;
+}
+#info h2, #info p {
+  font-feature-settings: "onum" 1;
+  font-size: 1.2em;
+  --wdth: 80;
+  --wght: 400;
+}
+#info p {
+  text-indent: 3em;
+}
+#info p:first-child {
+  text-indent: 0;
+}
+#info p a {
+  font-feature-settings: "ss03" 1;
+}
+#info p a:hover {
+  font-feature-settings: "ss03" 0;
+}
+
+.table {
+  font-size: 1.1em;
+}
+.table .row {
+  margin-bottom: 1.1em;
+  display: flex;
+}
+.table .row .jp {
+  width: 120px;
+}
+.table .row .description {
+  flex: 1;
+}
+.table .heading, .table .cell {
+  color: var(--grey);
+  font-weight: normal;
+  text-align: left;
+}
+.table .text, .table .weight {
+  --slnt: 8;
+  font-variation-settings: "wdth" var(--wdth), "wght" 400, "slnt" var(--slnt);
+  padding-right: 1em;
+}
+.table .heading {
+  text-transform: uppercase;
+  --slnt: 0;
+}
+
+.about {
+  display: none;
+}
+
+[data-infomode=text] .jp, [data-infomode=text] .range, [data-infomode=text] .text {
+  color: white;
+}
+[data-infomode=text] [data-info=text] {
+  display: block;
+}
+
+[data-infomode=sound] .jp, [data-infomode=sound] .sound {
+  color: white;
+}
+[data-infomode=sound] [data-info=sound] {
+  display: block;
+}
+
+[data-infomode=font] .text, [data-infomode=font] .weight {
+  color: white;
+  font-variation-settings: "wdth" var(--wdth), "wght" var(--wght), "slnt" var(--slnt);
+}
+[data-infomode=font] [data-info=font] {
+  display: block;
+}
+
+/*---------------
 LANGUAGES
 ---------------*/
 #langmenu {
-  display: none;
   padding: 2rem;
+  display: none;
 }
 
 #languages {
