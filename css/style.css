@@ -71,6 +71,10 @@ header, footer {
   --slnt: 0;
 }
 
+dt {
+  display: flex;
+}
+
 footer .jp {
   line-height: 0.9;
 }
@@ -194,13 +198,14 @@ ABOUT INFO
 ---------------*/
 #info {
   display: none;
-  --size: 1.4rem;
+  --size: 1.2rem;
 }
 #info .texts, #info .table {
   flex: 1;
   padding: 2em;
 }
 #info .table {
+  flex: 2;
   height: 100vh;
   overflow: scroll;
 }

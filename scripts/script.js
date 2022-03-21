@@ -26,13 +26,10 @@ let tracklist = [];
 let sound_id = 0;
 let audio = false;
 
-/* typewriter options */
+/* typewriter */
 let first = true; //toggle this off after first poem
-let t = 0;
-const speed = 100; 
-let text = ""; 
 
-/* language options */
+/* language */
 let langlist;
 let active_lang = 'en';
 
@@ -48,11 +45,9 @@ function getPoem( ){
                   <div class="heading range">Dates</div>
                 </dt>
                 <dd class="description">
-                  <div class="heading kana">ふりがな</div>
-                  <div class="heading text">Microseason (English)</div>
-                  <div class="heading weight">Font weight</div>
                   
-                  <div class="heading sound">Sound</div>
+                  <div class="heading text">Microseason (English)</div>
+
                 </dd>
             </div>`;
 
@@ -70,13 +65,12 @@ function getPoem( ){
             <div class="row">
                 <dt>
                   <div class="cell name">${season['name-jp']}</div>
-                  <div class="cell range">${season['start']}—<br>${season['end']}</div>
+                  <div class="cell range">${season['start']}—${season['end']}</div>
                 </dt>
                 <dd class="description">
-                  <div class="cell kana">${season['furigana']}</div>
+
                   <div class="cell text" style="--wght: ${season['weight']};">${season['English']}</div>
-                  <div class="cell weight" style="--wght: ${season['weight']};">{${season['weight']}} </div>
-                  <div class="cell sound"> sound keys </div>
+                 
                 </dd>
             </div>
           `
@@ -118,9 +112,17 @@ function getPoem( ){
 getPoem();
 
 function displayPoem(season){
+
   from = dayjs(year+'/'+season.start).format('MMMM D');
   to = dayjs(year+'/'+season.end).format('MMMM D');
 
+  //clear timeouts
+  var id = window.setTimeout(function() {}, 0);
+  while (id--) {
+      window.clearTimeout(id); // will do nothing if no timeout with id is present
+  }
+
+  poem.innerHTML = "";
   poem.style.setProperty('--wght', season.weight);
 
   let jp_text = '「'+season['name-jp']+'」'+season['furigana'];
@@ -128,10 +130,6 @@ function displayPoem(season){
   let lang_key = langlist[active_lang];
 
   let text_updates = [
-    {
-      text: season[lang_key],
-      container: poem
-    },
     {
       text: `${from} — ${to}`,
       container: dateinfo
@@ -142,9 +140,11 @@ function displayPoem(season){
     }
   ]
 
+  typeWriter(season[lang_key], poem);
+
   text_updates.forEach(function(t){
     t.container.innerHTML = ""; //reset containers
-    typeWriter(t.text, t.container);
+    t.container.innerHTML = t.text;
   });  
 }
 
@@ -153,10 +153,6 @@ async function displayTexts( season ){
   poem.style.setProperty('--wght', season.weight);
 
   let text_contents = [
-    {
-      text: season['English'],
-      container: poem
-    },
     { 
       text: "[ * ]",
       container: home
@@ -191,10 +187,12 @@ async function displayTexts( season ){
     }
   ]
 
+  await typeWriter(season['English'], poem);
   //go through and populate text containers
   for (let i = 0; i < text_contents.length; i++) {
     let content = text_contents[i];
-    await typeWriter(content.text, content.container);
+     await waitForMs(600); //delay between showing peripherey elmeents
+     content.container.innerHTML = content.text;
   }
 
 }
@@ -239,7 +237,6 @@ splash.addEventListener('click', function(){
 function setupStage(){
   //sets up elements of poem stage
   //begins audio
-  // displayPoem(this_season);
   player.play();
   displayTexts(this_season);
 }
