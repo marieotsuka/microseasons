@@ -44,12 +44,13 @@ function getPoem( ){
       // console.log(data);
       let tablehtml = `<div class="row">
                 <dt>
-                  <div class="heading jp">Kō</div>
+                  <div class="heading name">七十二候</div>
                   <div class="heading range">Dates</div>
                 </dt>
                 <dd class="description">
+                  <div class="heading kana">ふりがな</div>
                   <div class="heading text">Microseason (English)</div>
-                  <div class="heading weight">Font weight (wght value)</div>
+                  <div class="heading weight">Font weight</div>
                   
                   <div class="heading sound">Sound</div>
                 </dd>
@@ -68,10 +69,11 @@ function getPoem( ){
           tablehtml += `
             <div class="row">
                 <dt>
-                  <div class="cell jp">${season['name-jp']}</div>
+                  <div class="cell name">${season['name-jp']}</div>
                   <div class="cell range">${season['start']}—<br>${season['end']}</div>
                 </dt>
                 <dd class="description">
+                  <div class="cell kana">${season['furigana']}</div>
                   <div class="cell text" style="--wght: ${season['weight']};">${season['English']}</div>
                   <div class="cell weight" style="--wght: ${season['weight']};">{${season['weight']}} </div>
                   <div class="cell sound"> sound keys </div>
@@ -120,6 +122,8 @@ function displayPoem(season){
 
   poem.style.setProperty('--wght', season.weight);
 
+  let jp_text = '「'+season['name-jp']+'」'+season['furigana'];
+
   let lang_key = langlist[active_lang];
 
   let text_updates = [
@@ -132,7 +136,7 @@ function displayPoem(season){
       container: dateinfo
     },
     {
-      text: season['ko'],
+      text: jp_text,
       container: weather
     }
   ]
@@ -173,7 +177,7 @@ async function displayTexts( season ){
       container: playbutton
     },
     {
-      text: season['ko'],
+      text: '「' + season['name-jp'] + '」' +season['furigana'],
       container: weather
     },
     {
@@ -393,6 +397,7 @@ playbutton.addEventListener('click', function() {
 
 aboutbutton.addEventListener('click', function(){
   body.setAttribute('data-mode', 'info');
+  info.setAttribute('data-infomode', 'text');
 });
 
 // Language controls

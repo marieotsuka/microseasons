@@ -2,10 +2,12 @@
 <head>
   <meta charset="utf-8">
   <title>Five-day Seasons</title>
+  <script type="text/javascript" src="//typesquare.com/3/tsst/script/en/typesquare.js?60593a3ac3e844ed820c220cac1e02d5" charset="utf-8"></script>
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <script src="scripts/dayjs.min.js"></script>
   <script src="scripts/isBetween.min.js"></script>
   <script src="scripts/howler.min.js"></script>
+
 </head>
 <body data-mode="intro">
     <section id="splash" class="overlay">
@@ -39,7 +41,8 @@
         <footer>
             <div class="button lang" id="langbutton">
             </div>
-            <div class="seki" id="weather">
+            <div class="seki jp" id="weather">
+                
             </div>
             <div class="button" id="playbutton"></div>
         </footer>
@@ -50,10 +53,10 @@
             <h2>about the <span class="button" id="text">[ text ]</span></h2>
             <div class="about" data-info="text">
                 <p> 
-                    This website displays the current phase of the 72 kō or microseasons of Japan, each lasting five days. Also called 72 pentads, they originated in China and was adapted to better match the seasonality of Japan in the Edo period by court astronomer Shibukawa Shunkai. The current version is from the abbreviated traditional calendar of 1874. Three pentads (about 15 days) make up a *sekki, and the bottom of the website displays whether we are in the beginning (*), middle (**), or end (***) of the 24 sekki within the year. 
+                    This site was designed by <a href="https://laurelschwulst.com/">Laurel Schwulst</a> and displays the current phase of the 72 microseasons (<em>kō</em>) of Japan, each lasting five days. Also called 72 pentads, they originated in China and were adapted to better match the seasonality of Japan in the Edo period. The current version is from the abbreviated traditional calendar of 1874. 
                 </p>
-                <p> This site was designed by <a href="https://laurelschwulst.com/">Laurel Schwulst</a>.
-                    Japanese descriptions from the wikipedia article were converted to English via Google translate, then further edited by Laurel. Additional language versions are based on Google translated results of the edited English phrases.
+                <p> 
+                    The bottom center of the screen displays the Japanese kō. Descriptions of each from the <a href="https://ja.wikipedia.org/wiki/%E4%B8%83%E5%8D%81%E4%BA%8C%E5%80%99" target="_blank">wikipedia entry</a> were converted to English via Google translate, then further edited by Laurel. Additional language versions are based on Google-translated results of the edited English phrases. Please reach out if you’d like to contribute better translations.
                 </p>
             </div>
             <h2>about the <span class="button" id="sound">[ sound ]</span></h2>
@@ -65,21 +68,20 @@
             <h2>about the <span class="button" id="font">[ font ]</span></h2>
             <div class="about" data-info="font">
                 <p> 
-                    The typeface used is <a href="">Pentameter</a>, an expressive monospace with variable axes across width (wdth: 75–125), weight (wght: 100–700) and slant (slnt: 0–16), designed by Marie Otsuka and released at <a href="https://occupantfonts.com/" target="_blank">Occupant Fonts</a> in 2021. As a typeface that celebrates the creative agency in hand-coding, its syncopated rhythm merges rigid monolinear mechanics with an exaggerated skeleton of italic forms. 
+                    The typeface used is <a href="">Pentameter VF</a>, an expressive monospace with variable axes across width (wdth: 75–125), weight (wght: 100–700) and slant (slnt: 0–16), designed by Marie Otsuka and released at <a href="https://occupantfonts.com/" target="_blank">Occupant Fonts</a> in 2021. As a typeface that celebrates the creative agency of hand-coding, its syncopated rhythm merges rigid monolinear mechanics with an exaggerated italic skeleton. It is paired with Morisawa’s <a href="">Cinema Letter</a> for the Japanese characters.
                 </p>
                 <p>
-                    The variation settings for each phrase are set to a Width of 100, a Slant of 10, and a Weight that corresponds to each microseason, ranging from the minimum of 100 for the coldest days of the year, to the maximum of 700 for the hottest days. 
+                    The variation settings for each phrase is set to a Width of 100, a Slant of 10, and a Weight that corresponds to each microseason, ranging from the minimum of 100 for the coldest days of the year, to the maximum of 700 for the hottest days.
                 </p>
                 <p>
-                    
                     Read more about the <a href="https://occupantfonts.com/articles/design/monospace-in-motion/" target="_blank">design process</a> of Pentameter, view a <a href="https://occupantfonts.com/" target="_blank">PDF Specimen</a> or 
-                    <a href="https://occupantfonts.com/fonts/pentameter" target="_blank">font details</a>, purchase at <a href="https://store.typenetwork.com/foundry/occupant/fonts/pentameter" target="_blank">Type Network</a>, or checkout other typefaces at <a href="https://occupantfonts.com/" target="_blank">Occupant Fonts</a>.               
+                    <a href="https://occupantfonts.com/fonts/pentameter" target="_blank">font details</a>, and license at <a href="https://store.typenetwork.com/foundry/occupant/fonts/pentameter" target="_blank">Type Network</a>.               
                 </p>
             </div> 
         </div>
         <div class="table">
-            <dl id="infotable">
-                
+            <dl id="infotable" class="jp">
+                七十二候 東風解凍 黄鶯睍睆 魚上氷 土脉潤起 霞始靆 草木萌動 蟄虫啓戸 桃始笑 菜虫化蝶 雀始巣 桜始開 雷乃発声 玄鳥至 鴻雁北 虹始見 葭始生 霜止出苗 牡丹華 蛙始鳴 蚯蚓出 竹笋生 蚕起食桑 紅花栄 麦秋至 螳螂生 腐草為蛍 梅子黄 乃東枯 菖蒲華 半夏生 温風至 蓮始開 鷹乃学習 桐始結花 土潤溽暑 大雨時行 涼風至 寒蝉鳴 蒙霧升降 綿柎開 天地始粛 禾乃登 草露白 鶺鴒鳴 玄鳥去 雷乃収声 蟄虫坏戸 水始涸 鴻雁来 菊花開 蟋蟀在戸 霜始降 霎時施 楓蔦黄 山茶始開 地始凍 金盞香 虹蔵不見 朔風払葉 橘始黄 閉塞成冬 熊蟄穴 鱖魚群 乃東生 麋角解 雪下出麦 芹乃栄 水泉動 雉始雊 款冬華 水沢腹堅 鶏始乳　あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん
             </dl>
         </div>
     </section>
@@ -88,6 +90,10 @@
         <div id="languages"></div>
         <p>We are using automatic translations via Google Translate. For any suggestions or contributions, please contact us at (xx?)</p>
     </section>
+<!-- <div class="jp-loader" style="font-family: Kakumin Regular">
+    東風解凍 黄鶯睍睆 魚上氷 土脉潤起 霞始靆 草木萌動 蟄虫啓戸 桃始笑 菜虫化蝶 雀始巣 桜始開 雷乃発声 玄鳥至 鴻雁北 虹始見 葭始生 霜止出苗 牡丹華 蛙始鳴 蚯蚓出 竹笋生 蚕起食桑 紅花栄 麦秋至 螳螂生 腐草為蛍 梅子黄 乃東枯 菖蒲華 半夏生 温風至 蓮始開 鷹乃学習 桐始結花 土潤溽暑 大雨時行 涼風至 寒蝉鳴 蒙霧升降 綿柎開 天地始粛 禾乃登 草露白 鶺鴒鳴 玄鳥去 雷乃収声 蟄虫坏戸 水始涸 鴻雁来 菊花開 蟋蟀在戸 霜始降 霎時施 楓蔦黄 山茶始開 地始凍 金盞香 虹蔵不見 朔風払葉 橘始黄 閉塞成冬 熊蟄穴 鱖魚群 乃東生 麋角解 雪下出麦 芹乃栄 水泉動 雉始雊 款冬華 水沢腹堅 鶏始乳
+</div> -->
+
 <script src="scripts/script.js"></script>
 </body>
 </html>

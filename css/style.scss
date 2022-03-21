@@ -18,7 +18,7 @@
   --ss08: 0;
   --ss09: 0;
 
-  --grey: rgb(60,60,60);
+  --grey: rgb(80,80,80);
 }
 
 *{
@@ -39,6 +39,18 @@ body, h2{
   background: black;
   color: white;
   letter-spacing: 0.05em;
+}
+
+.jp{
+  font-family: 'Cinema Letter';
+}
+.ko{
+  font-family: "Pentameter VF";
+}
+
+em{
+  font-style: normal;
+  --slnt: 16;
 }
 
 // header, footer, .controls{
@@ -139,12 +151,16 @@ a{
 
 .controls{
   font-size: 30px;
+  --wght: 200;
   padding: 1em;
   padding-top: 1.5em;
   cursor: pointer;
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
+  &:hover{
+    --wght: 700;
+  }
 }
 #next{
   right: 0;
@@ -183,12 +199,11 @@ a{
 /*---------------
 ABOUT INFO
 ---------------*/
-h2{
-  margin: 1em 0;
-}
+
 
 #info{
   display: none;
+  --size: 1.4rem;
 
   // display: flex;
   .texts, .table{
@@ -197,14 +212,16 @@ h2{
   }
   .table{
     height: 100vh;
-    padding-top: 4em;
     overflow: scroll;
   }
-  h2,p{
+  h2,p,dl{
     font-feature-settings: "onum" 1;
-    font-size: 1.2em;
+    font-size: var(--size);
     --wdth: 80;
-    --wght: 400;
+    --wght: 380;
+  }
+  h2{
+    margin: 1.4em 0;
   }
   p{
     text-indent: 3em;
@@ -218,14 +235,22 @@ h2{
       }
     }
   }
+
+  .weight{
+    font-feature-settings: "onum" 0;
+  }
 }
 
 .table {
-  font-size: 1.1em;
   .row{
-    margin-bottom: 1.1em;
+    font-family: 'Pentameter VF';
+    margin-bottom: 1.4em;
     display: flex;
-    .jp{
+    .name, .kana{
+      font-family: 'Cinema Letter';
+      font-size: 1.2rem;
+    }
+    .name{
       width: 120px;
     }
     .description{
@@ -253,8 +278,11 @@ h2{
 .about{
   display: none;
 }
+.jp-loader{
+  visibility: hidden;
+}
 [data-infomode=text]{
-  .jp, .range, .text{
+  .range, .text{
     color: white;
   }
   [data-info=text]{
@@ -262,7 +290,7 @@ h2{
   }
 }
 [data-infomode=sound]{
-  .jp, .sound{
+  .name, .sound{
     color: white;
   }
   [data-info=sound]{

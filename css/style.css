@@ -16,7 +16,7 @@
   --ss07: 0;
   --ss08: 0;
   --ss09: 0;
-  --grey: rgb(60,60,60);
+  --grey: rgb(80,80,80);
 }
 
 * {
@@ -38,6 +38,19 @@ body, h2 {
   background: black;
   color: white;
   letter-spacing: 0.05em;
+}
+
+.jp {
+  font-family: "Cinema Letter";
+}
+
+.ko {
+  font-family: "Pentameter VF";
+}
+
+em {
+  font-style: normal;
+  --slnt: 16;
 }
 
 header, footer {
@@ -128,12 +141,16 @@ a {
 
 .controls {
   font-size: 30px;
+  --wght: 200;
   padding: 1em;
   padding-top: 1.5em;
   cursor: pointer;
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
+}
+.controls:hover {
+  --wght: 700;
 }
 
 #next {
@@ -171,12 +188,9 @@ a {
 /*---------------
 ABOUT INFO
 ---------------*/
-h2 {
-  margin: 1em 0;
-}
-
 #info {
   display: none;
+  --size: 1.4rem;
 }
 #info .texts, #info .table {
   flex: 1;
@@ -184,14 +198,16 @@ h2 {
 }
 #info .table {
   height: 100vh;
-  padding-top: 4em;
   overflow: scroll;
 }
-#info h2, #info p {
+#info h2, #info p, #info dl {
   font-feature-settings: "onum" 1;
-  font-size: 1.2em;
+  font-size: var(--size);
   --wdth: 80;
-  --wght: 400;
+  --wght: 380;
+}
+#info h2 {
+  margin: 1.4em 0;
 }
 #info p {
   text-indent: 3em;
@@ -205,15 +221,20 @@ h2 {
 #info p a:hover {
   font-feature-settings: "ss03" 0;
 }
-
-.table {
-  font-size: 1.1em;
+#info .weight {
+  font-feature-settings: "onum" 0;
 }
+
 .table .row {
-  margin-bottom: 1.1em;
+  font-family: "Pentameter VF";
+  margin-bottom: 1.4em;
   display: flex;
 }
-.table .row .jp {
+.table .row .name, .table .row .kana {
+  font-family: "Cinema Letter";
+  font-size: 1.2rem;
+}
+.table .row .name {
   width: 120px;
 }
 .table .row .description {
@@ -238,14 +259,18 @@ h2 {
   display: none;
 }
 
-[data-infomode=text] .jp, [data-infomode=text] .range, [data-infomode=text] .text {
+.jp-loader {
+  visibility: hidden;
+}
+
+[data-infomode=text] .range, [data-infomode=text] .text {
   color: white;
 }
 [data-infomode=text] [data-info=text] {
   display: block;
 }
 
-[data-infomode=sound] .jp, [data-infomode=sound] .sound {
+[data-infomode=sound] .name, [data-infomode=sound] .sound {
   color: white;
 }
 [data-infomode=sound] [data-info=sound] {
