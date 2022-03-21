@@ -1,1 +1,1 @@
-# Microseasons site with Laurel Schwulst
+# Microseasons site with Laurel Schwulst and Tiger Dingsun
