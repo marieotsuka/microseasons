@@ -7,8 +7,8 @@
   <script src="scripts/isBetween.min.js"></script>
   <script src="scripts/howler.min.js"></script>
 </head>
-<body data-mode="intro" data-typed="">
-    <section id="overlay">
+<body data-mode="intro">
+    <section id="splash" class="overlay">
         <div class="intro">
             <h1>*</h1>
             <p>
@@ -18,18 +18,14 @@
         </div>
     </section>
 
-    <section id="stage">
-        <div id="playbutton">[ ♪ ]</div>
+    <section id="stage" data-typed="">
+        
         <header>
-            <div class="about"><a href="/">[ * ]</a>
+            <div class="button"><a href="/" id="home"></a>
             </div>
-            <div class="date">
-                <span id="fromdate"></span> —
-                <span id="todate"></span>
-                …
-                <span id="daysleft"></span>
+            <div class="date" id="dateinfo">
             </div>
-            <div class="lang">(en)
+            <div class="button" id="aboutbutton">
             </div>
         </header>
     <!--     <div class="title">
@@ -37,11 +33,11 @@
         </div>  -->
 
         <main>
-            <div class="controls" id="back">←</div>
-            <div id="content">
+            <div class="controls" id="prev"></div>
+            <div id="content" lang="en">
                 <div id="poem"></div>
             </div>
-            <div class="controls" id="next">→</div>
+            <div class="controls" id="next"></div>
         </main>
 
         <!-- <section id="sliders">
@@ -77,14 +73,22 @@
 
 
     <footer>
-        <div class="seki">
-            <span id="ko"></span><br>
-            <span id="weather"></span>
+        <div class="button lang" id="langbutton">
         </div>
-      <!-- <div id="colophon">
-        Random poems pulled from <a href="https://www.poemist.com/">Poemist</a> via the <a href="https://poemist.github.io/poemist-apidoc/">Poemist API</a>.
-      </div> -->
+        <div class="seki" id="weather">
+        </div>
+        <div class="button" id="playbutton"></div>
     </footer>
+</section>
+<!-- <section id="about" class="overlay">
+    <div class="button back">[ < ]</div>
+
+    
+</section> -->
+<section id="langmenu" class="overlay">
+    <div class="button back">[ < ]</div>
+    <div id="languages"></div>
+    <p>We are using automatic translations via Google Translate. For any suggestions on text translation, please contact us at (xx?)</p>
 </section>
 <script src="scripts/script.js"></script>
 </body>

@@ -4,11 +4,18 @@
   font-style: normal;
 }
 :root {
-  --wght: 300;
+  --wght: 500;
   --wdth: 100;
   --slnt: 0;
-  --ss01: 0;
-  --ss03: 1;
+  --ss01: 1;
+  --ss02: 0;
+  --ss03: 0;
+  --ss04: 0;
+  --ss05: 0;
+  --ss06: 0;
+  --ss07: 0;
+  --ss08: 0;
+  --ss09: 0;
 }
 
 * {
@@ -28,12 +35,10 @@ body {
   font-weight: normal;
   background: black;
   color: white;
-}
-body[data-typed=done] header, body[data-typed=done] footer, body[data-typed=done] .controls {
-  visibility: visible;
+  letter-spacing: 0.05em;
 }
 
-header {
+header, footer {
   display: flex;
   justify-content: space-between;
 }
@@ -45,14 +50,10 @@ main {
 }
 
 header, footer {
-  height: 50px;
-  margin: 2rem 3rem;
+  height: 30px;
+  margin: 2rem 2rem;
   flex: none;
   --slnt: 0;
-}
-
-footer {
-  text-align: center;
 }
 
 section {
@@ -61,24 +62,24 @@ section {
   position: absolute;
   top: 0;
   left: 0;
+  background: black;
 }
 
-#overlay {
-  background: black;
+.overlay {
+  z-index: 50;
+}
+
+#splash {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 20;
   text-align: center;
-  letter-spacing: 0.02em;
-  --wght: 480;
-  --wdth: 100;
   cursor: pointer;
 }
-#overlay .intro {
+#splash .intro {
   width: 500px;
 }
-#overlay h1 {
+#splash h1 {
   font-size: 45px;
   --wght: 200;
 }
@@ -88,18 +89,27 @@ section {
   flex-direction: column;
 }
 
-[data-mode=stage] #overlay {
+[data-mode=stage] .overlay {
   display: none;
+}
+[data-mode=stage] #splash {
+  display: none;
+}
+
+[data-mode=lang] #langmenu {
+  display: block;
 }
 
 #content {
   margin: auto;
-  padding: 0 5%;
+  padding: 0 20%;
   font-size: 40px;
-  --ss01: 0;
+  --ss01: 1;
   --slnt: 10;
-  font-feature-settings: "ss01" var(--ss01);
+  --wght: 300;
+  font-feature-settings: "ss01" var(--ss01), "ss03" var(--ss03), "ss04" var(--ss04), "ss05" var(--ss05), "ss06" var(--ss06), "ss07" var(--ss07), "ss08" var(--ss08), "ss09" var(--ss09);
   text-align: center;
+  letter-spacing: -0.01em;
 }
 
 a {
@@ -112,12 +122,74 @@ a {
   padding: 1em;
   padding-top: 1.5em;
   cursor: pointer;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-#playbutton {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+#next {
+  right: 0;
+}
+
+#back {
+  left: 0;
+}
+
+.button {
+  width: 65px;
+  text-align: left;
+}
+.button:hover {
+  --wght: 700;
+  cursor: pointer;
+}
+
+#aboutbutton, #playbutton {
+  text-align: right;
+}
+
+#playbutton[data-playing=true], #playbutton[data-playing=false]:hover {
+  font-feature-settings: "ss05" 0;
+}
+#playbutton[data-playing=true]:hover, #playbutton[data-playing=false] {
+  font-feature-settings: "ss05" 1;
+}
+
+#langbutton {
+  width: 80px;
+}
+
+/*---------------
+LANGUAGES
+---------------*/
+#langmenu {
+  display: none;
+  padding: 2rem;
+}
+
+#languages {
+  column-count: 4;
+  line-height: 2;
+  margin: 2rem 0;
+}
+
+.language {
+  cursor: pointer;
+}
+.language:hover, .language.active-lang {
+  font-feature-settings: "ss03" 1;
+}
+
+[lang=sr] {
+  --ss07: 1;
+}
+
+[lang=cv] {
+  --ss08: 1;
+}
+
+[lang=mk] {
+  --ss09: 1;
 }
 
 /*# sourceMappingURL=style.css.map */

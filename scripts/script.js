@@ -5,7 +5,7 @@ dayjs.extend(window.dayjs_plugin_isBetween);
 
 /* DOM elements */
 // Cache references to DOM elements.
-const elms = ['content', 'poem','fromdate', 'todate', 'daysleft', 'ko', 'weather', 'back', 'next', 'playbutton'];
+const elms = ['splash', 'content', 'poem', 'home', 'dateinfo', 'langbutton', 'ko', 'weather', 'prev', 'next', 'playbutton', 'languages', 'langmenu'];
 elms.forEach(function(elm) {
   window[elm] = document.getElementById(elm);
 });
@@ -16,17 +16,25 @@ const body = document.body;
 let data;
 let season_index = 0;
 let this_season;
+let from = "";
+let to = ""; 
+let daysleft = "";
+
 /* audio tracks */
 let player;
 let tracklist = [];
 let sound_id = 0;
 
 /* typewriter options */
+let first = true; //toggle this off after first poem
 let t = 0;
 const speed = 100; 
 let text = ""; 
 
-let loop = false;
+/* language options */
+let langlist;
+let active_lang = 'en';
+
 function getPoem( ){
   fetch("data/seasons.json")
     .then(response => response.json())
@@ -47,19 +55,22 @@ function getPoem( ){
             let season = json[i];
             
             //setup current year dates
-            let from = dayjs(year+'/'+season.start);  
-            let to = dayjs(year+'/'+season.end);
-            let toplus = to.add(1, 'days');
+            let from_date = dayjs(year+'/'+season.start);  
+            let to_date = dayjs(year+'/'+season.end);
+            let toplus = to_date.add(1, 'days');
 
             //determine current season by checking if today’s date falls
             //between the start and end date
-            if( today.isBetween(from, toplus, null, '[)') ){
+            if( today.isBetween(from_date, toplus, null, '[)') ){
               console.log(season);
               season_index = i; // store index of current season
               this_season = season;
 
+              from = dayjs(season.start).format('MMMM D');
+              to = dayjs(season.end).format('MMMM D');
+
               let days = toplus.diff(today, 'day');
-              displayDaysLeft(days);
+              setDaysLeft(days);
             // break;
             }
           }
@@ -74,23 +85,84 @@ function getPoem( ){
 getPoem();
 
 function displayPoem(season){
-  // resetTypeWriter();
-  text = season['English'];
-  t = 0;
-  typeWriter(text, poem);
+  from = dayjs(season.start).format('MMMM D');
+  to = dayjs(season.end).format('MMMM D');
 
   poem.style.setProperty('--wght', season.weight);
-  fromdate.innerHTML = dayjs(season.start).format('MMMM D');
-  todate.innerHTML = dayjs(season.end).format('MMMM D');
-  ko.innerHTML = season.ko;
-  weather.innerHTML = season['sekki-en'];
+
+  let lang_key = langlist[active_lang];
+
+  let text_updates = [
+    {
+      text: season[lang_key],
+      container: poem
+    },
+    {
+      text: `${from} — ${to}`,
+      container: dateinfo
+    },
+    {
+      text: season['ko'],
+      container: weather
+    }
+  ]
+
+  text_updates.forEach(function(t){
+    t.container.innerHTML = ""; //reset containers
+    typeWriter(t.text, t.container);
+  });  
 }
 
-// function resetTypeWriter(){
-//   poem.innerHTML = ""; //reset text
-//   t = 0; //reset counter
-//   document.body.setAttribute('data-typed', ''); //reset data attribute
-// }
+async function displayTexts( season ){
+
+  poem.style.setProperty('--wght', season.weight);
+
+  let text_contents = [
+    {
+      text: season['English'],
+      container: poem
+    },
+    { 
+      text: "[ * ]",
+      container: home
+    },
+    {
+      text: `${from} — ${to} … ${daysleft}`,
+      container: dateinfo
+    },
+    {
+      text: "[ ? ]",
+      container: aboutbutton
+    },
+    {
+      text: "→",
+      container: next
+    },
+    {
+      text: "[ ♪ ]",
+      container: playbutton
+    },
+    {
+      text: season['ko'],
+      container: weather
+    },
+    {
+      text: "[ en ]",
+      container: langbutton
+    },
+    {
+      text: "←",
+      container: prev
+    }
+  ]
+
+  //go through and populate text containers
+  for (let i = 0; i < text_contents.length; i++) {
+    let content = text_contents[i];
+    await typeWriter(content.text, content.container);
+  }
+
+}
 
 async function typeWriter(string, element, delay = 100) {
   const letters = string.split("");
@@ -107,41 +179,24 @@ function waitForMs(ms) {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-// function typeWriter( elem, string ) {
-//   if (t < string.length) {
-//     elem.innerHTML += string.charAt(t);
-//     console.log(string.charAt(t));
-//     t++;
-//     setTimeout( typeWriter(elem, string) , speed);
-//   }else{
-//     //mark as done
-//   }
-// }
 
-// else{
-//     //mark as done
-//     // setTimeout(function (){
-//     //   document.body.setAttribute('data-typed', 'done');                
-//     // }, 800); 
-//   }
-
-function displayDaysLeft(days){
+function setDaysLeft(days){
   if (days == 1){
-    daysleft.innerHTML = "one day left";
+    daysleft = "one day left";
   }else if (days == 0){
-    daysleft.innerHTML = "today is the last day";
+    daysleft = "today is the last day";
   }else{
     let numwords = ["two", "three", "four"];
     let dayindex = days-2;
-    daysleft.innerHTML = numwords[dayindex] + " days left";
+    daysleft = numwords[dayindex] + " days left";
   }
 }
 
 
 // display initial poem
-const splash = document.getElementById('overlay');
 splash.addEventListener('click', function(){
   body.setAttribute('data-mode', 'stage');
+  splash.classList.remove('visible');
   setupStage();
 });
 
@@ -149,8 +204,9 @@ splash.addEventListener('click', function(){
 function setupStage(){
   //sets up elements of poem stage
   //begins audio
-  displayPoem(this_season);
+  // displayPoem(this_season);
   player.play();
+  displayTexts(this_season);
 }
 
 
@@ -164,11 +220,10 @@ next.addEventListener('click', function(){
     season_index = 0;
   }
   displayPoem(data[season_index]);
-  daysleft.innerHTML = "";
 }, false);
 
 
-back.addEventListener('click', function(){
+prev.addEventListener('click', function(){
   player.skip('prev');
   if (season_index > 0){
     season_index--;    
@@ -176,7 +231,6 @@ back.addEventListener('click', function(){
     season_index = 71;
   }
   displayPoem(data[season_index]);
-  daysleft.innerHTML = "";
 }, false);
 
 
@@ -298,14 +352,56 @@ Player.prototype = {
   }
 };
 
-
-
-// Bind our player controls.
-
+// Bind our player controls
 playbutton.addEventListener('click', function() {
   if( playbutton.getAttribute('data-playing') == 'true' ){
     player.pause();
   }else{
     player.play();
   } 
+});
+
+
+// Language controls
+
+function setupLanguages(){
+  let langs = "";
+  fetch("data/languages.json")
+    .then(response => response.json())
+    .then(json => {
+      langlist = json;
+      Object.keys(json).forEach(function(key){
+        //create lang option and assign event handler
+        let langElement = document.createElement("div");
+        langElement.className = 'language';
+        langElement.setAttribute('id', key);
+        langElement.innerText = json[key];
+
+        if (key == 'en'){
+          langElement.classList.add('active-lang')
+        }
+
+        langElement.addEventListener('click', function(){
+          content.setAttribute('lang', key);
+          document.querySelector('.active-lang').classList.remove('active-lang');
+          langElement.classList.add('active-lang');
+          langbutton.innerText = '[ '+key+ ' ]';
+          active_lang = key; 
+          body.setAttribute('data-mode', 'stage');
+          displayPoem(data[season_index]);
+        });
+
+        languages.appendChild(langElement);
+      });
+    });
+  langbutton.addEventListener('click', function(){
+    body.setAttribute('data-mode', 'lang');
+  });
+}
+
+setupLanguages();
+
+let backbutton = document.querySelector('.back');
+backbutton.addEventListener('click', function(){
+  body.setAttribute('data-mode', 'stage');
 });
