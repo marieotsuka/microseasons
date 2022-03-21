@@ -15,7 +15,7 @@ const body = document.body;
 /* seasons data */
 let data;
 let season_index = 0;
-let this_season;
+let this_season = {};
 let from = "";
 let to = ""; 
 let daysleft = "";
@@ -81,22 +81,23 @@ function getPoem( ){
             </div>
           `
 
-          if(typeof this_season == "undefined"){
+          if(Object.keys(this_season).length === 0){
             //only evaluate if season hasn’t been determined yet            
             //setup current year dates
             let from_date = dayjs(year+'/'+season.start);  
             let to_date = dayjs(year+'/'+season.end);
             let toplus = to_date.add(1, 'days');
 
+            // console.log(from_date, to_date, toplus);
             //determine current season by checking if today’s date falls
             //between the start and end date
             if( today.isBetween(from_date, toplus, null, '[)') ){
-              console.log(season);
+              // console.log(season);
               season_index = i; // store index of current season
               this_season = season;
 
-              from = dayjs(season.start).format('MMMM D');
-              to = dayjs(season.end).format('MMMM D');
+              from = dayjs(from_date).format('MMMM D');
+              to = dayjs(to_date).format('MMMM D');
 
               let days = toplus.diff(today, 'day');
               setDaysLeft(days);
@@ -108,7 +109,7 @@ function getPoem( ){
       
       infotable.innerHTML = tablehtml;
 
-      console.log(tracklist);
+      // console.log(tracklist);
       player = new Player(tracklist, season_index); //initialize player
     });
 } 
