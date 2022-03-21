@@ -118,8 +118,8 @@ function getPoem( ){
 getPoem();
 
 function displayPoem(season){
-  from = dayjs(season.start).format('MMMM D');
-  to = dayjs(season.end).format('MMMM D');
+  from = dayjs(year+'/'+season.start).format('MMMM D');
+  to = dayjs(year+'/'+season.end).format('MMMM D');
 
   poem.style.setProperty('--wght', season.weight);
 
