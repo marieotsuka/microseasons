@@ -64,7 +64,7 @@ function getPoem( ){
       for(var i = 0; i<json.length; i++){
           //setup tracklist
           tracklist.push( {
-            file:  i+1 +'.mp3',
+            file:  i+1 +'.ogg',
             howl: null
           });
 
