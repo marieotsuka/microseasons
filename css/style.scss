@@ -4,6 +4,10 @@
   font-style: normal;
 }
 
+/*---------------------------------
+BASIC VARIABLES & TYPOGRAPHY
+----------------------------------*/
+
 :root{
   --wght: 500;
   --wdth: 100;
@@ -44,25 +48,29 @@ body, h2{
 .jp{
   font-family: 'Cinema Letter';
 }
-.ko{
-  font-family: "Pentameter VF";
-}
 
 em{
   font-style: normal;
   --slnt: 16;
 }
 
-// header, footer, .controls{
-//   visibility: hidden;
-// }
+a{
+  text-decoration: none;
+  color: white;
+}
+
+
+/*---------------------------------
+BASIC SECTION STRUCTURES
+----------------------------------*/
+
 header, footer{
   display: flex;
   justify-content: space-between;
 }
 
 main{
-  flex:  1;
+  flex: 1;
   display: flex;
   align-items: center;
 }
@@ -72,10 +80,6 @@ header, footer{
   margin: 2rem 2rem;
   flex: none;
   --slnt: 0;
-}
-
-dt{
-  display: flex;
 }
 footer .jp{
   line-height: 0.9;
@@ -89,9 +93,10 @@ section{
   background: black;
 }
 .overlay{
-  z-index: 50;
+  z-index: 50; //these overlay on top of the poem area
 }
-//intro splash
+
+//intro splash page
 #splash{
   display: flex;
   align-items: center;
@@ -109,16 +114,13 @@ section{
   }
   cursor: pointer;
 }
-//main area
-#stage{
-  display: flex;
-  flex-direction: column;
-}
+
 
 /*-----------------------
-OVERLAY SHOW/HIDE TOGGLE
+ OVERLAY SHOW/HIDE TOGGLE
 -----------------------*/
-
+//data-mode of body determines
+//which section is displayed
 [data-mode=stage] {
   .overlay{
     display: none;
@@ -138,6 +140,15 @@ OVERLAY SHOW/HIDE TOGGLE
   }
 }
 
+/*---------------
+ MAIN STAGE
+---------------*/
+//poem display area
+
+#stage{
+  display: flex;
+  flex-direction: column;
+}
 #content{
   margin: auto;
   padding: 0 20%;
@@ -150,11 +161,7 @@ OVERLAY SHOW/HIDE TOGGLE
   letter-spacing: -0.01em;
 }
 
-a{
-  text-decoration: none;
-  color: white;
-}
-
+//season navigation
 .controls{
   font-size: 30px;
   --wght: 200;
@@ -175,24 +182,52 @@ a{
   left: 0;
 }
 
+
+//button styling and 
+//hover effects
 .button{
   width: 65px;
   text-align: left;
+  &::before{
+    content: "[ "
+  }
+  &::after{
+    content: " ]"
+  }
   &:hover{
     --wght: 700;
     cursor: pointer;
   }
 }
 
-#aboutbutton, #playbutton{
-  text-align: right;
+#dateinfo:hover{
+  --wght: 700;
+}
+
+#dateinfo:hover, #weather:hover{
+  cursor: pointer;
+  &::before{
+    content: "[ "
+  }
+  &::after{
+    content: " ]"
+  }
 }
 
 #playbutton{
-  &[data-playing=true], &[data-playing=false]:hover{
+  // &[data-playall=true]{
+    
+  // }
+  // &[data-playall=false]{
+  //   color: blue;
+  // }
+}
+
+#mutebutton{
+  &[data-mute=false]{
     font-feature-settings: "ss05" 0;
   }
-  &[data-playing=true]:hover, &[data-playing=false]{
+  &[data-mute=true]{
     font-feature-settings: "ss05" 1;
   }
 }
@@ -201,11 +236,15 @@ a{
   width: 80px;
 }
 
+//hide, then display peripheral elements
+//via js
+header > div, .controls, footer > div{
+  visibility: hidden;
+}
 
-/*---------------
+/*-----------------------------
 ABOUT INFO
----------------*/
-
+-----------------------------*/
 
 #info{
   display: none;
@@ -248,6 +287,10 @@ ABOUT INFO
   }
 }
 
+dt{
+  display: flex;
+}
+
 .table {
   .row{
     font-family: 'Pentameter VF';
@@ -263,9 +306,12 @@ ABOUT INFO
     .description{
       flex: 1;
     }
+    .range{
+      width: 180px;
+    }
   }
   .heading, .cell{
-    color: var(--grey);
+    // color: var(--grey);
     font-weight: normal;
     text-align: left;
   }
@@ -282,12 +328,14 @@ ABOUT INFO
 }
 
 // toggle text/sound/font info
-.about{
-  display: none;
+.about{ 
+  display: none; //hidee by default
 }
 .jp-loader{
   visibility: hidden;
 }
+// data-infomode on info section determines
+// what about text is displayed
 [data-infomode=text]{
   .range, .text{
     color: white;
@@ -313,9 +361,10 @@ ABOUT INFO
     display: block;
   }
 }
-/*---------------
-LANGUAGES
----------------*/
+
+/*-----------------------------
+ LANGUAGE MENU
+-----------------------------*/
 #langmenu{
   padding: 2rem;
   display: none;

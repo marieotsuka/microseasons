@@ -3,6 +3,9 @@
   src: url("../fonts/Pentameter-VF.woff2") format("woff2-variations");
   font-style: normal;
 }
+/*---------------------------------
+BASIC VARIABLES & TYPOGRAPHY
+----------------------------------*/
 :root {
   --wght: 500;
   --wdth: 100;
@@ -44,15 +47,19 @@ body, h2 {
   font-family: "Cinema Letter";
 }
 
-.ko {
-  font-family: "Pentameter VF";
-}
-
 em {
   font-style: normal;
   --slnt: 16;
 }
 
+a {
+  text-decoration: none;
+  color: white;
+}
+
+/*---------------------------------
+BASIC SECTION STRUCTURES
+----------------------------------*/
 header, footer {
   display: flex;
   justify-content: space-between;
@@ -69,10 +76,6 @@ header, footer {
   margin: 2rem 2rem;
   flex: none;
   --slnt: 0;
-}
-
-dt {
-  display: flex;
 }
 
 footer .jp {
@@ -107,13 +110,8 @@ section {
   --wght: 200;
 }
 
-#stage {
-  display: flex;
-  flex-direction: column;
-}
-
 /*-----------------------
-OVERLAY SHOW/HIDE TOGGLE
+ OVERLAY SHOW/HIDE TOGGLE
 -----------------------*/
 [data-mode=stage] .overlay {
   display: none;
@@ -130,6 +128,14 @@ OVERLAY SHOW/HIDE TOGGLE
   display: flex;
 }
 
+/*---------------
+ MAIN STAGE
+---------------*/
+#stage {
+  display: flex;
+  flex-direction: column;
+}
+
 #content {
   margin: auto;
   padding: 0 20%;
@@ -140,11 +146,6 @@ OVERLAY SHOW/HIDE TOGGLE
   font-feature-settings: "ss01" var(--ss01), "ss03" var(--ss03), "ss04" var(--ss04), "ss05" var(--ss05), "ss06" var(--ss06), "ss07" var(--ss07), "ss08" var(--ss08), "ss09" var(--ss09);
   text-align: center;
   letter-spacing: -0.01em;
-}
-
-a {
-  text-decoration: none;
-  color: white;
 }
 
 .controls {
@@ -173,19 +174,35 @@ a {
   width: 65px;
   text-align: left;
 }
+.button::before {
+  content: "[ ";
+}
+.button::after {
+  content: " ]";
+}
 .button:hover {
   --wght: 700;
   cursor: pointer;
 }
 
-#aboutbutton, #playbutton {
-  text-align: right;
+#dateinfo:hover {
+  --wght: 700;
 }
 
-#playbutton[data-playing=true], #playbutton[data-playing=false]:hover {
+#dateinfo:hover, #weather:hover {
+  cursor: pointer;
+}
+#dateinfo:hover::before, #weather:hover::before {
+  content: "[ ";
+}
+#dateinfo:hover::after, #weather:hover::after {
+  content: " ]";
+}
+
+#mutebutton[data-mute=false] {
   font-feature-settings: "ss05" 0;
 }
-#playbutton[data-playing=true]:hover, #playbutton[data-playing=false] {
+#mutebutton[data-mute=true] {
   font-feature-settings: "ss05" 1;
 }
 
@@ -193,9 +210,13 @@ a {
   width: 80px;
 }
 
-/*---------------
+header > div, .controls, footer > div {
+  visibility: hidden;
+}
+
+/*-----------------------------
 ABOUT INFO
----------------*/
+-----------------------------*/
 #info {
   display: none;
   --size: 1.2rem;
@@ -234,6 +255,10 @@ ABOUT INFO
   font-feature-settings: "onum" 0;
 }
 
+dt {
+  display: flex;
+}
+
 .table .row {
   font-family: "Pentameter VF";
   margin-bottom: 1.4em;
@@ -249,8 +274,10 @@ ABOUT INFO
 .table .row .description {
   flex: 1;
 }
+.table .row .range {
+  width: 180px;
+}
 .table .heading, .table .cell {
-  color: var(--grey);
   font-weight: normal;
   text-align: left;
 }
@@ -294,9 +321,9 @@ ABOUT INFO
   display: block;
 }
 
-/*---------------
-LANGUAGES
----------------*/
+/*-----------------------------
+ LANGUAGE MENU
+-----------------------------*/
 #langmenu {
   padding: 2rem;
   display: none;

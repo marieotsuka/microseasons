@@ -5,7 +5,7 @@ dayjs.extend(window.dayjs_plugin_isBetween);
 
 /* DOM elements */
 // Cache references to DOM elements.
-const elms = ['splash', 'content', 'poem', 'home', 'dateinfo', 'langbutton', 'ko', 'weather', 'prev', 'next', 'playbutton', 'languages', 'langmenu', 'infotable', 'info'];
+const elms = ['splash', 'content', 'poem', 'home', 'dateinfo', 'langbutton', 'ko', 'weather', 'prev', 'next', 'playbutton', 'mutebutton', 'languages', 'langmenu', 'infotable', 'info'];
 elms.forEach(function(elm) {
   window[elm] = document.getElementById(elm);
 });
@@ -25,6 +25,7 @@ let player;
 let tracklist = [];
 let sound_id = 0;
 let audio = false;
+let all = false;
 
 /* typewriter */
 let first = true; //toggle this off after first poem
@@ -33,7 +34,16 @@ let first = true; //toggle this off after first poem
 let langlist;
 let active_lang = 'en';
 
+
+/*-----------------------------------------
+  Setup Season Poems
+-----------------------------------------*/
+
 function getPoem( ){
+// from a seasons.json data file
+// populates info table in the #info section
+// sets up the tracklist and initalizes the player
+// calculates which season is the current via dayjs
   fetch("data/seasons.json")
     .then(response => response.json())
     .then(json => {
@@ -90,9 +100,9 @@ function getPoem( ){
               season_index = i; // store index of current season
               this_season = season;
 
-              from = dayjs(from_date).format('MMMM D');
-              to = dayjs(to_date).format('MMMM D');
-
+              // from = dayjs(from_date).format('MMMM D');
+              // to = dayjs(to_date).format('MMMM D');
+              console.log(this_season);
               let days = toplus.diff(today, 'day');
               setDaysLeft(days);
             // break;
@@ -100,18 +110,25 @@ function getPoem( ){
           }
       }
 
-      
+      //append information table
       infotable.innerHTML = tablehtml;
 
-      // console.log(tracklist);
-      player = new Player(tracklist, season_index); //initialize player
+      //initialize player
+      player = new Player(tracklist, season_index); 
     });
 } 
 
-//initialize
+//get first season poem
 getPoem();
 
-function displayPoem(season){
+
+/*-----------------------------------------
+  Poem Display
+-----------------------------------------*/
+
+async function displayPoem(season){
+// given a season object
+// populates the HTML elements accordingly
 
   from = dayjs(year+'/'+season.start).format('MMMM D');
   to = dayjs(year+'/'+season.end).format('MMMM D');
@@ -122,16 +139,24 @@ function displayPoem(season){
       window.clearTimeout(id); // will do nothing if no timeout with id is present
   }
 
+  //prepare poem container
   poem.innerHTML = "";
   poem.style.setProperty('--wght', season.weight);
 
   let jp_text = '「'+season['name-jp']+'」'+season['furigana'];
 
+  //get language name from language data
   let lang_key = langlist[active_lang];
 
+  let daysleft_text = `${from} — ${to}`;
+  if (first){
+    //if this is the first poem, current season, add how many days are left
+    daysleft_text += `… ${daysleft}`;
+  }
+  
   let text_updates = [
     {
-      text: `${from} — ${to}`,
+      text: daysleft_text,
       container: dateinfo
     },
     {
@@ -140,64 +165,34 @@ function displayPoem(season){
     }
   ]
 
-  typeWriter(season[lang_key], poem);
-
+  //reset and populate date and sekki info
   text_updates.forEach(function(t){
-    t.container.innerHTML = ""; //reset containers
+    t.container.innerHTML = ""; 
     t.container.innerHTML = t.text;
-  });  
+  }); 
+
+  //typeout poem for specified language
+  await typeWriter(season[lang_key], poem); 
 }
 
-async function displayTexts( season ){
-
-  poem.style.setProperty('--wght', season.weight);
-
-  let text_contents = [
-    { 
-      text: "[ * ]",
-      container: home
-    },
-    {
-      text: `${from} — ${to} … ${daysleft}`,
-      container: dateinfo
-    },
-    {
-      text: "[ ? ]",
-      container: aboutbutton
-    },
-    {
-      text: "→",
-      container: next
-    },
-    {
-      text: "[ ♪ ]",
-      container: playbutton
-    },
-    {
-      text: '「' + season['name-jp'] + '」' +season['furigana'],
-      container: weather
-    },
-    {
-      text: "[ en ]",
-      container: langbutton
-    },
-    {
-      text: "←",
-      container: prev
-    }
-  ]
-
-  await typeWriter(season['English'], poem);
-  //go through and populate text containers
+async function displayTexts(season) {
+// for the first poem, show the navigational 
+// surrounding elements afterwards
+  await displayPoem(season);
+  let text_contents = [home, dateinfo, playbutton, next, mutebutton, weather, langbutton, prev]
+  //after poem is typed up, show peripheral elements
   for (let i = 0; i < text_contents.length; i++) {
-    let content = text_contents[i];
-     await waitForMs(600); //delay between showing peripherey elmeents
-     content.container.innerHTML = content.text;
-  }
-
+     let element = text_contents[i];
+     await waitForMs(600); //delay between showing each element
+     element.style.visibility = 'visible';    
+   }
+  first = false; //turn off first flag
 }
+
 
 async function typeWriter(string, element, delay = 100) {
+//given a text string, html container object, and delay
+//appends one character at a time
   const letters = string.split("");
   let i = 0;
   while(i < letters.length) {
@@ -212,8 +207,9 @@ function waitForMs(ms) {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-
 function setDaysLeft(days){
+//converts the calculated days left
+//into a user-friendly phrase
   if (days == 1){
     daysleft = "one day left";
   }else if (days == 0){
@@ -225,35 +221,19 @@ function setDaysLeft(days){
   }
 }
 
-
-// display initial poem
-splash.addEventListener('click', function(){
-  body.setAttribute('data-mode', 'stage');
-  splash.classList.remove('visible');
-  setupStage();
-});
-
-
-function setupStage(){
-  //sets up elements of poem stage
-  //begins audio
-  player.play();
-  displayTexts(this_season);
-}
-
-
-// next and previous controls
-
-next.addEventListener('click', function(){
-  player.skip('next');
+// next and previous season controls
+function showNextPoem(){
   if (season_index < 71){
     season_index++;    
   }else{
     season_index = 0;
   }
   displayPoem(data[season_index]);
+}
+next.addEventListener('click', function(){
+  player.skip('next');
+  showNextPoem();
 }, false);
-
 
 prev.addEventListener('click', function(){
   player.skip('prev');
@@ -278,14 +258,7 @@ prev.addEventListener('click', function(){
 let Player = function(playlist, trackid) {
   this.playlist = playlist;
   this.index = trackid; 
-
-  // populate active track
-  if( this.playlist[this.index] ){
-    let thistrack = this.playlist[this.index];
-  }else{
-    console.log('required track isn’t setup properly');
-  }
-
+  console.log(this.playlist, this.index);
 };
 
 Player.prototype = {
@@ -294,7 +267,7 @@ Player.prototype = {
    * @param  {Number} index Index of the song in the playlist (leave empty to play the first or current).
    */
   play: function(index) {
-
+    console.log('play', index, all);
     var self = this;
     var sound;
 
@@ -309,22 +282,39 @@ Player.prototype = {
       sound = data.howl = new Howl({
         src: ['audio/' + data.file ],
         autoplay: true,
-        volume: 0.3,
         loop: true,
-        html5: true // Force to HTML5 so that the audio can stream in (best for large files).
+        volume: 0.3
+        // onend: function() {
+        //   self.skip('next');
+        // }
       });
     }
 
+  
     sound_id = sound.play();
     // Begin playing the sound.
     sound.fade(0, 0.3, 800, sound_id);
-    playbutton.setAttribute('data-playing', 'true');
-    audio = true;
 
+    //loop only for single play mode
+    if(all){
+      sound.loop(false, sound_id);
+      sound.on('end', function(){
+        console.log(sound_id, 'next track')
+        self.skip('next');
+        showNextPoem();
+      }, sound_id);
+    }else{
+      sound.loop(true, sound_id);
+      sound.on('end', function(){
+        console.log('loop');
+      }, sound_id);
+    }
+
+
+    console.log(sound);
     // Keep track of the index we are currently playing.
     self.index = index;
   },
-
   /**
    * Pause the currently playing track.
    */
@@ -332,11 +322,13 @@ Player.prototype = {
     var self = this;
     // Get the Howl we want to manipulate
     var sound = self.playlist[self.index].howl;
-    
+
     // fadeout the sound
     sound.fade(0.3, 0, 800, sound_id);
     playbutton.setAttribute('data-playing', 'false');
-    audio = false;
+    sound.on('fade', function(){
+      sound.stop(sound_id);
+    });
   },
 
   /**
@@ -375,32 +367,61 @@ Player.prototype = {
     }
 
     self.index = index;
-    if (audio){
-      // Play the new track.
-      self.play(index);
-    }
+    self.play(index);
   }
+
 };
 
 // Bind our player controls
-playbutton.addEventListener('click', function() {
-  if( playbutton.getAttribute('data-playing') == 'true' ){
-    player.pause();
-  }else{
-    player.play();
+mutebutton.addEventListener('click', function() {
+  if( mutebutton.getAttribute('data-mute') == 'false' ){
+    // player.pause();
+    Howler.mute(true)
+    mutebutton.setAttribute('data-mute', 'true');
+  }else{ 
+    Howler.mute(false);
+    mutebutton.setAttribute('data-mute', 'false');
+    // player.play(season_index);
   } 
 });
 
-// About section
+playbutton.addEventListener('click', function(){
+  if( playbutton.getAttribute('data-playall') == 'true' ){
+    Howler.stop(); 
+    all = false; 
+    player.play(season_index);
+    playbutton.setAttribute('data-playall', 'false');
+    playbutton.innerHTML = '•'; 
+  }else{
+    Howler.stop();
+    all = true;
+    player.play(season_index);
 
-aboutbutton.addEventListener('click', function(){
+    playbutton.setAttribute('data-playall', 'true');
+    playbutton.innerHTML = '';
+  }
+});
+
+/*-----------------------------------------
+About info section toggles
+-----------------------------------------*/
+
+dateinfo.addEventListener('click', function(){
+  body.setAttribute('data-mode', 'info');
+  info.setAttribute('data-infomode', 'text');
+});
+weather.addEventListener('click', function(){
   body.setAttribute('data-mode', 'info');
   info.setAttribute('data-infomode', 'text');
 });
 
-// Language controls
 
+/*-----------------------------------------
+Language options
+-----------------------------------------*/
 function setupLanguages(){
+//populates the language menu
+//from languages.json data file
   let langs = "";
   fetch("data/languages.json")
     .then(response => response.json())
@@ -421,7 +442,7 @@ function setupLanguages(){
           content.setAttribute('lang', key);
           document.querySelector('.active-lang').classList.remove('active-lang');
           langElement.classList.add('active-lang');
-          langbutton.innerText = '[ '+key+ ' ]';
+          langbutton.innerText = key;
           active_lang = key; 
           body.setAttribute('data-mode', 'stage');
           displayPoem(data[season_index]);
@@ -434,19 +455,37 @@ function setupLanguages(){
     body.setAttribute('data-mode', 'lang');
   });
 }
-
 setupLanguages();
+
+
+/*-----------------------------------------
+Splash page and initial setup
+-----------------------------------------*/
+
+// display initial poem
+splash.addEventListener('click', function(){
+  body.setAttribute('data-mode', 'stage');
+  player.play();
+  displayTexts(this_season);
+});
+
+/*-----------------------------------------
+Navigational buttons
+-----------------------------------------*/
+/* CSS controls what section is being displayed
+ * based on the 'data-mode' attribute on the body
+ */
 
 let backbutton1 = document.querySelector('#info .back');
 backbutton1.addEventListener('click', function(){
   body.setAttribute('data-mode', 'stage');
 });
+
 let backbutton2 = document.querySelector('#langmenu .back');
 backbutton2.addEventListener('click', function(){
   body.setAttribute('data-mode', 'stage');
 });
 
-//TOGGLE ABOUT INFO
 let infobuttons = document.querySelectorAll('#info .button');
 infobuttons.forEach(function(el){
   el.addEventListener('click', function(){

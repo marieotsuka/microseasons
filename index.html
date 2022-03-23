@@ -1,8 +1,9 @@
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
-  <title>Five-day Seasons</title>
-  <script type="text/javascript" src="//typesquare.com/3/tsst/script/en/typesquare.js?60593a3ac3e844ed820c220cac1e02d5" charset="utf-8"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pentad.World</title>
+  <!-- <script type="text/javascript" src="//typesquare.com/3/tsst/script/en/typesquare.js?60593a3ac3e844ed820c220cac1e02d5" charset="utf-8"></script> -->
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <script src="scripts/dayjs.min.js"></script>
   <script src="scripts/isBetween.min.js"></script>
@@ -22,35 +23,31 @@
 
     <section id="stage">
         <header>
-            <div class="button"><a href="/" id="home"></a>
-            </div>
-            <div class="date" id="dateinfo">
-            </div>
-            <div class="button" id="aboutbutton">
-            </div>
+            <div class="button" id="home">*</div>
+            <div class="date" id="dateinfo"></div>
+            <div class="button" id="playbutton" data-playing="true" data-playall="false"> • </div>
         </header>
 
         <main>
-            <div class="controls" id="prev"></div>
+            <div class="controls" id="prev">←</div>
             <div id="content" lang="en">
                 <div id="poem"></div>
             </div>
-            <div class="controls" id="next"></div>
+            <div class="controls" id="next">→</div>
         </main>
 
         <footer>
-            <div class="button lang" id="langbutton">
-            </div>
-            <div class="seki jp" id="weather">
-                
-            </div>
-            <div class="button" id="playbutton"></div>
+            <div class="button lang" id="langbutton">en</div>
+            <div class="seki jp" id="weather"></div>
+            <div class="button" id="mutebutton" data-mute="false"> ♪</div>
         </footer>
     </section>
+
     <section id="info" class="overlay" data-infomode="text">
         <div class="texts">
-            <div class="button back">[ < ]</div>
-            <h2>about the <span class="button" id="text">[ text ]</span></h2>
+            <div class="button back"><</div>
+
+            <h2>about the <span class="button" id="text">text</span></h2>
             <div class="about" data-info="text">
                 <p> 
                     This site was designed by <a href="https://laurelschwulst.com/">Laurel Schwulst</a> and displays the current phase of the 72 microseasons (<em>kō</em>) of Japan, each lasting five days. Also called 72 pentads, they originated in China and were adapted to better match the seasonality of Japan in the Edo period. The current version is from the abbreviated traditional calendar of 1874. 
@@ -59,13 +56,15 @@
                     The bottom center of the screen displays the Japanese kō. Descriptions of each from the <a href="https://ja.wikipedia.org/wiki/%E4%B8%83%E5%8D%81%E4%BA%8C%E5%80%99" target="_blank">wikipedia entry</a> were converted to English via Google translate, then further edited by Laurel. Additional language versions are based on Google-translated results of the edited English phrases. Please reach out if you’d like to contribute better translations.
                 </p>
             </div>
-            <h2>about the <span class="button" id="sound">[ sound ]</span></h2>
+
+            <h2>about the <span class="button" id="sound">sound</span></h2>
             <div class="about" data-info="sound">
                 <p> 
                     Lorem ipsum dolor sit ceatio debis reiurios dis parum vit, sent quia volorio et ea quid quid  <a href="https://www.tiger.exposed/index">Tiger Dingsun</a> conseque con plant hita debitas dolupti busdanihit quam faceatia voleceruntia cusant, voluptatia eum sedis nonse sapit iducia consed eatus dolorumquid quia dolorrorem volupta quiant autent int, offictia pra as molenis di dolorib usandis illab il inctotas aspelliquam.
                 </p>
             </div> 
-            <h2>about the <span class="button" id="font">[ font ]</span></h2>
+
+            <h2>about the <span class="button" id="font">font</span></h2>
             <div class="about" data-info="font">
                 <p> 
                     The typeface used is <a href="">Pentameter VF</a>, an expressive monospace with variable axes across width (wdth: 75–125), weight (wght: 100–700) and slant (slnt: 0–16), designed by Marie Otsuka and released at <a href="https://occupantfonts.com/" target="_blank">Occupant Fonts</a> in 2021. As a typeface that celebrates the creative agency of hand-coding, its syncopated rhythm merges rigid monolinear mechanics with an exaggerated italic skeleton. It is paired with Morisawa’s <a href="">Cinema Letter</a> for the Japanese characters.
@@ -81,19 +80,17 @@
         </div>
         <div class="table">
             <dl id="infotable" class="jp">
+               <!--  preload JP text for font -->
                 七十二候 東風解凍 黄鶯睍睆 魚上氷 土脉潤起 霞始靆 草木萌動 蟄虫啓戸 桃始笑 菜虫化蝶 雀始巣 桜始開 雷乃発声 玄鳥至 鴻雁北 虹始見 葭始生 霜止出苗 牡丹華 蛙始鳴 蚯蚓出 竹笋生 蚕起食桑 紅花栄 麦秋至 螳螂生 腐草為蛍 梅子黄 乃東枯 菖蒲華 半夏生 温風至 蓮始開 鷹乃学習 桐始結花 土潤溽暑 大雨時行 涼風至 寒蝉鳴 蒙霧升降 綿柎開 天地始粛 禾乃登 草露白 鶺鴒鳴 玄鳥去 雷乃収声 蟄虫坏戸 水始涸 鴻雁来 菊花開 蟋蟀在戸 霜始降 霎時施 楓蔦黄 山茶始開 地始凍 金盞香 虹蔵不見 朔風払葉 橘始黄 閉塞成冬 熊蟄穴 鱖魚群 乃東生 麋角解 雪下出麦 芹乃栄 水泉動 雉始雊 款冬華 水沢腹堅 鶏始乳　あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん
             </dl>
         </div>
     </section>
-    <section id="langmenu" class="overlay">
-        <div class="button back">[ < ]</div>
-        <div id="languages"></div>
-        <p>We are using automatic translations via Google Translate. For any suggestions or contributions, please contact us at (xx?)</p>
-    </section>
-<!-- <div class="jp-loader" style="font-family: Kakumin Regular">
-    東風解凍 黄鶯睍睆 魚上氷 土脉潤起 霞始靆 草木萌動 蟄虫啓戸 桃始笑 菜虫化蝶 雀始巣 桜始開 雷乃発声 玄鳥至 鴻雁北 虹始見 葭始生 霜止出苗 牡丹華 蛙始鳴 蚯蚓出 竹笋生 蚕起食桑 紅花栄 麦秋至 螳螂生 腐草為蛍 梅子黄 乃東枯 菖蒲華 半夏生 温風至 蓮始開 鷹乃学習 桐始結花 土潤溽暑 大雨時行 涼風至 寒蝉鳴 蒙霧升降 綿柎開 天地始粛 禾乃登 草露白 鶺鴒鳴 玄鳥去 雷乃収声 蟄虫坏戸 水始涸 鴻雁来 菊花開 蟋蟀在戸 霜始降 霎時施 楓蔦黄 山茶始開 地始凍 金盞香 虹蔵不見 朔風払葉 橘始黄 閉塞成冬 熊蟄穴 鱖魚群 乃東生 麋角解 雪下出麦 芹乃栄 水泉動 雉始雊 款冬華 水沢腹堅 鶏始乳
-</div> -->
 
+    <section id="langmenu" class="overlay">
+        <div class="button back"><</div>
+        <div id="languages"></div>
+        <p>We are using automatic translations via Google Translate. For any suggestions or contributions, please let us know at (xx?)</p>
+    </section>
 <script src="scripts/script.js"></script>
 </body>
 </html>
