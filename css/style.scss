@@ -77,7 +77,7 @@ main{
 
 header, footer{
   height: 30px;
-  margin: 2rem 2rem;
+  margin: 1.5rem 1.5rem;
   flex: none;
   --slnt: 0;
 }
@@ -105,11 +105,11 @@ section{
   .intro{
     width: 500px;
   }
-  
+
   text-align: center;
 
   h1{
-    font-size: 45px;
+    font-size: 55px;
     --wght: 200;
   }
   cursor: pointer;
@@ -172,7 +172,7 @@ section{
   top: 50%;
   transform: translateY(-50%);
   &:hover{
-    --wght: 700;
+    // --wght: 700;
   }
 }
 #next{
@@ -183,7 +183,7 @@ section{
 }
 
 
-//button styling and 
+//button styling and
 //hover effects
 .button{
   width: 65px;
@@ -216,7 +216,7 @@ section{
 
 #playbutton{
   // &[data-playall=true]{
-    
+
   // }
   // &[data-playall=false]{
   //   color: blue;
@@ -239,7 +239,9 @@ section{
 //hide, then display peripheral elements
 //via js
 header > div, .controls, footer > div{
-  visibility: hidden;
+  // visibility: hidden;
+  opacity: 0;
+  transition: opacity 350ms ease-in-out;
 }
 
 /*-----------------------------
@@ -253,7 +255,7 @@ ABOUT INFO
   // display: flex;
   .texts, .table{
     flex: 1;
-    padding: 2em;
+    padding: 1.5em;
   }
   .table{
     flex: 2;
@@ -328,7 +330,7 @@ dt{
 }
 
 // toggle text/sound/font info
-.about{ 
+.about{
   display: none; //hidee by default
 }
 .jp-loader{
@@ -366,13 +368,13 @@ dt{
  LANGUAGE MENU
 -----------------------------*/
 #langmenu{
-  padding: 2rem;
+  padding: 1.5rem;
   display: none;
 }
 #languages{
   column-count: 4;
   line-height: 2;
-  margin: 2rem 0;
+  margin: 1.5rem 0;
 }
 .language{
   cursor: pointer;

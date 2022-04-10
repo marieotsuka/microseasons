@@ -17,7 +17,7 @@ let data;
 let season_index = 0;
 let this_season = {};
 let from = "";
-let to = ""; 
+let to = "";
 let daysleft = "";
 
 /* audio tracks */
@@ -55,7 +55,7 @@ function getPoem( ){
                   <div class="heading range">Dates</div>
                 </dt>
                 <dd class="description">
-                  
+
                   <div class="heading text">Microseason (English)</div>
 
                 </dd>
@@ -80,15 +80,15 @@ function getPoem( ){
                 <dd class="description">
 
                   <div class="cell text" style="--wght: ${season['weight']};">${season['English']}</div>
-                 
+
                 </dd>
             </div>
           `
 
           if(Object.keys(this_season).length === 0){
-            //only evaluate if season hasn’t been determined yet            
+            //only evaluate if season hasn’t been determined yet
             //setup current year dates
-            let from_date = dayjs(year+'/'+season.start);  
+            let from_date = dayjs(year+'/'+season.start);
             let to_date = dayjs(year+'/'+season.end);
             let toplus = to_date.add(1, 'days');
 
@@ -114,9 +114,9 @@ function getPoem( ){
       infotable.innerHTML = tablehtml;
 
       //initialize player
-      player = new Player(tracklist, season_index); 
+      player = new Player(tracklist, season_index);
     });
-} 
+}
 
 //get first season poem
 getPoem();
@@ -151,9 +151,9 @@ async function displayPoem(season){
   let daysleft_text = `${from} — ${to}`;
   if (first){
     //if this is the first poem, current season, add how many days are left
-    daysleft_text += `… ${daysleft}`;
+    daysleft_text += ` … ${daysleft}`;
   }
-  
+
   let text_updates = [
     {
       text: daysleft_text,
@@ -167,24 +167,26 @@ async function displayPoem(season){
 
   //reset and populate date and sekki info
   text_updates.forEach(function(t){
-    t.container.innerHTML = ""; 
+    t.container.innerHTML = "";
     t.container.innerHTML = t.text;
-  }); 
+  });
 
   //typeout poem for specified language
-  await typeWriter(season[lang_key], poem); 
+  await typeWriter(season[lang_key], poem);
 }
 
 async function displayTexts(season) {
-// for the first poem, show the navigational 
+// for the first poem, show the navigational
 // surrounding elements afterwards
   await displayPoem(season);
   let text_contents = [home, dateinfo, playbutton, next, mutebutton, weather, langbutton, prev]
   //after poem is typed up, show peripheral elements
   for (let i = 0; i < text_contents.length; i++) {
      let element = text_contents[i];
-     await waitForMs(600); //delay between showing each element
-     element.style.visibility = 'visible';    
+     // await waitForMs(600); //delay between showing each element
+     setTimeout(function(){
+       element.style.opacity = '1';
+     }, 1000);
    }
   first = false; //turn off first flag
 }
@@ -200,7 +202,7 @@ async function typeWriter(string, element, delay = 100) {
     element.innerHTML += letters[i];
     i++
   }
-  return; 
+  return;
 }
 
 function waitForMs(ms) {
@@ -224,7 +226,7 @@ function setDaysLeft(days){
 // next and previous season controls
 function showNextPoem(){
   if (season_index < 71){
-    season_index++;    
+    season_index++;
   }else{
     season_index = 0;
   }
@@ -238,7 +240,7 @@ next.addEventListener('click', function(){
 prev.addEventListener('click', function(){
   player.skip('prev');
   if (season_index > 0){
-    season_index--;    
+    season_index--;
   }else{
     season_index = 71;
   }
@@ -257,7 +259,7 @@ prev.addEventListener('click', function(){
 
 let Player = function(playlist, trackid) {
   this.playlist = playlist;
-  this.index = trackid; 
+  this.index = trackid;
   console.log(this.playlist, this.index);
 };
 
@@ -290,7 +292,7 @@ Player.prototype = {
       });
     }
 
-  
+
     sound_id = sound.play();
     // Begin playing the sound.
     sound.fade(0, 0.3, 800, sound_id);
@@ -378,20 +380,20 @@ mutebutton.addEventListener('click', function() {
     // player.pause();
     Howler.mute(true)
     mutebutton.setAttribute('data-mute', 'true');
-  }else{ 
+  }else{
     Howler.mute(false);
     mutebutton.setAttribute('data-mute', 'false');
     // player.play(season_index);
-  } 
+  }
 });
 
 playbutton.addEventListener('click', function(){
   if( playbutton.getAttribute('data-playall') == 'true' ){
-    Howler.stop(); 
-    all = false; 
+    Howler.stop();
+    all = false;
     player.play(season_index);
     playbutton.setAttribute('data-playall', 'false');
-    playbutton.innerHTML = '•'; 
+    playbutton.innerHTML = '•';
   }else{
     Howler.stop();
     all = true;
@@ -443,7 +445,7 @@ function setupLanguages(){
           document.querySelector('.active-lang').classList.remove('active-lang');
           langElement.classList.add('active-lang');
           langbutton.innerText = key;
-          active_lang = key; 
+          active_lang = key;
           body.setAttribute('data-mode', 'stage');
           displayPoem(data[season_index]);
         });
@@ -466,7 +468,9 @@ Splash page and initial setup
 splash.addEventListener('click', function(){
   body.setAttribute('data-mode', 'stage');
   player.play();
-  displayTexts(this_season);
+  setTimeout(function(){
+    displayTexts(this_season);
+  }, 1000);
 });
 
 /*-----------------------------------------
@@ -493,4 +497,3 @@ infobuttons.forEach(function(el){
     info.setAttribute('data-infomode', infotype);
   });
 });
-
