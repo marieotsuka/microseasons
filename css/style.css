@@ -20,6 +20,7 @@ BASIC VARIABLES & TYPOGRAPHY
   --ss08: 0;
   --ss09: 0;
   --grey: rgb(80,80,80);
+  --pad: 1.5rem;
 }
 
 * {
@@ -34,7 +35,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body, h2 {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.4;
   font-family: "Pentameter VF";
   font-weight: normal;
@@ -63,6 +64,10 @@ BASIC SECTION STRUCTURES
 header, footer {
   display: flex;
   justify-content: space-between;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  --wdth: 125;
+  font-size: 16px;
 }
 
 main {
@@ -73,7 +78,7 @@ main {
 
 header, footer {
   height: 30px;
-  margin: 1.5rem 1.5rem;
+  margin: var(--pad);
   flex: none;
   --slnt: 0;
 }
@@ -138,40 +143,54 @@ section {
 
 #content {
   margin: auto;
+  position: relative;
+  top: -0.5rem;
   padding: 0 20%;
   font-size: 40px;
   --ss01: 1;
   --slnt: 10;
-  --wght: 300;
   font-feature-settings: "ss01" var(--ss01), "ss03" var(--ss03), "ss04" var(--ss04), "ss05" var(--ss05), "ss06" var(--ss06), "ss07" var(--ss07), "ss08" var(--ss08), "ss09" var(--ss09);
   text-align: center;
   letter-spacing: -0.01em;
 }
 
 .controls {
-  font-size: 30px;
-  --wght: 200;
-  padding: 1em;
-  padding-top: 1.5em;
+  height: 80vh;
   cursor: pointer;
   position: fixed;
+  width: 40vw;
+}
+.controls .arrow {
+  display: block;
+  position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  font-size: 30px;
+  --wght: 200;
+  opacity: 0;
+  transition: opacity 200ms linear;
 }
-.controls:hover {
-  /* --wght: 700; */
+.controls:hover .arrow {
+  opacity: 1;
 }
 
 #next {
   right: 0;
 }
+#next .arrow {
+  right: var(--pad);
+}
 
-#back {
+#prev {
   left: 0;
+}
+#prev .arrow {
+  left: var(--pad);
 }
 
 .button {
-  width: 65px;
+  font-size: 16px;
+  width: 67px;
   text-align: left;
 }
 .button::before {
@@ -181,12 +200,7 @@ section {
   content: " ]";
 }
 .button:hover {
-  --wght: 700;
   cursor: pointer;
-}
-
-#dateinfo:hover {
-  --wght: 700;
 }
 
 #dateinfo:hover, #weather:hover {
@@ -211,7 +225,7 @@ section {
 }
 
 header > div, .controls, footer > div {
-  /* visibility: hidden; */
+  display: none;
   opacity: 0;
   transition: opacity 350ms ease-in-out;
 }

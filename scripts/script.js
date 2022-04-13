@@ -5,7 +5,7 @@ dayjs.extend(window.dayjs_plugin_isBetween);
 
 /* DOM elements */
 // Cache references to DOM elements.
-const elms = ['splash', 'content', 'poem', 'home', 'dateinfo', 'langbutton', 'ko', 'weather', 'prev', 'next', 'playbutton', 'mutebutton', 'languages', 'langmenu', 'infotable', 'info'];
+const elms = ['splash', 'stage', 'content', 'poem', 'home', 'dateinfo', 'langbutton', 'ko', 'weather', 'prev', 'next', 'playbutton', 'mutebutton', 'languages', 'langmenu', 'infotable', 'info'];
 elms.forEach(function(elm) {
   window[elm] = document.getElementById(elm);
 });
@@ -141,7 +141,8 @@ async function displayPoem(season){
 
   //prepare poem container
   poem.innerHTML = "";
-  poem.style.setProperty('--wght', season.weight);
+  //adjust font weight for all elements
+  stage.style.setProperty('--wght', season.weight);
 
   let jp_text = '「'+season['name-jp']+'」'+season['furigana'];
 
@@ -179,12 +180,13 @@ async function displayTexts(season) {
 // for the first poem, show the navigational
 // surrounding elements afterwards
   await displayPoem(season);
-  let text_contents = [home, dateinfo, playbutton, next, mutebutton, weather, langbutton, prev]
+  let text_contents = [home, dateinfo, playbutton, mutebutton, weather, langbutton, next, prev]
   //after poem is typed up, show peripheral elements
   for (let i = 0; i < text_contents.length; i++) {
      let element = text_contents[i];
      // await waitForMs(600); //delay between showing each element
      setTimeout(function(){
+       element.style.display = 'block'; 
        element.style.opacity = '1';
      }, 1000);
    }
