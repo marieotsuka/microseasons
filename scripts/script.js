@@ -72,14 +72,14 @@ function getPoem( ){
 
           //setup info table
           tablehtml += `
-            <div class="row">
+            <div class="row" style="--wght: ${season['weight']};">
                 <dt>
                   <div class="cell name">${season['name-jp']}</div>
                   <div class="cell range">${season['start']}—${season['end']}</div>
                 </dt>
                 <dd class="description">
 
-                  <div class="cell text" style="--wght: ${season['weight']};">${season['English']}</div>
+                  <div class="cell text">${season['English']}</div>
 
                 </dd>
             </div>
@@ -180,7 +180,7 @@ async function displayTexts(season) {
 // for the first poem, show the navigational
 // surrounding elements afterwards
   await displayPoem(season);
-  let text_contents = [home, dateinfo, playbutton, mutebutton, weather, langbutton, next, prev]
+  let text_contents = [home, dateinfo, playbutton, mutebutton, weather, languages, next, prev]
   //after poem is typed up, show peripheral elements
   for (let i = 0; i < text_contents.length; i++) {
      let element = text_contents[i];
@@ -429,35 +429,36 @@ function setupLanguages(){
   let langs = "";
   fetch("data/languages.json")
     .then(response => response.json())
-    .then(json => {
-      langlist = json;
-      Object.keys(json).forEach(function(key){
+    .then(langJson => {
+      langlist = langJson;
+      Object.keys(langJson).forEach(function(key){
         //create lang option and assign event handler
-        let langElement = document.createElement("div");
+        let langElement = document.createElement("option");
         langElement.className = 'language';
-        langElement.setAttribute('id', key);
-        langElement.innerText = json[key];
+        langElement.setAttribute('value', key);
+        langElement.innerText = langJson[key];
 
         if (key == 'en'){
           langElement.classList.add('active-lang')
         }
 
-        langElement.addEventListener('click', function(){
-          content.setAttribute('lang', key);
-          document.querySelector('.active-lang').classList.remove('active-lang');
-          langElement.classList.add('active-lang');
-          langbutton.innerText = key;
-          active_lang = key;
-          body.setAttribute('data-mode', 'stage');
-          displayPoem(data[season_index]);
-        });
-
         languages.appendChild(langElement);
       });
+
+      languages.addEventListener('change', function(e){
+        let selectedLang = e.target.value;
+        content.setAttribute('lang', selectedLang);
+        // document.querySelector('.active-lang').classList.remove('active-lang');
+        // langElement.classList.add('active-lang');
+        // langbutton.innerText = key;
+        active_lang = selectedLang;
+        body.setAttribute('data-mode', 'stage');
+        displayPoem(data[season_index]);
+      });
     });
-  langbutton.addEventListener('click', function(){
-    body.setAttribute('data-mode', 'lang');
-  });
+  // langbutton.addEventListener('click', function(){
+  //   body.setAttribute('data-mode', 'lang');
+  // });
 }
 setupLanguages();
 

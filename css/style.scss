@@ -142,8 +142,11 @@ section{
 }
 [data-mode=info] {
   #info{
-    display: flex;
+    display: block;
   }
+  // #info{
+  //   display: flex;
+  // }
 }
 
 /*---------------
@@ -252,13 +255,13 @@ section{
   }
 }
 
-#langbutton{
-  width: 80px;
-}
+// #langbutton{
+//   width: 80px;
+// }
 
 //hide, then display peripheral elements
 //via js
-header > div, .controls, footer > div{
+header > div, .controls, footer > div, #languages{
   // visibility: hidden;
   display: none;
   opacity: 0;
@@ -271,18 +274,21 @@ ABOUT INFO
 
 #info{
   display: none;
-  --size: 1.2rem;
-
-  // display: flex;
-  .texts, .table{
-    flex: 1;
-    padding: 1.5em;
-  }
+  --size: 20px;
+  padding: var(--pad);
   .table{
-    flex: 2;
-    height: 100vh;
-    overflow: scroll;
+    margin-bottom: calc( 3*var(--pad));
   }
+  // display: flex;
+  // .texts, .table{
+  //   flex: 1;
+  //   padding: 1.5em;
+  // }
+  // .table{
+  //   flex: 2;
+  //   height: 100vh;
+  //   overflow: scroll;
+  // }
   h2,p,dl{
     font-feature-settings: "onum" 1;
     font-size: var(--size);
@@ -317,7 +323,7 @@ dt{
 .table {
   .row{
     font-family: 'Pentameter VF';
-    margin-bottom: 1.4em;
+    margin-bottom: 10px;
     display: flex;
     .name, .kana{
       font-family: 'Cinema Letter';
@@ -341,7 +347,6 @@ dt{
 
   .text, .weight{
     --slnt: 8;
-    font-variation-settings: 'wdth' var(--wdth), 'wght' 400, 'slnt' var(--slnt);
     padding-right: 1em;
   }
   .heading{
@@ -388,15 +393,28 @@ dt{
 /*-----------------------------
  LANGUAGE MENU
 -----------------------------*/
-#langmenu{
-  padding: 1.5rem;
-  display: none;
-}
+// #langmenu{
+//   padding: 1.5rem;
+//   display: none;
+// }
+
+// language selection dropdown
 #languages{
-  column-count: 4;
-  line-height: 2;
-  margin: 1.5rem 0;
+  background: black;
+  color: white;
+  border: 0;
+  font-family: 'Pentameter-VF';
+  font-size: 16px;
+  cursor: pointer;
+  .active-lang{
+    text-transform: uppercase;  
+  }
+  &:focus{
+    outline: none;
+  }
 }
+
+
 .language{
   cursor: pointer;
   &:hover, &.active-lang{

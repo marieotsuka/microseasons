@@ -130,7 +130,7 @@ section {
 }
 
 [data-mode=info] #info {
-  display: flex;
+  display: block;
 }
 
 /*---------------
@@ -220,11 +220,7 @@ section {
   font-feature-settings: "ss05" 1;
 }
 
-#langbutton {
-  width: 80px;
-}
-
-header > div, .controls, footer > div {
+header > div, .controls, footer > div, #languages {
   display: none;
   opacity: 0;
   transition: opacity 350ms ease-in-out;
@@ -235,16 +231,11 @@ ABOUT INFO
 -----------------------------*/
 #info {
   display: none;
-  --size: 1.2rem;
-}
-#info .texts, #info .table {
-  flex: 1;
-  padding: 1.5em;
+  --size: 20px;
+  padding: var(--pad);
 }
 #info .table {
-  flex: 2;
-  height: 100vh;
-  overflow: scroll;
+  margin-bottom: calc( 3*var(--pad));
 }
 #info h2, #info p, #info dl {
   font-feature-settings: "onum" 1;
@@ -277,7 +268,7 @@ dt {
 
 .table .row {
   font-family: "Pentameter VF";
-  margin-bottom: 1.4em;
+  margin-bottom: 10px;
   display: flex;
 }
 .table .row .name, .table .row .kana {
@@ -299,7 +290,6 @@ dt {
 }
 .table .text, .table .weight {
   --slnt: 8;
-  font-variation-settings: "wdth" var(--wdth), "wght" 400, "slnt" var(--slnt);
   padding-right: 1em;
 }
 .table .heading {
@@ -340,15 +330,19 @@ dt {
 /*-----------------------------
  LANGUAGE MENU
 -----------------------------*/
-#langmenu {
-  padding: 1.5rem;
-  display: none;
-}
-
 #languages {
-  column-count: 4;
-  line-height: 2;
-  margin: 1.5rem 0;
+  background: black;
+  color: white;
+  border: 0;
+  font-family: "Pentameter-VF";
+  font-size: 16px;
+  cursor: pointer;
+}
+#languages .active-lang {
+  text-transform: uppercase;
+}
+#languages:focus {
+  outline: none;
 }
 
 .language {
