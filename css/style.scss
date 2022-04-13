@@ -263,7 +263,7 @@ section{
 //via js
 header > div, .controls, footer > div, #languages{
   // visibility: hidden;
-  display: none;
+  // display: none;
   opacity: 0;
   transition: opacity 350ms ease-in-out;
 }

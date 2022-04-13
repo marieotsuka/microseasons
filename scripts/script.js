@@ -184,9 +184,9 @@ async function displayTexts(season) {
   //after poem is typed up, show peripheral elements
   for (let i = 0; i < text_contents.length; i++) {
      let element = text_contents[i];
-     // await waitForMs(600); //delay between showing each element
+     await waitForMs(200); //delay between showing each element
      setTimeout(function(){
-       element.style.display = 'block'; 
+       // element.style.display = 'block'; 
        element.style.opacity = '1';
      }, 1000);
    }

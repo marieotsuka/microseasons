@@ -221,7 +221,6 @@ section {
 }
 
 header > div, .controls, footer > div, #languages {
-  display: none;
   opacity: 0;
   transition: opacity 350ms ease-in-out;
 }
