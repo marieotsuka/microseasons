@@ -467,34 +467,16 @@ ABOUT INFO
 // what about text is displayed
 .about{
   position: relative;
-  // display: none;
+  overflow: hidden;
+  transition: opacity 400ms ease-in-out, max-height 0ms 400ms;
   max-height: 0;
   opacity: 0;
-  overflow: hidden;
-  transition: opacity 400ms ease-in-out;
-
   &.show{
-    max-height: none;
+    max-height: 500px;
     opacity: 1;
+    transition: opacity 400ms ease-in-out, max-height 400ms 0ms;
   }
 }
-
-
-// [data-infomode=text]{
-//   [data-info=text]{
-//     display: block;
-//   }
-// }
-// [data-infomode=sound]{
-//   [data-info=sound]{
-//     display: block;
-//   }
-// }
-// [data-infomode=font]{
-//   [data-info=font]{
-//     display: block;
-//   }
-// }
 
 /*-----------------------------
  LANGUAGE MENU

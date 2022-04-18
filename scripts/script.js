@@ -502,7 +502,7 @@ backbutton.forEach(function(el){
 let infobuttons = document.querySelectorAll('#info h2');
 infobuttons.forEach(function(el){
   el.addEventListener('click', function(){
-    console.log('toggle');
-    el.nextElementSibling.classList.toggle('show')
+    // console.log('toggle');
+    el.nextElementSibling.classList.toggle('show');
   });
 });

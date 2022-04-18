@@ -404,14 +404,15 @@ ABOUT INFO
 
 .about {
   position: relative;
+  overflow: hidden;
+  transition: opacity 400ms ease-in-out, max-height 0ms 400ms;
   max-height: 0;
   opacity: 0;
-  overflow: hidden;
-  transition: opacity 400ms ease-in-out;
 }
 .about.show {
-  max-height: none;
+  max-height: 500px;
   opacity: 1;
+  transition: opacity 400ms ease-in-out, max-height 400ms 0ms;
 }
 
 /*-----------------------------
