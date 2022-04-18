@@ -161,12 +161,12 @@ section{
   #splash{
     max-height: none;
     // display: none;
-    animation: fade 1ms 1s reverse 1 forwards;
+    animation: fade 1ms 1s forwards;
     opacity: 0;
   }
   #info{
     max-height: none;
-    animation: fade 1ms 1s reverse 1 forwards;
+    animation: fade 1ms 1s forwards;
     opacity: 0;
   }
 }
@@ -185,10 +185,10 @@ section{
 
 @keyframes fade{
   0%{
-    max-height: 0;
+    max-height: none;    
   }
   100%{
-    max-height: none;
+    max-height: 0;
   }
 }
 /*---------------
@@ -331,10 +331,11 @@ ABOUT INFO
 }
 .star, .audio{
   visibility: hidden;
-  width: 20px;
+  width: 30px;
   text-align: center;
 }
 .current .star{
+  line-height: 1.5;
   visibility: visible;
 }
 .playing .audio{
@@ -357,7 +358,7 @@ ABOUT INFO
       width: 70%;
       --slnt: 8;
       position: relative;
-      padding: 0 1em 0 1.4em;
+      padding-right: 1em;
       white-space: nowrap;
       text-overflow: ellipsis;
     }
@@ -379,19 +380,12 @@ ABOUT INFO
       letter-spacing: 0.1em;
       flex: none;
       width: 100%;
-      padding-left: 71px;
+      padding-left: 61px;
     }
     &:hover{
       cursor: pointer;
-      .text{
-        &::before{
-          content:"{ ";
-          position: absolute;
-          left: 0px;
-        }
-        &::after{
-          content:" }";
-        }
+      .audio{
+        visibility: visible;
       }
     }
   }
@@ -456,11 +450,11 @@ ABOUT INFO
 .about{
   position: relative;
   overflow: hidden;
-  transition: opacity 800ms ease-in-out;
-  height: 0;
+  transition: opacity 600ms ease-in-out;
+  max-height: 0;
   opacity: 0;
   &.show{
-    height: auto;
+    max-height: none;
     opacity: 1;
   }
 }

@@ -475,7 +475,7 @@ Navigational buttons
 let backbutton = document.querySelectorAll('#info .back');
 backbutton.forEach(function(el){
   el.addEventListener('click', function(){
-    body.setAttribute('data-mode', 'stage');
+    body.setAttribute('data-mode', 'stage');    
   });
 });
 
@@ -503,7 +503,13 @@ About X accordion toggles
 let infobuttons = document.querySelectorAll('#info h2');
 infobuttons.forEach(function(el){
   el.addEventListener('click', function(){
-    // console.log('toggle');
-    el.nextElementSibling.classList.toggle('show');
+    let text_element = el.nextElementSibling;// console.log('toggle');
+    text_element.classList.toggle('show');
+    if( !text_element.classList.contains('show') ){
+      text_element.style.setProperty('max-height', 'none');
+      text_element.style.animation = "fade 300ms 400ms 1 forwards";
+    }else{
+      text_element.style.animation = "none";
+    }
   });
 });
