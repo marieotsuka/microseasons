@@ -76,6 +76,7 @@ main {
   flex: 1;
   display: flex;
   align-items: center;
+  height: calc(100vh - 156px);
 }
 
 header, footer {
@@ -268,18 +269,19 @@ section {
 }
 
 header > div, #home, .controls, footer > div, #languages {
+  visibility: hidden;
   opacity: 0;
-  transition: opacity 350ms ease-in-out;
+  transition: opacity 400ms ease-in-out;
 }
 
 /*-----------------------------
 ABOUT INFO
 -----------------------------*/
 #info {
-  --wght: 350;
   height: auto;
 }
 #info .back {
+  --wdth: 125;
   margin: var(--pad);
 }
 
@@ -288,9 +290,9 @@ ABOUT INFO
   margin-bottom: calc( 3*var(--pad));
 }
 
-.star {
+.star, .audio {
   visibility: hidden;
-  width: var(--button-width);
+  width: 20px;
   text-align: center;
 }
 
@@ -298,28 +300,40 @@ ABOUT INFO
   visibility: visible;
 }
 
+.playing .audio {
+  visibility: visible;
+}
+
 .table {
+  --wght: 350;
   margin-top: var(--pad);
   border-top: 1px solid white;
   padding-top: var(--pad);
-}
-.table .star, .table .range, .table .text {
-  font-family: "Pentameter VF";
 }
 .table .row {
   margin-bottom: 10px;
   display: flex;
   flex-wrap: wrap;
 }
+.table .row .text {
+  flex: none;
+  overflow: hidden;
+  width: 70%;
+  --slnt: 8;
+  position: relative;
+  padding: 0 1em 0 1.5em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 .table .row .name {
+  flex: 1;
   font-family: "Cinema Letter";
   font-size: 1rem;
   top: 3px;
   position: relative;
-  flex: 2;
-}
-.table .row .text {
-  flex: 3;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .table .row .range {
   text-transform: uppercase;
@@ -328,10 +342,18 @@ ABOUT INFO
   letter-spacing: 0.1em;
   flex: none;
   width: 100%;
-  padding-left: var(--button-width);
+  padding-left: 72px;
 }
-.table .text {
-  --slnt: 8;
+.table .row:hover {
+  cursor: pointer;
+}
+.table .row:hover .text::before {
+  content: "{ ";
+  position: absolute;
+  left: 0px;
+}
+.table .row:hover .text::after {
+  content: " }";
 }
 
 .texts {

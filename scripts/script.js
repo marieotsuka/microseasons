@@ -5,7 +5,7 @@ dayjs.extend(window.dayjs_plugin_isBetween);
 
 /* DOM elements */
 // Cache references to DOM elements.
-const elms = ['splash', 'stage', 'content', 'poem', 'home', 'dateinfo', 'langbutton', 'ko', 'weather', 'prev', 'next', 'playbutton', 'mutebutton', 'languages', 'langmenu', 'infotable', 'info'];
+const elms = ['splash', 'stage', 'content', 'poem', 'home', 'dateinfo', 'langbutton', 'ko', 'weather', 'prev', 'next', 'playbutton', 'mutebutton', 'languages', 'infotable', 'info'];
 elms.forEach(function(elm) {
   window[elm] = document.getElementById(elm);
 });
@@ -38,7 +38,7 @@ let active_lang = 'en';
 /*-----------------------------------------
   Setup Season Poems
 -----------------------------------------*/
-
+let rows = [];
 function getPoem( ){
 // from a seasons.json data file
 // populates info table in the #info section
@@ -48,10 +48,10 @@ function getPoem( ){
     .then(response => response.json())
     .then(json => {
       data = json;
-      // console.log(data);
-      let tablehtml = ``;
+      console.log(data);
+      infotable.innerHTML = ""; //clear table from placeholder text
 
-      for(var i = 0; i<json.length; i++){
+      for(let i = 0; i<json.length; i++){
           //setup tracklist
           tracklist.push( {
             file:  i+1 +'.mp4',
@@ -60,15 +60,33 @@ function getPoem( ){
 
           let season = json[i];
 
-          //setup info table
-          tablehtml += `
-            <div class="row" id="season${i}" style="--wght: ${season['weight']};">
-              <div class="cell star">*</div>
+          rows[i] = document.createElement('div');
+          rows[i].id = 'season'+i;
+          rows[i].classList.add("row");
+          rows[i].style.setProperty('--wght', season.weight);
+          rows[i].innerHTML=`<div class="cell star">*</div>
+              <div class="cell audio">♪</div>
               <div class="cell text">${season['English']}</div>              
-              <div class="cell name">${season['name-jp']} ${season['furigana']}</div>
-              <div class="cell range">${formatDates(season.start, season.end)}</div>
-            </div>
-          `
+              <div class="cell name jp" lang="jp">${season['name-jp']} ${season['furigana']}</div>
+              <div class="cell range">${formatDates(season.start, season.end)}</div>`;
+          rows[i].addEventListener('click', function(){
+            // clicking on each row plays that poem
+            // console.log(i);            
+            clearStage();  
+            body.setAttribute('data-mode', 'stage');   
+            Howler.stop();
+            setTimeout(function(){
+              season_index = i; 
+              displayPoem(data[i]); //display poem in selected language
+              player.play(i); //replay audio
+            }, 1000);            
+          });
+          
+          //setup info table
+          // tablehtml += `
+              
+          //   </div>
+          // `
         
           if(Object.keys(this_season).length === 0){
             //only evaluate if current season hasn’t been determined yet
@@ -92,15 +110,16 @@ function getPoem( ){
           }
       }
 
-      //append information table
-      infotable.innerHTML = tablehtml;
-
+     
+      rows.forEach(function(el){
+        infotable.append(el);
+      });
       //initialize player
       player = new Player(tracklist, season_index);
     })
     .then(function(){
       //add * indicator to table view
-      document.getElementById('season'+season_index).classList.add("current");
+      document.getElementById('season'+season_index).classList.add("current","playing");
     });
 }
 
@@ -112,6 +131,8 @@ getPoem();
   Poem Display
 -----------------------------------------*/
 function formatDates(start,end){
+  // given to/from dates in the format 2/4, 2/7
+  // outputs days in the format February 4–7  
   let from_date = dayjs(year+'/'+start);
   let to_date = dayjs(year+'/'+end);
   if( to_date.month() != from_date.month() ){
@@ -123,20 +144,24 @@ function formatDates(start,end){
   return date_text;
 }
 
+
+function clearStage(){
+  var id = window.setTimeout(function() {}, 0);
+  while (id--) {
+    window.clearTimeout(id); // will do nothing if no timeout with id is present
+  }
+  poem.innerHTML = "";
+}
+
 async function displayPoem(season){
 // given a season object
 // populates the HTML elements accordingly
 
-  //clear timeouts
-  var id = window.setTimeout(function() {}, 0);
-  while (id--) {
-      window.clearTimeout(id); // will do nothing if no timeout with id is present
-  }
-
-  //prepare poem container
-  poem.innerHTML = "";
+  //clear timeouts and stage area
+  clearStage();
+  console.log(season);
   //adjust font weight for all elements
-  stage.style.setProperty('--wght', season.weight);
+  stage.style.setProperty('--wght', season['weight']);
 
   let jp_text = season['name-jp']+' '+season['furigana'];
 
@@ -146,7 +171,7 @@ async function displayPoem(season){
   let daysleft_text = formatDates(season.start, season.end);
   if (first){
     //if this is the first poem, current season, add how many days are left
-    daysleft_text += ` … ${daysleft}`;
+    daysleft_text += ` … ${daysleft}`;   
   }
 
   let text_updates = [
@@ -174,15 +199,13 @@ async function displayTexts(season) {
 // for the first poem, show the navigational
 // surrounding elements afterwards
   await displayPoem(season);
-  let text_contents = [home, dateinfo, playbutton, mutebutton, weather, languages, next, prev]
+  let text_contents = [home, dateinfo, playbutton, mutebutton, weather, languages, next, prev];
   //after poem is typed up, show peripheral elements
   for (let i = 0; i < text_contents.length; i++) {
      let element = text_contents[i];
      await waitForMs(200); //delay between showing each element
-     setTimeout(function(){
-       // element.style.display = 'block'; 
-       element.style.opacity = '1';
-     }, 1000);
+     element.style.visibility = 'visible';
+     element.style.opacity = '1';
    }
   first = false; //turn off first flag
 }
@@ -257,7 +280,7 @@ prev.addEventListener('click', function(){
 let Player = function(playlist, trackid) {
   this.playlist = playlist;
   this.index = trackid;
-  console.log(this.playlist, this.index);
+  // console.log(this.playlist, this.index);
 };
 
 const vol_min = 0.02;
@@ -271,6 +294,7 @@ Player.prototype = {
    */
   play: function(index) {
     console.log('play', index, all);
+    
     let self = this;
     let sound;
 
@@ -307,6 +331,9 @@ Player.prototype = {
 
     // Keep track of the index we are currently playing.
     self.index = index;
+    //add indicator on info table
+    document.querySelector('.playing').classList.remove("playing");
+    document.getElementById('season'+index).classList.add("playing");
   },
 
   /**

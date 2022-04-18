@@ -81,6 +81,7 @@ main{
   flex: 1;
   display: flex;
   align-items: center;
+  height: calc(100vh - 156px);
 }
 
 header, footer{
@@ -313,10 +314,10 @@ section{
 //hide, then display peripheral elements
 //via js
 header > div, #home, .controls, footer > div, #languages{
-  // visibility: hidden;
+  visibility: hidden;
   // display: none;
   opacity: 0;
-  transition: opacity 350ms ease-in-out;
+  transition: opacity 400ms ease-in-out;
 }
 
 /*-----------------------------
@@ -324,46 +325,60 @@ ABOUT INFO
 -----------------------------*/
 
 #info{
-  --wght: 350;
   height: auto;
   .back{
+    --wdth: 125;
     margin: var(--pad);
   }
 }
+
 .table, .texts{
   margin: var(--pad);
   margin-bottom: calc( 3*var(--pad));
 }
-.star{
+.star, .audio{
   visibility: hidden;
-  width: var(--button-width);
+  width: 20px;
   text-align: center;
 }
 .current .star{
   visibility: visible;
 }
+.playing .audio{
+  visibility: visible;
+}
+
 .table {
+  --wght: 350;
   margin-top: var(--pad);
   border-top: 1px solid white;
   padding-top: var(--pad);
-  
-  .star, .range, .text{
-    font-family: 'Pentameter VF';
-  }
+
   .row{
     margin-bottom: 10px;
     display: flex;
     flex-wrap: wrap;
+    .text{
+      flex: none;
+      overflow: hidden;
+      width: 70%;
+      --slnt: 8;
+      position: relative;
+      padding: 0 1em 0 1.5em;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
     .name{
+      flex: 1;
       font-family: 'Cinema Letter';
       font-size: 1rem;
       top: 3px;
       position: relative;
-      flex: 2;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
-    .text{
-      flex: 3;
-    }
+
     .range{
       text-transform: uppercase;
       --wdth: 125;
@@ -371,12 +386,21 @@ ABOUT INFO
       letter-spacing: 0.1em;
       flex: none;
       width: 100%;
-      padding-left: var(--button-width);
+      padding-left: 72px;
     }
-  }
-
-  .text{
-    --slnt: 8;
+    &:hover{
+      cursor: pointer;
+      .text{
+        &::before{
+          content:"{ ";
+          position: absolute;
+          left: 0px;
+        }
+        &::after{
+          content:" }";
+        }
+      }
+    }
   }
 }
 //about texts
