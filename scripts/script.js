@@ -81,12 +81,6 @@ function getPoem( ){
               player.play(i); //replay audio
             }, 1000);            
           });
-          
-          //setup info table
-          // tablehtml += `
-              
-          //   </div>
-          // `
         
           if(Object.keys(this_season).length === 0){
             //only evaluate if current season hasn’t been determined yet
@@ -101,8 +95,6 @@ function getPoem( ){
               // console.log(season);
               season_index = i; // store index of current season
               this_season = season;
-
-              console.log(this_season);
               let days = toplus.diff(today, 'day');
               setDaysLeft(days);
             // break;
@@ -110,10 +102,11 @@ function getPoem( ){
           }
       }
 
-     
+      //append row elements
       rows.forEach(function(el){
         infotable.append(el);
       });
+
       //initialize player
       player = new Player(tracklist, season_index);
     })
@@ -376,22 +369,22 @@ Player.prototype = {
 
 };
 
+
+
 // play behavior button on top right
 playbutton.addEventListener('click', function(){
+  Howler.stop();
   if( playbutton.getAttribute('data-playall') == 'true' ){
-    Howler.stop();
     all = false;
-    player.play(season_index);
     playbutton.setAttribute('data-playall', 'false');
     playbutton.innerHTML = '•';
   }else{
-    Howler.stop();
     all = true;
-    player.play(season_index);
-
     playbutton.setAttribute('data-playall', 'true');
     playbutton.innerHTML = '…';
   }
+  displayPoem(data[season_index]);
+  player.play(season_index);
 });
 
 // mute button on bottom right
@@ -449,13 +442,11 @@ function setupLanguages(){
       languages.addEventListener('change', function(e){
         let selectedLang = e.target.value;
         content.setAttribute('lang', selectedLang);
-        // document.querySelector('.active-lang').classList.remove('active-lang');
-        // langElement.classList.add('active-lang');
-        // langbutton.innerText = key;
+
         active_lang = selectedLang;
-        body.setAttribute('data-mode', 'stage');
-        displayPoem(data[season_index]); //display poem in selected language
+        body.setAttribute('data-mode', 'stage');        
         Howler.stop();
+        displayPoem(data[season_index]); //display poem in selected language
         player.play(season_index); //replay audio
       });
     });
