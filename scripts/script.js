@@ -402,16 +402,6 @@ mutebutton.addEventListener('click', function() {
 
 
 
-/*-----------------------------------------
-About info section toggles
------------------------------------------*/
-
-dateinfo.addEventListener('click', function(){
-  body.setAttribute('data-mode', 'info');
-});
-weather.addEventListener('click', function(){
-  body.setAttribute('data-mode', 'info');
-});
 
 
 /*-----------------------------------------
@@ -490,6 +480,26 @@ backbutton.forEach(function(el){
 });
 
 
+/*-----------------------------------------
+About info section toggles
+-----------------------------------------*/
+
+dateinfo.addEventListener('click', function(){
+  document.querySelector('#info .container').scrollTo({
+    top: 0
+  });
+  body.setAttribute('data-mode', 'info');
+});
+weather.addEventListener('click', function(){
+  document.querySelector('#info .container').scrollTo({
+    top: 0
+  });
+  body.setAttribute('data-mode', 'info');
+});
+
+/*-----------------------------------------
+About X accordion toggles
+-----------------------------------------*/
 let infobuttons = document.querySelectorAll('#info h2');
 infobuttons.forEach(function(el){
   el.addEventListener('click', function(){

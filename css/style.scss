@@ -53,6 +53,12 @@ body, h2{
   font-family: 'Cinema Letter';
 }
 
+.jp-loader{
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+
 em{
   font-style: normal;
   --slnt: 12;
@@ -69,31 +75,36 @@ BASIC SECTION STRUCTURES
 ----------------------------------*/
 
 header, footer{
+  height: 78px;
+  width: 100%;
+  position: fixed;
+  padding: var(--pad);
   display: flex;
   justify-content: space-between;
   text-transform: uppercase;
   letter-spacing: 2px;
-  --wdth: 125;
   font-size: 16px;
+  --wdth: 125;
+  --slnt: 0;
+}
+
+header{
+  top: 0;
+}
+footer{
+  bottom: 0;
 }
 
 main{
-  flex: 1;
+  position: fixed;
+  top: 78px;
   display: flex;
   align-items: center;
   height: calc(100vh - 156px);
+  width: 100%;
 }
 
-header, footer{
-  height: 30px;
-  margin: var(--pad);
-  flex: none;
-  --slnt: 0;
-}
-#home a{
-  position: relative;
-  top: 2px;
-}
+
 footer .jp{
   position: relative;
   top: 2px;
@@ -101,7 +112,7 @@ footer .jp{
 section{
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background: black;
@@ -185,11 +196,6 @@ section{
 ---------------*/
 //poem display area
 
-#stage{
-  display: flex;
-  flex-direction: column;
-}
-
 #content{
   margin: auto;
   position: relative;
@@ -210,22 +216,6 @@ section{
   position: fixed;
   z-index: 100;
   width: 200px;
-  // .arrow{
-  //   display: block;
-  //   position: absolute;
-  //   top: 50%;
-  //   transform: translateY(-50%);
-  //   font-size: 30px;
-  //   --wght: 200;
-  //   opacity: 0;
-  //   transition: opacity 200ms linear;
-  // }
-  &:hover{
-    .arrow{
-      opacity: 1.0;
-    }
-    // --wght: 700;
-  }
 }
 #next{
   right: 0;
@@ -275,12 +265,12 @@ section{
 #weather:hover{
   cursor: pointer;
   &::before{
-    content: "{ ";
+    content: "{  ";
     position: relative;
     top: -2px;
   }
   &::after{
-    content: " }";
+    content: "  }";
     position: relative;
     top: -2px;
   }
@@ -325,11 +315,14 @@ ABOUT INFO
 -----------------------------*/
 
 #info{
-  height: auto;
   .back{
     --wdth: 125;
     margin: var(--pad);
   }
+}
+.container{
+  height: 100vh;
+  overflow: scroll;
 }
 
 .table, .texts{
@@ -364,7 +357,7 @@ ABOUT INFO
       width: 70%;
       --slnt: 8;
       position: relative;
-      padding: 0 1em 0 1.5em;
+      padding: 0 1em 0 1.4em;
       white-space: nowrap;
       text-overflow: ellipsis;
     }
@@ -386,7 +379,7 @@ ABOUT INFO
       letter-spacing: 0.1em;
       flex: none;
       width: 100%;
-      padding-left: 72px;
+      padding-left: 71px;
     }
     &:hover{
       cursor: pointer;
@@ -460,21 +453,15 @@ ABOUT INFO
 
 }
 
-.jp-loader{
-  visibility: hidden;
-}
-// data-infomode on info section determines
-// what about text is displayed
 .about{
   position: relative;
   overflow: hidden;
-  transition: opacity 400ms ease-in-out, max-height 0ms 400ms;
-  max-height: 0;
+  transition: opacity 800ms ease-in-out;
+  height: 0;
   opacity: 0;
   &.show{
-    max-height: 500px;
+    height: auto;
     opacity: 1;
-    transition: opacity 400ms ease-in-out, max-height 400ms 0ms;
   }
 }
 
