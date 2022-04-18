@@ -24,9 +24,9 @@
 
     <section id="stage">
         <header>
-            <a class="button" id="home" href=".">*</a>
-            <div class="date" id="dateinfo"></div>
-            <div class="button" id="playbutton" data-playing="true" data-playall="true"> • </div>
+            <a class="button" id="home" href="." title="Back to Home">*</a>
+            <div class="date" id="dateinfo" title="Info"></div>
+            <div class="button" id="playbutton" data-playing="true" data-playall="true" title="Autoplay / Loop"> … </div>
         </header>
 
         <main>
@@ -38,14 +38,14 @@
         </main>
 
         <footer>
-            <select class="lang" name="language" id="languages"></select>
-            <div class="seki jp" id="weather"></div>
-            <div class="button" id="mutebutton" data-mute="false"> ♪</div>
+            <select class="lang" name="language" id="languages" title="Language selection"></select>
+            <div class="seki jp" id="weather" title="Info"></div>
+            <div class="button" id="mutebutton" data-mute="false" title="Mute / Unmute"> ♪</div>
         </footer>
     </section>
 
     <section id="info" class="overlay">
-        <div class="button back"><</div>
+        <div class="button back" title="Back"><</div>
         <div class="table">
             <dl id="infotable" class="jp">                 
                <!--  preload JP text for font -->
@@ -88,7 +88,7 @@
                 </p> -->
             </div>
         </div>
-        <div class="button back"><</div>
+        <div class="button back" title="Back"><</div>
     </section>
 
 <script src="scripts/script.js"></script>

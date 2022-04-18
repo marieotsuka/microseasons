@@ -185,7 +185,8 @@ section {
   height: 80vh;
   cursor: pointer;
   position: fixed;
-  width: 20vw;
+  z-index: 100;
+  width: 200px;
 }
 .controls:hover .arrow {
   opacity: 1;
@@ -244,6 +245,19 @@ section {
   content: " }";
   position: relative;
   top: -2px;
+}
+
+#playbutton[data-playall=true] {
+  position: relative;
+  top: -3px;
+}
+#playbutton[data-playall=true]::before {
+  position: relative;
+  top: 3px;
+}
+#playbutton[data-playall=true]::after {
+  position: relative;
+  top: 3px;
 }
 
 #mutebutton[data-mute=false] {

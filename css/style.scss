@@ -207,8 +207,8 @@ section{
   height: 80vh;
   cursor: pointer;
   position: fixed;
-  width: 20vw;
-
+  z-index: 100;
+  width: 200px;
   // .arrow{
   //   display: block;
   //   position: absolute;
@@ -269,6 +269,8 @@ section{
     content: " }"
   }
 }
+
+//vertically center symbols with brackets
 #weather:hover{
   cursor: pointer;
   &::before{
@@ -284,14 +286,21 @@ section{
 }
 
 #playbutton{
-  // &[data-playall=true]{
-
-  // }
-  // &[data-playall=false]{
-  //   color: blue;
-  // }
+  &[data-playall=true]{
+    position: relative;
+    top: -3px;
+    &::before{
+      position: relative;
+      top: 3px;
+    }
+    &::after{
+      position: relative;
+      top: 3px;
+    }
+  }
 }
 
+//audio / mute toggle as stylistic set 5
 #mutebutton{
   &[data-mute=false]{
     font-feature-settings: "ss05" 0;
@@ -300,10 +309,6 @@ section{
     font-feature-settings: "ss05" 1;
   }
 }
-
-// #langbutton{
-//   width: 80px;
-// }
 
 //hide, then display peripheral elements
 //via js

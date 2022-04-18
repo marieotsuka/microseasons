@@ -25,7 +25,7 @@ let player;
 let tracklist = [];
 let sound_id = 0;
 let audio = false;
-let all = false; //autoplay all toggle
+let all = true; //autoplay all toggle
 
 /* typewriter */
 let first = true; //toggle this off after first poem
@@ -70,8 +70,6 @@ function getPoem( ){
             </div>
           `
         
-
-
           if(Object.keys(this_season).length === 0){
             //only evaluate if current season hasn’t been determined yet
             let from_date = dayjs(year+'/'+season.start);
@@ -230,11 +228,13 @@ function showNextPoem(){
   displayPoem(data[season_index]);
 }
 next.addEventListener('click', function(){
+  // Howler.stop();
   player.skip('next');
   showNextPoem();
 }, false);
 
 prev.addEventListener('click', function(){
+  // Howler.stop();
   player.skip('prev');
   if (season_index > 0){
     season_index--;
@@ -263,6 +263,7 @@ let Player = function(playlist, trackid) {
 const vol_min = 0.02;
 const vol_max = 0.08;
 
+
 Player.prototype = {
   /**
    * Play a song in the playlist.
@@ -270,65 +271,42 @@ Player.prototype = {
    */
   play: function(index) {
     console.log('play', index, all);
-    var self = this;
-    var sound;
+    let self = this;
+    let sound;
 
     index = typeof index === 'number' ? index : self.index;
-    var data = self.playlist[index];
+    let data = self.playlist[index];
 
     // If we already loaded this track, use the current one.
     // Otherwise, setup and load a new Howl.
+    // console.log(data);
     if (data.howl) {
       sound = data.howl;
     } else {
       sound = data.howl = new Howl({
         src: ['audio/' + data.file ],
-        loop: true,
+        html5: true,
         volume: 0,
-        // onend: function() {
-        //   self.skip('next');
-        // }
+        loop: !all
       });
     }
 
-
     sound_id = sound.play();
-    // Begin playing the sound.
-    sound.fade(vol_min, vol_max, 2000, sound_id);
-
-    //loop only for single play mode
+    sound.fade(vol_min, vol_max, 2000);
+    
     if(all){
-      sound.loop(false, sound_id);
+      sound.loop(false);
       sound.on('end', function(){
-        console.log(sound_id, 'next track')
-        self.skip('next');
+        player.skip('next');
         showNextPoem();
-      }, sound_id);
+      });
     }else{
-      sound.loop(true, sound_id);
-      sound.on('end', function(){
-        console.log('loop');
-      }, sound_id);
+      sound.loop(true);
+      sound.off('end');      
     }
 
-    console.log(sound);
     // Keep track of the index we are currently playing.
     self.index = index;
-  },
-  /**
-   * Pause the currently playing track.
-   */
-  pause: function() {
-    var self = this;
-    // Get the Howl we want to manipulate
-    var sound = self.playlist[self.index].howl;
-
-    // fadeout the sound
-    sound.fade(vol_max, 0, 1000, sound_id);
-    playbutton.setAttribute('data-playing', 'false');
-    sound.on('fade', function(){
-      sound.stop(sound_id);
-    });
   },
 
   /**
@@ -362,29 +340,16 @@ Player.prototype = {
   skipTo: function(index) {
     var self = this;
     // Stop the current track.
-    if (self.playlist[self.index].howl) {
-      self.playlist[self.index].howl.stop();
-    }
-
+     if (self.playlist[self.index].howl) {
+       self.playlist[self.index].howl.stop();
+     }
     self.index = index;
     self.play(index);
   }
 
 };
 
-// Bind our player controls
-mutebutton.addEventListener('click', function() {
-  if( mutebutton.getAttribute('data-mute') == 'false' ){
-    // player.pause();
-    Howler.mute(true)
-    mutebutton.setAttribute('data-mute', 'true');
-  }else{
-    Howler.mute(false);
-    mutebutton.setAttribute('data-mute', 'false');
-    // player.play(season_index);
-  }
-});
-
+// play behavior button on top right
 playbutton.addEventListener('click', function(){
   if( playbutton.getAttribute('data-playall') == 'true' ){
     Howler.stop();
@@ -398,9 +363,24 @@ playbutton.addEventListener('click', function(){
     player.play(season_index);
 
     playbutton.setAttribute('data-playall', 'true');
-    playbutton.innerHTML = '';
+    playbutton.innerHTML = '…';
   }
 });
+
+// mute button on bottom right
+mutebutton.addEventListener('click', function() {
+  if( mutebutton.getAttribute('data-mute') == 'false' ){
+    // player.pause();
+    Howler.mute(true)
+    mutebutton.setAttribute('data-mute', 'true');
+  }else{
+    Howler.mute(false);
+    mutebutton.setAttribute('data-mute', 'false');
+    // player.play(season_index);
+  }
+});
+
+
 
 /*-----------------------------------------
 About info section toggles
@@ -447,7 +427,9 @@ function setupLanguages(){
         // langbutton.innerText = key;
         active_lang = selectedLang;
         body.setAttribute('data-mode', 'stage');
-        displayPoem(data[season_index]);
+        displayPoem(data[season_index]); //display poem in selected language
+        Howler.stop();
+        player.play(season_index); //replay audio
       });
     });
   // langbutton.addEventListener('click', function(){
