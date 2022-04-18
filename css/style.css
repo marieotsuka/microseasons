@@ -85,8 +85,14 @@ header, footer {
   --slnt: 0;
 }
 
+#home a {
+  position: relative;
+  top: 2px;
+}
+
 footer .jp {
-  line-height: 0.9;
+  position: relative;
+  top: 2px;
 }
 
 section {
@@ -96,10 +102,6 @@ section {
   top: 0;
   left: 0;
   background: black;
-}
-
-.overlay {
-  z-index: 50;
 }
 
 #splash {
@@ -120,21 +122,44 @@ section {
 /*-----------------------
  OVERLAY SHOW/HIDE TOGGLE
 -----------------------*/
-[data-mode=stage] .overlay {
-  display: none;
-}
-[data-mode=stage] #splash {
-  display: none;
+.overlay {
+  overflow: hidden;
+  z-index: 50;
+  opacity: 0;
+  max-height: 0;
+  transition: opacity 1s ease-in-out;
 }
 
-[data-mode=lang] #langmenu {
-  display: block;
+[data-mode=intro] #splash {
+  max-height: none;
+  opacity: 1;
+}
+
+[data-mode=stage] #splash {
+  max-height: none;
+  animation: fade 1ms 1s reverse 1 forwards;
+  opacity: 0;
+}
+[data-mode=stage] #info {
+  max-height: none;
+  animation: fade 1ms 1s reverse 1 forwards;
+  opacity: 0;
 }
 
 [data-mode=info] #info {
-  display: block;
+  max-height: none;
+  opacity: 1;
+  z-index: 100;
 }
 
+@keyframes fade {
+  0% {
+    max-height: 0;
+  }
+  100% {
+    max-height: none;
+  }
+}
 /*---------------
  MAIN STAGE
 ---------------*/
@@ -162,32 +187,18 @@ section {
   position: fixed;
   width: 20vw;
 }
-.controls .arrow {
-  display: block;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 30px;
-  --wght: 200;
-  opacity: 0;
-  transition: opacity 200ms linear;
-}
 .controls:hover .arrow {
   opacity: 1;
 }
 
 #next {
   right: 0;
-}
-#next .arrow {
-  right: var(--pad);
+  cursor: url("../img/cursor-next.svg"), auto;
 }
 
 #prev {
   left: 0;
-}
-#prev .arrow {
-  left: var(--pad);
+  cursor: url("../img/cursor-prev.svg"), auto;
 }
 
 .button {
@@ -211,14 +222,28 @@ section {
   content: " }";
 }
 
-#dateinfo:hover, #weather:hover {
+#dateinfo:hover {
   cursor: pointer;
 }
-#dateinfo:hover::before, #weather:hover::before {
+#dateinfo:hover::before {
   content: "{ ";
 }
-#dateinfo:hover::after, #weather:hover::after {
+#dateinfo:hover::after {
   content: " }";
+}
+
+#weather:hover {
+  cursor: pointer;
+}
+#weather:hover::before {
+  content: "{ ";
+  position: relative;
+  top: -2px;
+}
+#weather:hover::after {
+  content: " }";
+  position: relative;
+  top: -2px;
 }
 
 #mutebutton[data-mute=false] {
@@ -228,7 +253,7 @@ section {
   font-feature-settings: "ss05" 1;
 }
 
-header > div, .controls, footer > div, #languages {
+header > div, #home, .controls, footer > div, #languages {
   opacity: 0;
   transition: opacity 350ms ease-in-out;
 }
@@ -237,13 +262,15 @@ header > div, .controls, footer > div, #languages {
 ABOUT INFO
 -----------------------------*/
 #info {
-  display: none;
   --wght: 350;
-  padding: var(--pad);
   height: auto;
+}
+#info .back {
+  margin: var(--pad);
 }
 
 .table, .texts {
+  margin: var(--pad);
   margin-bottom: calc( 3*var(--pad));
 }
 
@@ -304,6 +331,9 @@ ABOUT INFO
   text-transform: uppercase;
   --wght: 400;
 }
+.texts h2:hover {
+  cursor: pointer;
+}
 .texts h2:hover .button::before {
   content: "{ ";
 }
@@ -338,12 +368,13 @@ ABOUT INFO
 
 .about {
   position: relative;
-  display: none;
+  max-height: 0;
   opacity: 0;
+  overflow: hidden;
   transition: opacity 400ms ease-in-out;
 }
 .about.show {
-  display: block;
+  max-height: none;
   opacity: 1;
 }
 

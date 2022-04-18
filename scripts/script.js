@@ -65,7 +65,7 @@ function getPoem( ){
             <div class="row" id="season${i}" style="--wght: ${season['weight']};">
               <div class="cell star">*</div>
               <div class="cell text">${season['English']}</div>              
-              <div class="cell name">「${season['name-jp']}」${season['furigana']}</div>
+              <div class="cell name">${season['name-jp']} ${season['furigana']}</div>
               <div class="cell range">${formatDates(season.start, season.end)}</div>
             </div>
           `
@@ -140,7 +140,7 @@ async function displayPoem(season){
   //adjust font weight for all elements
   stage.style.setProperty('--wght', season.weight);
 
-  let jp_text = '「'+season['name-jp']+'」'+season['furigana'];
+  let jp_text = season['name-jp']+' '+season['furigana'];
 
   //get language name from language data
   let lang_key = langlist[active_lang];
@@ -188,7 +188,6 @@ async function displayTexts(season) {
    }
   first = false; //turn off first flag
 }
-
 
 async function typeWriter(string, element, delay = 100) {
 //given a text string, html container object, and delay
@@ -261,6 +260,9 @@ let Player = function(playlist, trackid) {
   console.log(this.playlist, this.index);
 };
 
+const vol_min = 0.02;
+const vol_max = 0.08;
+
 Player.prototype = {
   /**
    * Play a song in the playlist.
@@ -292,7 +294,7 @@ Player.prototype = {
 
     sound_id = sound.play();
     // Begin playing the sound.
-    sound.fade(0, 0.1, 2000, sound_id);
+    sound.fade(vol_min, vol_max, 2000, sound_id);
 
     //loop only for single play mode
     if(all){
@@ -309,7 +311,6 @@ Player.prototype = {
       }, sound_id);
     }
 
-
     console.log(sound);
     // Keep track of the index we are currently playing.
     self.index = index;
@@ -323,7 +324,7 @@ Player.prototype = {
     var sound = self.playlist[self.index].howl;
 
     // fadeout the sound
-    sound.fade(0.2, 0, 1000, sound_id);
+    sound.fade(vol_max, 0, 1000, sound_id);
     playbutton.setAttribute('data-playing', 'false');
     sound.on('fade', function(){
       sound.stop(sound_id);
@@ -407,11 +408,9 @@ About info section toggles
 
 dateinfo.addEventListener('click', function(){
   body.setAttribute('data-mode', 'info');
-  // info.setAttribute('data-infomode', 'text');
 });
 weather.addEventListener('click', function(){
   body.setAttribute('data-mode', 'info');
-  info.setAttribute('data-infomode', 'text');
 });
 
 
@@ -465,10 +464,15 @@ Splash page and initial setup
 // display initial poem
 splash.addEventListener('click', function(){
   body.setAttribute('data-mode', 'stage');
-  player.play();
+  
   setTimeout(function(){
     displayTexts(this_season);
+    player.play();
   }, 1000);
+  // setTimeout(function(){
+  //   player.play();
+  // }, 1500);
+  
 });
 
 /*-----------------------------------------
@@ -489,6 +493,7 @@ backbutton.forEach(function(el){
 let infobuttons = document.querySelectorAll('#info h2');
 infobuttons.forEach(function(el){
   el.addEventListener('click', function(){
+    console.log('toggle');
     el.nextElementSibling.classList.toggle('show')
   });
 });
