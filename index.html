@@ -2,9 +2,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pentad.World</title>
+  <title>Seasons in Pentameter</title>
   <script type="text/javascript" src="//typesquare.com/3/tsst/script/en/typesquare.js?60593a3ac3e844ed820c220cac1e02d5" charset="utf-8"></script>
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="icon" href="img/favicon.gif" type="image/gif" />
   <script src="scripts/dayjs.min.js"></script>
   <script src="scripts/isBetween.min.js"></script>
   <script src="scripts/howler.min.js"></script>
@@ -23,9 +24,9 @@
 
     <section id="stage">
         <header>
-            <div class="button" id="home">*</div>
+            <div class="button" id="home"><a href="/">*</a></div>
             <div class="date" id="dateinfo"></div>
-            <div class="button" id="playbutton" data-playing="true" data-playall="false"> • </div>
+            <div class="button" id="playbutton" data-playing="true" data-playall="true"> • </div>
         </header>
 
         <main>
@@ -43,10 +44,15 @@
         </footer>
     </section>
 
-    <section id="info" class="overlay" data-infomode="text">
+    <section id="info" class="overlay" data-infomode="">
+        <div class="button back"><</div>
+        <div class="table">
+            <dl id="infotable" class="jp">                 
+               <!--  preload JP text for font -->
+                七十二候 東風解凍 黄鶯睍睆 魚上氷 土脉潤起 霞始靆 草木萌動 蟄虫啓戸 桃始笑 菜虫化蝶 雀始巣 桜始開 雷乃発声 玄鳥至 鴻雁北 虹始見 葭始生 霜止出苗 牡丹華 蛙始鳴 蚯蚓出 竹笋生 蚕起食桑 紅花栄 麦秋至 螳螂生 腐草為蛍 梅子黄 乃東枯 菖蒲華 半夏生 温風至 蓮始開 鷹乃学習 桐始結花 土潤溽暑 大雨時行 涼風至 寒蝉鳴 蒙霧升降 綿柎開 天地始粛 禾乃登 草露白 鶺鴒鳴 玄鳥去 雷乃収声 蟄虫坏戸 水始涸 鴻雁来 菊花開 蟋蟀在戸 霜始降 霎時施 楓蔦黄 山茶始開 地始凍 金盞香 虹蔵不見 朔風払葉 橘始黄 閉塞成冬 熊蟄穴 鱖魚群 乃東生 麋角解 雪下出麦 芹乃栄 水泉動 雉始雊 款冬華 水沢腹堅 鶏始乳　あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん
+            </dl>
+        </div>
         <div class="texts">
-            <div class="button back"><</div>
-
             <h2>about the <span class="button" id="text">text</span></h2>
             <div class="about" data-info="text">
                 <p>
@@ -55,6 +61,8 @@
                 <p>
                     The bottom center of the screen displays the Japanese kō. Descriptions of each from the <a href="https://ja.wikipedia.org/wiki/%E4%B8%83%E5%8D%81%E4%BA%8C%E5%80%99" target="_blank">wikipedia entry</a> were converted to English via Google translate, then further edited by Laurel. Additional language versions are based on Google-translated results of the edited English phrases. Please reach out if you’d like to contribute better translations.
                 </p>
+              <!--   <p class="bio">Laurel Schwulst is an artist and writer interested in the poetic and multisensorial potential of the world wide web.
+                </p> -->
             </div>
 
             <h2>about the <span class="button" id="sound">sound</span></h2>
@@ -62,28 +70,25 @@
                 <p>
                     The sounds were composed by <a href="https://www.tiger.exposed/index">Tiger Dingsun</a>. Each sound loop was composed by taking the entire corpus of the kanji used in the names of the 72 microseasons, sorting them into categories (i.e. crops, flowers, birds, weather), and then assigning each category a particular instrument. Each microseason, which has a name 3-4 kanji long, thus corresponds with a loop that consists of 3 or 4 layers. Each loop is a little more than 5 seconds, so that if one were to listen to the entire year, it would take 365 seconds.
                 </p>
+               <!--  <p class="bio">Tiger Dingsun is a 
+                </p> -->
             </div>
 
             <h2>about the <span class="button" id="font">font</span></h2>
             <div class="about" data-info="font">
                 <p>
-                    The typeface used is <a href="">Pentameter VF</a>, an expressive monospace with variable axes across width (wdth: 75–125), weight (wght: 100–700) and slant (slnt: 0–16), designed by Marie Otsuka and released at <a href="https://occupantfonts.com/" target="_blank">Occupant Fonts</a> in 2021. As a typeface that celebrates the creative agency inhand-coding, its syncopated rhythm merges rigid monolinear mechanics with an exaggerated italic skeleton. It is paired with Morisawa’s <a href="">Cinema Letter</a> for the Japanese characters.
+                    The typeface used is <a href="">Pentameter VF</a>, an expressive monospace with variable axes across width (wdth: 75–125), weight (wght: 100–700) and slant (slnt: 0–16). It was designed by Marie Otsuka and released at <a href="https://occupantfonts.com/" target="_blank">Occupant Fonts</a> in 2021.
+                    The variation settings for the microseasons is set to a Width of 100, a Slant of 10, and a Weight that corresponds to the season’s temperature, ranging from the minimum of 100 for the coldest days of the year, to the maximum of 700 for the hottest days.
                 </p>
                 <p>
-                    The variation settings for each phrase is set to a Width of 100, a Slant of 10, and a Weight that corresponds to each microseason, ranging from the minimum of 100 for the coldest days of the year, to the maximum of 700 for the hottest days.
-                </p>
-                <p>
-                    Read more about the <a href="https://occupantfonts.com/articles/design/monospace-in-motion/" target="_blank">design process</a> of Pentameter, view a <a href="https://occupantfonts.com/" target="_blank">PDF Specimen</a> or
+                    As a typeface that celebrates the creative agency of hand-coding, Pentameter draws from the spirit of handwriting as an “upright italic.” Its syncopated rhythm merges rigid monolinear mechanics with an exaggerated tails. The Japanese characters are set in Morisawa’s <a href="https://www.morisawa.co.jp/fonts/specimen/1207" target="_blank">Cinema Letter</a>. You can read more about the <a href="https://occupantfonts.com/articles/design/monospace-in-motion/" target="_blank">design process</a> of Pentameter, view a <a href="https://occupantfonts.com/" target="_blank">PDF Specimen</a> or
                     <a href="https://occupantfonts.com/fonts/pentameter" target="_blank">font details</a>, and license it at <a href="https://store.typenetwork.com/foundry/occupant/fonts/pentameter" target="_blank">Type Network</a>.
                 </p>
+              <!--   <p class="bio">Marie Otsuka is a type designer at Occupant Fonts exploring the responsive potential of typography in the browser.
+                </p> -->
             </div>
         </div>
-        <div class="table">
-            <dl id="infotable" class="jp">
-               <!--  preload JP text for font -->
-                七十二候 東風解凍 黄鶯睍睆 魚上氷 土脉潤起 霞始靆 草木萌動 蟄虫啓戸 桃始笑 菜虫化蝶 雀始巣 桜始開 雷乃発声 玄鳥至 鴻雁北 虹始見 葭始生 霜止出苗 牡丹華 蛙始鳴 蚯蚓出 竹笋生 蚕起食桑 紅花栄 麦秋至 螳螂生 腐草為蛍 梅子黄 乃東枯 菖蒲華 半夏生 温風至 蓮始開 鷹乃学習 桐始結花 土潤溽暑 大雨時行 涼風至 寒蝉鳴 蒙霧升降 綿柎開 天地始粛 禾乃登 草露白 鶺鴒鳴 玄鳥去 雷乃収声 蟄虫坏戸 水始涸 鴻雁来 菊花開 蟋蟀在戸 霜始降 霎時施 楓蔦黄 山茶始開 地始凍 金盞香 虹蔵不見 朔風払葉 橘始黄 閉塞成冬 熊蟄穴 鱖魚群 乃東生 麋角解 雪下出麦 芹乃栄 水泉動 雉始雊 款冬華 水沢腹堅 鶏始乳　あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん
-            </dl>
-        </div>
+        <div class="button back"><</div>
     </section>
 
 <script src="scripts/script.js"></script>

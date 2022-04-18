@@ -24,7 +24,9 @@ BASIC VARIABLES & TYPOGRAPHY
 
   --grey: rgb(80,80,80);
 
+  --size: 22px;
   --pad: 1.5rem;
+  --button-width: 68px;
 }
 
 *{
@@ -38,7 +40,7 @@ h1,h2,h3,h4,h5,h6{
   font-weight: normal;
 }
 body, h2{
-	font-size: 20px;
+	font-size: var(--size);
   line-height: 1.4;
   font-family: "Pentameter VF";
   font-weight: normal;
@@ -53,7 +55,7 @@ body, h2{
 
 em{
   font-style: normal;
-  --slnt: 16;
+  --slnt: 12;
 }
 
 a{
@@ -177,7 +179,7 @@ section{
   height: 80vh;
   cursor: pointer;
   position: fixed;
-  width: 40vw;
+  width: 20vw;
   .arrow{
     display: block;
     position: absolute;
@@ -213,7 +215,7 @@ section{
 //hover effects
 .button{
   font-size: 16px;
-  width: 67px;
+  width: var(--button-width);
   text-align: left;
   &::before{
     content: "[ "
@@ -223,6 +225,12 @@ section{
   }
   &:hover{
     cursor: pointer;
+    &::before{
+      content: "{ "
+    }
+    &::after{
+      content: " }"
+    }
   }
 }
 
@@ -230,10 +238,10 @@ section{
 #dateinfo:hover, #weather:hover{
   cursor: pointer;
   &::before{
-    content: "[ "
+    content: "{ "
   }
   &::after{
-    content: " ]"
+    content: " }"
   }
 }
 
@@ -274,153 +282,166 @@ ABOUT INFO
 
 #info{
   display: none;
-  --size: 20px;
+
+  --wght: 350;
   padding: var(--pad);
-  .table{
-    margin-bottom: calc( 3*var(--pad));
+  height: auto;
+}
+.table, .texts{
+  margin-bottom: calc( 3*var(--pad));
+}
+.star{
+  visibility: hidden;
+  width: var(--button-width);
+  text-align: center;
+}
+.current .star{
+  visibility: visible;
+}
+.table {
+  margin-top: var(--pad);
+  border-top: 1px solid white;
+  padding-top: var(--pad);
+  
+  .star, .range, .text{
+    font-family: 'Pentameter VF';
   }
-  // display: flex;
-  // .texts, .table{
-  //   flex: 1;
-  //   padding: 1.5em;
-  // }
-  // .table{
-  //   flex: 2;
-  //   height: 100vh;
-  //   overflow: scroll;
-  // }
-  h2,p,dl{
-    font-feature-settings: "onum" 1;
-    font-size: var(--size);
-    --wdth: 80;
-    --wght: 380;
-  }
-  h2{
-    margin: 1.4em 0;
-  }
-  p{
-    text-indent: 3em;
-    &:first-child{
-      text-indent: 0;
+  .row{
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    .name{
+      font-family: 'Cinema Letter';
+      font-size: 1rem;
+      top: 3px;
+      position: relative;
+      flex: 2;
     }
-    a{
-      font-feature-settings: "ss03" 1;
-      &:hover{
-        font-feature-settings: "ss03" 0;
+    .text{
+      flex: 3;
+    }
+    .range{
+      text-transform: uppercase;
+      --wdth: 125;
+      font-size: 0.7em;
+      letter-spacing: 0.1em;
+      flex: none;
+      width: 100%;
+      padding-left: var(--button-width);
+    }
+  }
+
+  .text{
+    --slnt: 8;
+  }
+}
+//about texts
+.texts{
+  margin-top: var(--pad);
+  border-top: 1px solid white;
+  padding-top: var(--pad);
+
+  --size: 18px;
+  h2{
+    margin: var(--pad) 0;
+    text-transform: uppercase;
+    --wght: 400;
+    &:hover{
+      .button::before{
+        content: "{ "
+      }
+      .button::after{
+        content: " }"
       }
     }
   }
-
-  .weight{
-    font-feature-settings: "onum" 0;
+  .button{
+    --wght: 400;
+    font-size: var(--size);
   }
-}
-
-dt{
-  display: flex;
-}
-
-.table {
-  .row{
-    font-family: 'Pentameter VF';
-    margin-bottom: 10px;
-    display: flex;
-    .name, .kana{
-      font-family: 'Cinema Letter';
-      font-size: 1.2rem;
-    }
-    .name{
-      width: 120px;
-    }
-    .description{
-      flex: 1;
-    }
-    .range{
-      width: 180px;
-    }
-  }
-  .heading, .cell{
-    // color: var(--grey);
-    font-weight: normal;
-    text-align: left;
-  }
-
-  .text, .weight{
+  p{
+    font-size: var(--size);
     --slnt: 8;
-    padding-right: 1em;
+    max-width: 38em;
+    font-feature-settings: "onum" 1;
+    text-indent: 3em;
+    letter-spacing: 0;
+    &:first-child{
+      text-indent: 0;
+    }
   }
-  .heading{
-    text-transform: uppercase;
-    --slnt: 0;
+  // p.bio{
+  //   font-size: .85em;
+  //   position: absolute;
+  //   letter-spacing: 0.05em;
+  //   --wght: 380;
+  //   --slnt: 0;
+  //   left: 64%;
+  //   top: 0;
+  //   padding-right: var(--pad);
+  // }
+  a{
+    font-feature-settings: "ss03" 1;
+    &:hover{
+      font-feature-settings: "ss03" 0;
+    }
   }
+
 }
 
-// toggle text/sound/font info
-.about{
-  display: none; //hidee by default
-}
 .jp-loader{
   visibility: hidden;
 }
 // data-infomode on info section determines
 // what about text is displayed
-[data-infomode=text]{
-  .range, .text{
-    color: white;
-  }
-  [data-info=text]{
+.about{
+  position: relative;
+  display: none;
+  opacity: 0;
+  transition: opacity 400ms ease-in-out;
+
+  &.show{
     display: block;
+    opacity: 1;
   }
 }
-[data-infomode=sound]{
-  .name, .sound{
-    color: white;
-  }
-  [data-info=sound]{
-    display: block;
-  }
-}
-[data-infomode=font]{
-  .text, .weight{
-    color: white;
-    font-variation-settings: 'wdth' var(--wdth), 'wght' var(--wght), 'slnt' var(--slnt);
-  }
-  [data-info=font]{
-    display: block;
-  }
-}
+
+
+// [data-infomode=text]{
+//   [data-info=text]{
+//     display: block;
+//   }
+// }
+// [data-infomode=sound]{
+//   [data-info=sound]{
+//     display: block;
+//   }
+// }
+// [data-infomode=font]{
+//   [data-info=font]{
+//     display: block;
+//   }
+// }
 
 /*-----------------------------
  LANGUAGE MENU
 -----------------------------*/
-// #langmenu{
-//   padding: 1.5rem;
-//   display: none;
-// }
 
 // language selection dropdown
 #languages{
+  -moz-appearance: none;
+  -webkit-appearance: none;
   background: black;
   color: white;
   border: 0;
-  font-family: 'Pentameter-VF';
+  font-family: 'Pentameter VF';
   font-size: 16px;
   cursor: pointer;
-  .active-lang{
-    text-transform: uppercase;  
-  }
   &:focus{
     outline: none;
   }
 }
 
-
-.language{
-  cursor: pointer;
-  &:hover, &.active-lang{
-    font-feature-settings: "ss03" 1;
-  }
-}
 [lang=sr]{
   --ss07: 1;
 }

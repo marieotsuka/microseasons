@@ -20,7 +20,9 @@ BASIC VARIABLES & TYPOGRAPHY
   --ss08: 0;
   --ss09: 0;
   --grey: rgb(80,80,80);
+  --size: 22px;
   --pad: 1.5rem;
+  --button-width: 68px;
 }
 
 * {
@@ -35,7 +37,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body, h2 {
-  font-size: 20px;
+  font-size: var(--size);
   line-height: 1.4;
   font-family: "Pentameter VF";
   font-weight: normal;
@@ -50,7 +52,7 @@ body, h2 {
 
 em {
   font-style: normal;
-  --slnt: 16;
+  --slnt: 12;
 }
 
 a {
@@ -158,7 +160,7 @@ section {
   height: 80vh;
   cursor: pointer;
   position: fixed;
-  width: 40vw;
+  width: 20vw;
 }
 .controls .arrow {
   display: block;
@@ -190,7 +192,7 @@ section {
 
 .button {
   font-size: 16px;
-  width: 67px;
+  width: var(--button-width);
   text-align: left;
 }
 .button::before {
@@ -202,15 +204,21 @@ section {
 .button:hover {
   cursor: pointer;
 }
+.button:hover::before {
+  content: "{ ";
+}
+.button:hover::after {
+  content: " }";
+}
 
 #dateinfo:hover, #weather:hover {
   cursor: pointer;
 }
 #dateinfo:hover::before, #weather:hover::before {
-  content: "[ ";
+  content: "{ ";
 }
 #dateinfo:hover::after, #weather:hover::after {
-  content: " ]";
+  content: " }";
 }
 
 #mutebutton[data-mute=false] {
@@ -230,125 +238,130 @@ ABOUT INFO
 -----------------------------*/
 #info {
   display: none;
-  --size: 20px;
+  --wght: 350;
   padding: var(--pad);
+  height: auto;
 }
-#info .table {
+
+.table, .texts {
   margin-bottom: calc( 3*var(--pad));
 }
-#info h2, #info p, #info dl {
-  font-feature-settings: "onum" 1;
-  font-size: var(--size);
-  --wdth: 80;
-  --wght: 380;
-}
-#info h2 {
-  margin: 1.4em 0;
-}
-#info p {
-  text-indent: 3em;
-}
-#info p:first-child {
-  text-indent: 0;
-}
-#info p a {
-  font-feature-settings: "ss03" 1;
-}
-#info p a:hover {
-  font-feature-settings: "ss03" 0;
-}
-#info .weight {
-  font-feature-settings: "onum" 0;
+
+.star {
+  visibility: hidden;
+  width: var(--button-width);
+  text-align: center;
 }
 
-dt {
-  display: flex;
+.current .star {
+  visibility: visible;
 }
 
-.table .row {
+.table {
+  margin-top: var(--pad);
+  border-top: 1px solid white;
+  padding-top: var(--pad);
+}
+.table .star, .table .range, .table .text {
   font-family: "Pentameter VF";
+}
+.table .row {
   margin-bottom: 10px;
   display: flex;
-}
-.table .row .name, .table .row .kana {
-  font-family: "Cinema Letter";
-  font-size: 1.2rem;
+  flex-wrap: wrap;
 }
 .table .row .name {
-  width: 120px;
+  font-family: "Cinema Letter";
+  font-size: 1rem;
+  top: 3px;
+  position: relative;
+  flex: 2;
 }
-.table .row .description {
-  flex: 1;
+.table .row .text {
+  flex: 3;
 }
 .table .row .range {
-  width: 180px;
-}
-.table .heading, .table .cell {
-  font-weight: normal;
-  text-align: left;
-}
-.table .text, .table .weight {
-  --slnt: 8;
-  padding-right: 1em;
-}
-.table .heading {
   text-transform: uppercase;
-  --slnt: 0;
+  --wdth: 125;
+  font-size: 0.7em;
+  letter-spacing: 0.1em;
+  flex: none;
+  width: 100%;
+  padding-left: var(--button-width);
+}
+.table .text {
+  --slnt: 8;
 }
 
-.about {
-  display: none;
+.texts {
+  margin-top: var(--pad);
+  border-top: 1px solid white;
+  padding-top: var(--pad);
+  --size: 18px;
+}
+.texts h2 {
+  margin: var(--pad) 0;
+  text-transform: uppercase;
+  --wght: 400;
+}
+.texts h2:hover .button::before {
+  content: "{ ";
+}
+.texts h2:hover .button::after {
+  content: " }";
+}
+.texts .button {
+  --wght: 400;
+  font-size: var(--size);
+}
+.texts p {
+  font-size: var(--size);
+  --slnt: 8;
+  max-width: 38em;
+  font-feature-settings: "onum" 1;
+  text-indent: 3em;
+  letter-spacing: 0;
+}
+.texts p:first-child {
+  text-indent: 0;
+}
+.texts a {
+  font-feature-settings: "ss03" 1;
+}
+.texts a:hover {
+  font-feature-settings: "ss03" 0;
 }
 
 .jp-loader {
   visibility: hidden;
 }
 
-[data-infomode=text] .range, [data-infomode=text] .text {
-  color: white;
+.about {
+  position: relative;
+  display: none;
+  opacity: 0;
+  transition: opacity 400ms ease-in-out;
 }
-[data-infomode=text] [data-info=text] {
+.about.show {
   display: block;
-}
-
-[data-infomode=sound] .name, [data-infomode=sound] .sound {
-  color: white;
-}
-[data-infomode=sound] [data-info=sound] {
-  display: block;
-}
-
-[data-infomode=font] .text, [data-infomode=font] .weight {
-  color: white;
-  font-variation-settings: "wdth" var(--wdth), "wght" var(--wght), "slnt" var(--slnt);
-}
-[data-infomode=font] [data-info=font] {
-  display: block;
+  opacity: 1;
 }
 
 /*-----------------------------
  LANGUAGE MENU
 -----------------------------*/
 #languages {
+  -moz-appearance: none;
+  -webkit-appearance: none;
   background: black;
   color: white;
   border: 0;
-  font-family: "Pentameter-VF";
+  font-family: "Pentameter VF";
   font-size: 16px;
   cursor: pointer;
 }
-#languages .active-lang {
-  text-transform: uppercase;
-}
 #languages:focus {
   outline: none;
-}
-
-.language {
-  cursor: pointer;
-}
-.language:hover, .language.active-lang {
-  font-feature-settings: "ss03" 1;
 }
 
 [lang=sr] {

@@ -1,6 +1,6 @@
 /* setup dates library */
 let today = dayjs();
-const year = today.year();
+const year = today.year(); //this year
 dayjs.extend(window.dayjs_plugin_isBetween);
 
 /* DOM elements */
@@ -25,7 +25,7 @@ let player;
 let tracklist = [];
 let sound_id = 0;
 let audio = false;
-let all = false;
+let all = false; //autoplay all toggle
 
 /* typewriter */
 let first = true; //toggle this off after first poem
@@ -49,17 +49,7 @@ function getPoem( ){
     .then(json => {
       data = json;
       // console.log(data);
-      let tablehtml = `<div class="row">
-                <dt>
-                  <div class="heading name">七十二候</div>
-                  <div class="heading range">Dates</div>
-                </dt>
-                <dd class="description">
-
-                  <div class="heading text">Microseason (English)</div>
-
-                </dd>
-            </div>`;
+      let tablehtml = ``;
 
       for(var i = 0; i<json.length; i++){
           //setup tracklist
@@ -72,22 +62,18 @@ function getPoem( ){
 
           //setup info table
           tablehtml += `
-            <div class="row" style="--wght: ${season['weight']};">
-                <dt>
-                  <div class="cell name">${season['name-jp']}</div>
-                  <div class="cell range">${season['start']}—${season['end']}</div>
-                </dt>
-                <dd class="description">
-
-                  <div class="cell text">${season['English']}</div>
-
-                </dd>
+            <div class="row" id="season${i}" style="--wght: ${season['weight']};">
+              <div class="cell star">*</div>
+              <div class="cell text">${season['English']}</div>              
+              <div class="cell name">「${season['name-jp']}」${season['furigana']}</div>
+              <div class="cell range">${formatDates(season.start, season.end)}</div>
             </div>
           `
+        
+
 
           if(Object.keys(this_season).length === 0){
-            //only evaluate if season hasn’t been determined yet
-            //setup current year dates
+            //only evaluate if current season hasn’t been determined yet
             let from_date = dayjs(year+'/'+season.start);
             let to_date = dayjs(year+'/'+season.end);
             let toplus = to_date.add(1, 'days');
@@ -100,8 +86,6 @@ function getPoem( ){
               season_index = i; // store index of current season
               this_season = season;
 
-              // from = dayjs(from_date).format('MMMM D');
-              // to = dayjs(to_date).format('MMMM D');
               console.log(this_season);
               let days = toplus.diff(today, 'day');
               setDaysLeft(days);
@@ -115,6 +99,10 @@ function getPoem( ){
 
       //initialize player
       player = new Player(tracklist, season_index);
+    })
+    .then(function(){
+      //add * indicator to table view
+      document.getElementById('season'+season_index).classList.add("current");
     });
 }
 
@@ -125,13 +113,21 @@ getPoem();
 /*-----------------------------------------
   Poem Display
 -----------------------------------------*/
+function formatDates(start,end){
+  let from_date = dayjs(year+'/'+start);
+  let to_date = dayjs(year+'/'+end);
+  if( to_date.month() != from_date.month() ){
+    to_date = to_date.format('MMMM D');
+  }else{
+    to_date = to_date.format('D');
+  }
+  let date_text = `${from_date.format('MMMM D')}—${to_date}`;
+  return date_text;
+}
 
 async function displayPoem(season){
 // given a season object
 // populates the HTML elements accordingly
-
-  from = dayjs(year+'/'+season.start).format('MMMM D');
-  to = dayjs(year+'/'+season.end).format('MMMM D');
 
   //clear timeouts
   var id = window.setTimeout(function() {}, 0);
@@ -149,7 +145,7 @@ async function displayPoem(season){
   //get language name from language data
   let lang_key = langlist[active_lang];
 
-  let daysleft_text = `${from} — ${to}`;
+  let daysleft_text = formatDates(season.start, season.end);
   if (first){
     //if this is the first poem, current season, add how many days are left
     daysleft_text += ` … ${daysleft}`;
@@ -285,9 +281,8 @@ Player.prototype = {
     } else {
       sound = data.howl = new Howl({
         src: ['audio/' + data.file ],
-        autoplay: true,
         loop: true,
-        volume: 0.3
+        volume: 0,
         // onend: function() {
         //   self.skip('next');
         // }
@@ -297,7 +292,7 @@ Player.prototype = {
 
     sound_id = sound.play();
     // Begin playing the sound.
-    sound.fade(0, 0.3, 800, sound_id);
+    sound.fade(0, 0.1, 2000, sound_id);
 
     //loop only for single play mode
     if(all){
@@ -328,7 +323,7 @@ Player.prototype = {
     var sound = self.playlist[self.index].howl;
 
     // fadeout the sound
-    sound.fade(0.3, 0, 800, sound_id);
+    sound.fade(0.2, 0, 1000, sound_id);
     playbutton.setAttribute('data-playing', 'false');
     sound.on('fade', function(){
       sound.stop(sound_id);
@@ -412,7 +407,7 @@ About info section toggles
 
 dateinfo.addEventListener('click', function(){
   body.setAttribute('data-mode', 'info');
-  info.setAttribute('data-infomode', 'text');
+  // info.setAttribute('data-infomode', 'text');
 });
 weather.addEventListener('click', function(){
   body.setAttribute('data-mode', 'info');
@@ -483,20 +478,17 @@ Navigational buttons
  * based on the 'data-mode' attribute on the body
  */
 
-let backbutton1 = document.querySelector('#info .back');
-backbutton1.addEventListener('click', function(){
-  body.setAttribute('data-mode', 'stage');
+let backbutton = document.querySelectorAll('#info .back');
+backbutton.forEach(function(el){
+  el.addEventListener('click', function(){
+    body.setAttribute('data-mode', 'stage');
+  });
 });
 
-let backbutton2 = document.querySelector('#langmenu .back');
-backbutton2.addEventListener('click', function(){
-  body.setAttribute('data-mode', 'stage');
-});
 
-let infobuttons = document.querySelectorAll('#info .button');
+let infobuttons = document.querySelectorAll('#info h2');
 infobuttons.forEach(function(el){
   el.addEventListener('click', function(){
-    let infotype = el.getAttribute('id');
-    info.setAttribute('data-infomode', infotype);
+    el.nextElementSibling.classList.toggle('show')
   });
 });
