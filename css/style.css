@@ -23,6 +23,7 @@ BASIC VARIABLES & TYPOGRAPHY
   --size: 22px;
   --pad: 1.5rem;
   --button-width: 68px;
+  --nav-height: 70px;
 }
 
 * {
@@ -70,7 +71,7 @@ a {
 BASIC SECTION STRUCTURES
 ----------------------------------*/
 header, footer {
-  height: 78px;
+  height: var(--nav-height);
   width: 100%;
   position: fixed;
   padding: var(--pad);
@@ -91,18 +92,18 @@ footer {
   bottom: 0;
 }
 
+footer .jp {
+  position: relative;
+  top: -3px;
+}
+
 main {
   position: fixed;
   top: 78px;
   display: flex;
   align-items: center;
-  height: calc(100vh - 156px);
+  height: calc(100vh - ( 2 * var(--nav-height) ) );
   width: 100%;
-}
-
-footer .jp {
-  position: relative;
-  top: 2px;
 }
 
 section {
@@ -122,7 +123,8 @@ section {
   cursor: pointer;
 }
 #splash .intro {
-  width: 500px;
+  max-width: 550px;
+  padding: var(--pad);
 }
 #splash h1 {
   font-size: 55px;
@@ -170,9 +172,9 @@ section {
     max-height: 0;
   }
 }
-/*---------------
+/*-----------------------------
  MAIN STAGE
----------------*/
+-----------------------------*/
 #content {
   margin: auto;
   position: relative;
@@ -206,13 +208,19 @@ section {
 
 .button {
   font-size: 16px;
+  display: block;
   width: var(--button-width);
-  text-align: left;
+  text-align: center;
+  position: relative;
 }
 .button::before {
+  position: absolute;
+  left: 0;
   content: "[ ";
 }
 .button::after {
+  position: absolute;
+  right: 0;
   content: " ]";
 }
 .button:hover {
@@ -225,40 +233,33 @@ section {
   content: " }";
 }
 
-#dateinfo:hover {
+.aboutbutton {
+  text-align: center;
+}
+.aboutbutton:hover {
   cursor: pointer;
 }
-#dateinfo:hover::before {
+.aboutbutton:hover::before {
   content: "{ ";
 }
-#dateinfo:hover::after {
+.aboutbutton:hover::after {
   content: " }";
 }
 
-#weather:hover {
-  cursor: pointer;
-}
 #weather:hover::before {
-  content: "{  ";
-  position: relative;
   top: -2px;
 }
 #weather:hover::after {
-  content: "  }";
-  position: relative;
   top: -2px;
 }
 
 #playbutton[data-playall=true] {
-  position: relative;
   top: -3px;
 }
 #playbutton[data-playall=true]::before {
-  position: relative;
   top: 3px;
 }
 #playbutton[data-playall=true]::after {
-  position: relative;
   top: 3px;
 }
 
@@ -276,7 +277,7 @@ header > div, #home, .controls, footer > div, #languages {
 }
 
 /*-----------------------------
-ABOUT INFO
+ABOUT INFO TABLE AREA
 -----------------------------*/
 #info .back {
   --wdth: 125;
@@ -366,6 +367,12 @@ ABOUT INFO
   text-transform: uppercase;
   --wght: 400;
 }
+.texts h2 .button::before {
+  position: static;
+}
+.texts h2 .button::after {
+  position: static;
+}
 .texts h2:hover {
   cursor: pointer;
 }
@@ -376,6 +383,7 @@ ABOUT INFO
   content: " }";
 }
 .texts .button {
+  display: inline;
   --wght: 400;
   font-size: var(--size);
 }
@@ -412,17 +420,21 @@ ABOUT INFO
 /*-----------------------------
  LANGUAGE MENU
 -----------------------------*/
-#languages {
+#langSelection {
+  display: inline-block;
   -moz-appearance: none;
   -webkit-appearance: none;
   background: black;
   color: white;
   border: 0;
   font-family: "Pentameter VF";
+  text-transform: uppercase;
   font-size: 16px;
   cursor: pointer;
+  position: relative;
+  top: 3px;
 }
-#languages:focus {
+#langSelection:focus {
   outline: none;
 }
 
@@ -436,6 +448,56 @@ ABOUT INFO
 
 [lang=mk] {
   --ss09: 1;
+}
+
+/*-----------------------------
+ MOBILE
+-----------------------------*/
+@media screen and (max-width: 600px) {
+  :root {
+    --pad: 1rem;
+    --nav-height: 50px;
+  }
+
+  #content {
+    padding: 0 10%;
+  }
+
+  .kana {
+    display: none;
+  }
+
+  .daysleft {
+    display: block;
+  }
+
+  .controls {
+    width: 80px;
+  }
+
+  .table .row .text {
+    flex: 1;
+    padding-right: 0;
+  }
+  .table .row .name {
+    font-size: 0.9rem;
+    order: 6;
+    padding-left: 30px;
+    margin-bottom: 12px;
+  }
+  .table .row .range {
+    padding-left: 30px;
+  }
+  .table .row .star, .table .row .audio {
+    width: 15px;
+  }
+
+  .aboutbutton:hover::before {
+    content: "";
+  }
+  .aboutbutton:hover::after {
+    content: "";
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

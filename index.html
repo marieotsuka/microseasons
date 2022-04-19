@@ -17,7 +17,7 @@
             <h1>*</h1>
             <p>
                 This website displays the current season of the 72 pentads, each a five-day microseason in the Japanese calendar. <br><br>
-                ( Sound on recommended )
+                ( Sound recommended )
             </p>
         </div>
     </section>
@@ -25,7 +25,7 @@
     <section id="stage">
         <header>
             <a class="button" id="home" href="." title="Back to Home">*</a>
-            <div class="date" id="dateinfo" title="Info"></div>
+            <div class="date aboutbutton" id="dateinfo" title="Info"></div>
             <div class="button" id="playbutton" data-playing="true" data-playall="true" title="Autoplay / Loop"> … </div>
         </header>
 
@@ -38,8 +38,11 @@
         </main>
 
         <footer>
-            <select class="lang" name="language" id="languages" title="Language selection"></select>
-            <div class="seki jp" id="weather" title="Info"></div>
+            <div class="button" id="languages">
+                <select class="lang" name="language" id="langSelection" title="Language selection">                
+                </select>
+            </div>
+            <div class="seki jp aboutbutton" id="weather" title="Info"></div>
             <div class="button" id="mutebutton" data-mute="false" title="Mute / Unmute"> ♪</div>
         </footer>
     </section>

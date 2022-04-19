@@ -27,6 +27,8 @@ BASIC VARIABLES & TYPOGRAPHY
   --size: 22px;
   --pad: 1.5rem;
   --button-width: 68px;
+
+  --nav-height: 70px;
 }
 
 *{
@@ -75,7 +77,7 @@ BASIC SECTION STRUCTURES
 ----------------------------------*/
 
 header, footer{
-  height: 78px;
+  height: var(--nav-height);
   width: 100%;
   position: fixed;
   padding: var(--pad);
@@ -95,20 +97,20 @@ footer{
   bottom: 0;
 }
 
+footer .jp{
+  position: relative;
+  top: -3px;
+}
+
 main{
   position: fixed;
   top: 78px;
   display: flex;
   align-items: center;
-  height: calc(100vh - 156px);
+  height: calc(100vh -  ( 2 * var(--nav-height) ) );
   width: 100%;
 }
 
-
-footer .jp{
-  position: relative;
-  top: 2px;
-}
 section{
   width: 100vw;
   height: 100vh;
@@ -118,7 +120,6 @@ section{
   background: black;
 }
 
-
 //intro splash page
 #splash{
   display: flex;
@@ -126,7 +127,8 @@ section{
   justify-content: center;
 
   .intro{
-    width: 500px;
+    max-width: 550px;
+    padding: var(--pad);
   }
 
   text-align: center;
@@ -160,7 +162,6 @@ section{
 [data-mode=stage] {
   #splash{
     max-height: none;
-    // display: none;
     animation: fade 1ms 1s forwards;
     opacity: 0;
   }
@@ -170,17 +171,12 @@ section{
     opacity: 0;
   }
 }
-
 [data-mode=info] {
   #info{
-    // display: block;
     max-height: none;
     opacity: 1;
     z-index: 100;
   }
-  // #info{
-  //   display: flex;
-  // }
 }
 
 @keyframes fade{
@@ -191,11 +187,11 @@ section{
     max-height: 0;
   }
 }
-/*---------------
- MAIN STAGE
----------------*/
-//poem display area
 
+/*-----------------------------
+ MAIN STAGE
+-----------------------------*/
+//poem display area
 #content{
   margin: auto;
   position: relative;
@@ -231,14 +227,33 @@ section{
 //hover effects
 .button{
   font-size: 16px;
+  display: block;
   width: var(--button-width);
-  text-align: left;
+  text-align: center;
+  position: relative;
   &::before{
-    content: "[ "
+    position: absolute;
+    left: 0;
+    content: "[ ";
   }
   &::after{
-    content: " ]"
+    position: absolute;
+    right: 0;
+    content: " ]";
   }
+  &:hover{
+    cursor: pointer;
+    &::before{
+      content: "{ ";
+    }
+    &::after{
+      content: " }";
+    }
+  }
+}
+
+.aboutbutton{
+  text-align: center;
   &:hover{
     cursor: pointer;
     &::before{
@@ -250,42 +265,22 @@ section{
   }
 }
 
-
-#dateinfo:hover{
-  cursor: pointer;
-  &::before{
-    content: "{ "
-  }
-  &::after{
-    content: " }"
-  }
-}
-
 //vertically center symbols with brackets
 #weather:hover{
-  cursor: pointer;
   &::before{
-    content: "{  ";
-    position: relative;
     top: -2px;
   }
   &::after{
-    content: "  }";
-    position: relative;
     top: -2px;
   }
 }
-
 #playbutton{
   &[data-playall=true]{
-    position: relative;
     top: -3px;
     &::before{
-      position: relative;
       top: 3px;
     }
     &::after{
-      position: relative;
       top: 3px;
     }
   }
@@ -305,13 +300,12 @@ section{
 //via js
 header > div, #home, .controls, footer > div, #languages{
   visibility: hidden;
-  // display: none;
   opacity: 0;
   transition: opacity 400ms ease-in-out;
 }
 
 /*-----------------------------
-ABOUT INFO
+ABOUT INFO TABLE AREA
 -----------------------------*/
 
 #info{
@@ -324,11 +318,12 @@ ABOUT INFO
   height: 100vh;
   overflow: scroll;
 }
-
 .table, .texts{
   margin: var(--pad);
   margin-bottom: calc( 3*var(--pad));
 }
+//show/hide star and audio icon
+//depending on indicator
 .star, .audio{
   visibility: hidden;
   width: 30px;
@@ -342,6 +337,8 @@ ABOUT INFO
   visibility: visible;
 }
 
+// table styling for
+// full list of seasons
 .table {
   --wght: 350;
   margin-top: var(--pad);
@@ -372,7 +369,6 @@ ABOUT INFO
       white-space: nowrap;
       text-overflow: ellipsis;
     }
-
     .range{
       text-transform: uppercase;
       --wdth: 125;
@@ -390,7 +386,7 @@ ABOUT INFO
     }
   }
 }
-//about texts
+// about texts
 .texts{
   margin-top: var(--pad);
   border-top: 1px solid white;
@@ -402,6 +398,12 @@ ABOUT INFO
     margin: var(--pad) 0;
     text-transform: uppercase;
     --wght: 400;
+    .button::before{
+      position: static;
+    }
+    .button::after{
+      position: static;
+    }
     &:hover{
       cursor: pointer;
       .button::before{
@@ -413,6 +415,7 @@ ABOUT INFO
     }
   }
   .button{
+    display: inline;
     --wght: 400;
     font-size: var(--size);
   }
@@ -444,7 +447,6 @@ ABOUT INFO
       font-feature-settings: "ss03" 0;
     }
   }
-
 }
 
 .about{
@@ -464,15 +466,21 @@ ABOUT INFO
 -----------------------------*/
 
 // language selection dropdown
-#languages{
+// use native html select element
+#langSelection{
+  display: inline-block;
   -moz-appearance: none;
   -webkit-appearance: none;
   background: black;
   color: white;
   border: 0;
   font-family: 'Pentameter VF';
+  text-transform: uppercase;
   font-size: 16px;
   cursor: pointer;
+
+  position: relative;
+  top: 3px;
   &:focus{
     outline: none;
   }
@@ -486,4 +494,56 @@ ABOUT INFO
 }
 [lang=mk]{
   --ss09: 1;
+}
+
+/*-----------------------------
+ MOBILE
+-----------------------------*/
+@media screen and (max-width: 600px){
+  :root{
+    --pad: 1rem;
+    --nav-height: 50px;
+  }
+  #content{
+    padding: 0 10%;
+  }
+
+  .kana{
+    display: none;
+  }
+  .daysleft{
+    display: block;
+  }
+  .controls{
+    width: 80px;
+  }
+
+  .table .row {
+    .text{
+      flex: 1;
+      padding-right: 0;
+    }
+    .name{
+      font-size: .9rem;
+      order: 6;
+      padding-left: 30px;
+      margin-bottom: 12px;
+    }
+    .range{
+      padding-left: 30px;
+    }
+    .star, .audio{
+      width: 15px;
+    }
+  }
+
+  //avoid adding {} on hover
+  .aboutbutton:hover{
+    &::before{
+      content: "";
+    }
+    &::after{
+      content: "";
+    }
+  }
 }

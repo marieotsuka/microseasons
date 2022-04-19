@@ -5,7 +5,7 @@ dayjs.extend(window.dayjs_plugin_isBetween);
 
 /* DOM elements */
 // Cache references to DOM elements.
-const elms = ['splash', 'stage', 'content', 'poem', 'home', 'dateinfo', 'langbutton', 'ko', 'weather', 'prev', 'next', 'playbutton', 'mutebutton', 'languages', 'infotable', 'info'];
+const elms = ['splash', 'stage', 'content', 'poem', 'home', 'dateinfo', 'langbutton', 'ko', 'weather', 'prev', 'next', 'playbutton', 'mutebutton', 'languages', 'langSelection', 'infotable', 'info'];
 elms.forEach(function(elm) {
   window[elm] = document.getElementById(elm);
 });
@@ -156,7 +156,7 @@ async function displayPoem(season){
   //adjust font weight for all elements
   stage.style.setProperty('--wght', season['weight']);
 
-  let jp_text = season['name-jp']+' '+season['furigana'];
+  let jp_text = `${season['name-jp']} <span class="kana">${season['furigana']}</span>`;
 
   //get language name from language data
   let lang_key = langlist[active_lang];
@@ -164,7 +164,7 @@ async function displayPoem(season){
   let daysleft_text = formatDates(season.start, season.end);
   if (first){
     //if this is the first poem, current season, add how many days are left
-    daysleft_text += ` … ${daysleft}`;   
+    daysleft_text += `<span class="daysleft"> … ${daysleft}</span>`;   
   }
 
   let text_updates = [
@@ -420,16 +420,12 @@ function setupLanguages(){
         let langElement = document.createElement("option");
         langElement.className = 'language';
         langElement.setAttribute('value', key);
-        langElement.innerText = langJson[key];
-
-        if (key == 'en'){
-          langElement.classList.add('active-lang')
-        }
-
-        languages.appendChild(langElement);
+        langElement.setAttribute('title', langJson[key]);
+        langElement.innerText = key;
+        langSelection.appendChild(langElement);
       });
 
-      languages.addEventListener('change', function(e){
+      langSelection.addEventListener('change', function(e){
         let selectedLang = e.target.value;
         content.setAttribute('lang', selectedLang);
 
@@ -440,9 +436,6 @@ function setupLanguages(){
         player.play(season_index); //replay audio
       });
     });
-  // langbutton.addEventListener('click', function(){
-  //   body.setAttribute('data-mode', 'lang');
-  // });
 }
 setupLanguages();
 
@@ -459,10 +452,7 @@ splash.addEventListener('click', function(){
     displayTexts(this_season);
     player.play();
   }, 1000);
-  // setTimeout(function(){
-  //   player.play();
-  // }, 1500);
-  
+
 });
 
 /*-----------------------------------------
@@ -481,24 +471,21 @@ backbutton.forEach(function(el){
 
 
 /*-----------------------------------------
-About info section toggles
+Info Table Toggles
 -----------------------------------------*/
-
-dateinfo.addEventListener('click', function(){
-  document.querySelector('#info .container').scrollTo({
-    top: 0
+let aboutbuttons = document.querySelectorAll('.aboutbutton');
+aboutbuttons.forEach(function(el){
+  el.addEventListener('click', function(){
+    console.log('info show ');
+    document.querySelector('#info .container').scrollTo({
+      top: 0
+    });
+    body.setAttribute('data-mode', 'info');
   });
-  body.setAttribute('data-mode', 'info');
-});
-weather.addEventListener('click', function(){
-  document.querySelector('#info .container').scrollTo({
-    top: 0
-  });
-  body.setAttribute('data-mode', 'info');
 });
 
 /*-----------------------------------------
-About X accordion toggles
+About text/sound/font accordion toggles
 -----------------------------------------*/
 let infobuttons = document.querySelectorAll('#info h2');
 infobuttons.forEach(function(el){
