@@ -422,7 +422,6 @@ ABOUT INFO TABLE AREA
  LANGUAGE MENU
 -----------------------------*/
 #langSelection {
-  display: inline-block;
   -moz-appearance: none;
   -webkit-appearance: none;
   background: black;
@@ -433,7 +432,8 @@ ABOUT INFO TABLE AREA
   font-size: 16px;
   cursor: pointer;
   position: relative;
-  top: 3px;
+  top: 2px;
+  height: 19px;
 }
 #langSelection:focus {
   outline: none;

@@ -470,7 +470,6 @@ ABOUT INFO TABLE AREA
 // language selection dropdown
 // use native html select element
 #langSelection{
-  display: inline-block;
   -moz-appearance: none;
   -webkit-appearance: none;
   background: black;
@@ -482,7 +481,9 @@ ABOUT INFO TABLE AREA
   cursor: pointer;
 
   position: relative;
-  top: 3px;
+  top: 2px;
+  height: 19px;
+
   &:focus{
     outline: none;
   }
