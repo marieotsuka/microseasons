@@ -29,6 +29,8 @@ BASIC VARIABLES & TYPOGRAPHY
   --button-width: 68px;
 
   --nav-height: 70px;
+
+  font-size: var(--size);
 }
 
 *{
@@ -104,7 +106,7 @@ footer .jp{
 
 main{
   position: fixed;
-  top: 78px;
+  top: var(--nav-height);
   display: flex;
   align-items: center;
   height: calc(100vh -  ( 2 * var(--nav-height) ) );
@@ -362,7 +364,7 @@ ABOUT INFO TABLE AREA
     .name{
       flex: 1;
       font-family: 'Cinema Letter';
-      font-size: 1rem;
+      font-size: 0.8rem;
       top: 3px;
       position: relative;
       overflow: hidden;
@@ -391,7 +393,7 @@ ABOUT INFO TABLE AREA
   margin-top: var(--pad);
   border-top: 1px solid white;
   padding-top: var(--pad);
-  --size: 18px;
+  --size: 0.9rem;
 
   //accordion headings
   h2{
@@ -503,9 +505,12 @@ ABOUT INFO TABLE AREA
   :root{
     --pad: 1rem;
     --nav-height: 50px;
+    --size: 20px;
   }
   #content{
     padding: 0 10%;
+    font-size: 36px;
+    line-height: 1.2;
   }
 
   .kana{
@@ -518,22 +523,32 @@ ABOUT INFO TABLE AREA
     width: 80px;
   }
 
+
   .table .row {
     .text{
       flex: 1;
       padding-right: 0;
+      // font-size: 18px;
     }
     .name{
-      font-size: .9rem;
       order: 6;
       padding-left: 30px;
       margin-bottom: 12px;
+      margin-top: -2px;
+      font-size: 0.65rem;
     }
     .range{
       padding-left: 30px;
     }
     .star, .audio{
       width: 15px;
+    }
+  }
+
+  .texts{
+    --size: 0.8rem;
+    p{
+      text-indent: 2em;
     }
   }
 

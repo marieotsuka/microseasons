@@ -24,6 +24,7 @@ BASIC VARIABLES & TYPOGRAPHY
   --pad: 1.5rem;
   --button-width: 68px;
   --nav-height: 70px;
+  font-size: var(--size);
 }
 
 * {
@@ -99,7 +100,7 @@ footer .jp {
 
 main {
   position: fixed;
-  top: 78px;
+  top: var(--nav-height);
   display: flex;
   align-items: center;
   height: calc(100vh - ( 2 * var(--nav-height) ) );
@@ -333,7 +334,7 @@ ABOUT INFO TABLE AREA
 .table .row .name {
   flex: 1;
   font-family: "Cinema Letter";
-  font-size: 1rem;
+  font-size: 0.8rem;
   top: 3px;
   position: relative;
   overflow: hidden;
@@ -360,7 +361,7 @@ ABOUT INFO TABLE AREA
   margin-top: var(--pad);
   border-top: 1px solid white;
   padding-top: var(--pad);
-  --size: 18px;
+  --size: 0.9rem;
 }
 .texts h2 {
   margin: var(--pad) 0;
@@ -457,10 +458,13 @@ ABOUT INFO TABLE AREA
   :root {
     --pad: 1rem;
     --nav-height: 50px;
+    --size: 20px;
   }
 
   #content {
     padding: 0 10%;
+    font-size: 36px;
+    line-height: 1.2;
   }
 
   .kana {
@@ -480,16 +484,24 @@ ABOUT INFO TABLE AREA
     padding-right: 0;
   }
   .table .row .name {
-    font-size: 0.9rem;
     order: 6;
     padding-left: 30px;
     margin-bottom: 12px;
+    margin-top: -2px;
+    font-size: 0.65rem;
   }
   .table .row .range {
     padding-left: 30px;
   }
   .table .row .star, .table .row .audio {
     width: 15px;
+  }
+
+  .texts {
+    --size: 0.8rem;
+  }
+  .texts p {
+    text-indent: 2em;
   }
 
   .aboutbutton:hover::before {

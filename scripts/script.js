@@ -164,7 +164,8 @@ async function displayPoem(season){
   let daysleft_text = formatDates(season.start, season.end);
   if (first){
     //if this is the first poem, current season, add how many days are left
-    daysleft_text += `<span class="daysleft"> … ${daysleft}</span>`;   
+    daysleft_text += `<span class="daysleft"> … ${daysleft}</span>`;
+    first = false; //turn off first flag
   }
 
   let text_updates = [
@@ -184,6 +185,7 @@ async function displayPoem(season){
     t.container.innerHTML = t.text;
   });
 
+
   //typeout poem for specified language
   await typeWriter(season[lang_key], poem);
 }
@@ -196,11 +198,10 @@ async function displayTexts(season) {
   //after poem is typed up, show peripheral elements
   for (let i = 0; i < text_contents.length; i++) {
      let element = text_contents[i];
-     await waitForMs(200); //delay between showing each element
+     await waitForMs(150); //delay between showing each element
      element.style.visibility = 'visible';
      element.style.opacity = '1';
-   }
-  first = false; //turn off first flag
+  }
 }
 
 async function typeWriter(string, element, delay = 100) {
