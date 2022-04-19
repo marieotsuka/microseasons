@@ -15,3 +15,4 @@ The site relies on the following libraries:
 - [Day.js](https://day.js.org/) for date management
 - [Howler.js](https://howlerjs.com/) for audio managemenet
 
+## About
