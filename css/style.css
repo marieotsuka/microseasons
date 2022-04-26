@@ -21,6 +21,7 @@ BASIC VARIABLES & TYPOGRAPHY
   --ss09: 0;
   --grey: rgb(80,80,80);
   --size: 22px;
+  --small: 16px;
   --pad: 1.5rem;
   --button-width: 68px;
   --nav-height: 70px;
@@ -80,7 +81,7 @@ header, footer {
   justify-content: space-between;
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-size: 16px;
+  font-size: var(--small);
   --wdth: 125;
   --slnt: 0;
 }
@@ -126,6 +127,8 @@ section {
 #splash .intro {
   max-width: 700px;
   padding: var(--pad);
+  font-size: var(--small);
+  --wdth: 115;
 }
 #splash h1 {
   font-size: 55px;
@@ -208,7 +211,7 @@ section {
 }
 
 .button {
-  font-size: 16px;
+  font-size: var(--small);
   display: block;
   width: var(--button-width);
   text-align: center;
@@ -317,14 +320,14 @@ ABOUT INFO TABLE AREA
   padding-top: var(--pad);
 }
 .table .row {
-  margin-bottom: 10px;
+  margin-bottom: 2px;
   display: flex;
   flex-wrap: wrap;
 }
 .table .row .text {
   flex: none;
   overflow: hidden;
-  width: 70%;
+  flex: 1;
   --slnt: 8;
   position: relative;
   padding-right: 1em;
@@ -332,9 +335,9 @@ ABOUT INFO TABLE AREA
   text-overflow: ellipsis;
 }
 .table .row .name {
-  flex: 1;
+  width: 15%;
   font-family: "Cinema Letter";
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   top: 3px;
   position: relative;
   overflow: hidden;
@@ -342,13 +345,14 @@ ABOUT INFO TABLE AREA
   text-overflow: ellipsis;
 }
 .table .row .range {
+  width: 290px;
   text-transform: uppercase;
   --wdth: 125;
   font-size: 0.7em;
   letter-spacing: 0.1em;
   flex: none;
-  width: 100%;
-  padding-left: 61px;
+  position: relative;
+  top: 5px;
 }
 .table .row:hover {
   cursor: pointer;
@@ -429,7 +433,7 @@ ABOUT INFO TABLE AREA
   border: 0;
   font-family: "Pentameter VF";
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: var(--small);
   cursor: pointer;
   position: relative;
   top: 2px;

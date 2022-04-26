@@ -66,9 +66,10 @@ function getPoem( ){
           rows[i].style.setProperty('--wght', season.weight);
           rows[i].innerHTML=`<div class="cell star">*</div>
               <div class="cell audio">♪</div>
-              <div class="cell text">${season['English']}</div>              
-              <div class="cell name jp" lang="jp">${season['name-jp']} ${season['furigana']}</div>
-              <div class="cell range">${formatDates(season.start, season.end)}</div>`;
+              <div class="cell text">${season['English']}</div> 
+              <div class="cell range">${formatDates(season.start, season.end)}</div>             
+              <div class="cell name jp" lang="jp" title="${season['furigana']}">${season['name-jp']}</div>
+              `;
           rows[i].addEventListener('click', function(){
             // clicking on each row plays that poem
             // console.log(i);            
