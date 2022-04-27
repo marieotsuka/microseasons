@@ -235,15 +235,16 @@ section{
   font-size: var(--small);
   display: block;
   width: var(--button-width);
+  height: 20px; 
   text-align: center;
   position: relative;
   &::before{
-    position: absolute;
+    // position: absolute;
     left: 0;
     content: "[ ";
   }
   &::after{
-    position: absolute;
+    // position: absolute;
     right: 0;
     content: " ]";
   }
@@ -417,10 +418,10 @@ ABOUT INFO TABLE AREA
     &:hover{
       cursor: pointer;
       .button::before{
-        content: "{ "
+        content: "{"
       }
       .button::after{
-        content: " }"
+        content: "}"
       }
     }
   }
@@ -477,24 +478,33 @@ ABOUT INFO TABLE AREA
 
 // language selection dropdown
 // use native html select element
-#langSelection{
+#langbutton{
+  text-transform: uppercase;
+  width: 82px;
+}
+
+#langselection{
+  display: block;
   -moz-appearance: none;
   -webkit-appearance: none;
+
   background: black;
   color: white;
   border: 0;
   font-family: 'Pentameter VF';
-  text-transform: uppercase;
   font-size: var(--small);
   cursor: pointer;
-
-  position: relative;
-  top: 2px;
-  height: 19px;
+  position: absolute;
+  bottom: 13px;
+  padding: 5px;
 
   &:focus{
     outline: none;
   }
+  &.hidden{
+    display: none;
+  }
+
 }
 
 [lang=sr]{
@@ -522,7 +532,7 @@ ABOUT INFO TABLE AREA
     line-height: 1.2;
   }
 
-  .kana{
+  .kana{      
     display: none;
   }
   .daysleft{
@@ -547,10 +557,14 @@ ABOUT INFO TABLE AREA
       font-size: 0.65rem;
     }
     .range{
-      padding-left: 30px;
+      padding-left: 10px;
+      width: auto;
     }
     .star, .audio{
       width: 15px;
+    }
+    &:hover .audio{
+      visibility: hidden;
     }
   }
 

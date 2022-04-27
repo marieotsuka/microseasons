@@ -9,7 +9,6 @@
   <script src="scripts/dayjs.min.js"></script>
   <script src="scripts/isBetween.min.js"></script>
   <script src="scripts/howler.min.js"></script>
-
 </head>
 <body data-mode="intro">
     <section id="splash" class="overlay">
@@ -38,10 +37,11 @@
         </main>
 
         <footer>
-            <div class="button" id="languages">
-                <select class="lang" name="language" id="langSelection" title="Language selection">                
-                </select>
+            <div class="button" id="langbutton">EN
             </div>
+            <select class="hidden" name="language" id="langselection" title="Language selection">               
+            </select>
+
             <div class="seki jp aboutbutton" id="weather" title="Info"></div>
             <div class="button" id="mutebutton" data-mute="false" title="Mute / Unmute"> ♪</div>
         </footer>

@@ -214,16 +214,15 @@ section {
   font-size: var(--small);
   display: block;
   width: var(--button-width);
+  height: 20px;
   text-align: center;
   position: relative;
 }
 .button::before {
-  position: absolute;
   left: 0;
   content: "[ ";
 }
 .button::after {
-  position: absolute;
   right: 0;
   content: " ]";
 }
@@ -382,10 +381,10 @@ ABOUT INFO TABLE AREA
   cursor: pointer;
 }
 .texts h2:hover .button::before {
-  content: "{ ";
+  content: "{";
 }
 .texts h2:hover .button::after {
-  content: " }";
+  content: "}";
 }
 .texts .button {
   display: inline;
@@ -425,22 +424,30 @@ ABOUT INFO TABLE AREA
 /*-----------------------------
  LANGUAGE MENU
 -----------------------------*/
-#langSelection {
+#langbutton {
+  text-transform: uppercase;
+  width: 82px;
+}
+
+#langselection {
+  display: block;
   -moz-appearance: none;
   -webkit-appearance: none;
   background: black;
   color: white;
   border: 0;
   font-family: "Pentameter VF";
-  text-transform: uppercase;
   font-size: var(--small);
   cursor: pointer;
-  position: relative;
-  top: 2px;
-  height: 19px;
+  position: absolute;
+  bottom: 13px;
+  padding: 5px;
 }
-#langSelection:focus {
+#langselection:focus {
   outline: none;
+}
+#langselection.hidden {
+  display: none;
 }
 
 [lang=sr] {
@@ -495,10 +502,14 @@ ABOUT INFO TABLE AREA
     font-size: 0.65rem;
   }
   .table .row .range {
-    padding-left: 30px;
+    padding-left: 10px;
+    width: auto;
   }
   .table .row .star, .table .row .audio {
     width: 15px;
+  }
+  .table .row:hover .audio {
+    visibility: hidden;
   }
 
   .texts {

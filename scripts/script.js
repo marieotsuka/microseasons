@@ -5,7 +5,7 @@ dayjs.extend(window.dayjs_plugin_isBetween);
 
 /* DOM elements */
 // Cache references to DOM elements.
-const elms = ['splash', 'stage', 'content', 'poem', 'home', 'dateinfo', 'langbutton', 'ko', 'weather', 'prev', 'next', 'playbutton', 'mutebutton', 'languages', 'langSelection', 'infotable', 'info'];
+const elms = ['splash', 'stage', 'content', 'poem', 'home', 'dateinfo', 'langbutton', 'ko', 'weather', 'prev', 'next', 'playbutton', 'mutebutton', 'langselection', 'infotable', 'info'];
 elms.forEach(function(elm) {
   window[elm] = document.getElementById(elm);
 });
@@ -195,7 +195,7 @@ async function displayTexts(season) {
 // for the first poem, show the navigational
 // surrounding elements afterwards
   await displayPoem(season);
-  let text_contents = [home, dateinfo, playbutton, mutebutton, weather, languages, next, prev];
+  let text_contents = [home, dateinfo, playbutton, mutebutton, weather, langbutton, next, prev];
   //after poem is typed up, show peripheral elements
   for (let i = 0; i < text_contents.length; i++) {
      let element = text_contents[i];
@@ -419,25 +419,34 @@ function setupLanguages(){
       langlist = langJson;
       Object.keys(langJson).forEach(function(key){
         //create lang option and assign event handler
+        let language = langJson[key];
         let langElement = document.createElement("option");
         langElement.className = 'language';
         langElement.setAttribute('value', key);
-        langElement.setAttribute('title', langJson[key]);
-        langElement.innerText = key;
-        langSelection.appendChild(langElement);
+        langElement.setAttribute('title', language);
+        langElement.innerText = language;
+        langselection.appendChild(langElement);
       });
 
-      langSelection.addEventListener('change', function(e){
+      langselection.addEventListener('change', function(e){
         let selectedLang = e.target.value;
+        langselection.classList.add('hidden');
+        langbutton.classList.remove('hidden');
+        langbutton.innerText = selectedLang;
+
         content.setAttribute('lang', selectedLang);
 
         active_lang = selectedLang;
-        body.setAttribute('data-mode', 'stage');        
+        // body.setAttribute('data-mode', 'stage');        
         Howler.stop();
         displayPoem(data[season_index]); //display poem in selected language
         player.play(season_index); //replay audio
       });
     });
+  langbutton.addEventListener('click', function(e){
+    langselection.classList.remove('hidden');
+    langbutton.classList.add('hidden');
+  });
 }
 setupLanguages();
 
