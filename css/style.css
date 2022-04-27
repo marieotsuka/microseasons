@@ -371,20 +371,14 @@ ABOUT INFO TABLE AREA
   text-transform: uppercase;
   --wght: 400;
 }
-.texts h2 .button::before {
-  position: static;
-}
-.texts h2 .button::after {
-  position: static;
-}
 .texts h2:hover {
   cursor: pointer;
 }
 .texts h2:hover .button::before {
-  content: "{";
+  content: "{ ";
 }
 .texts h2:hover .button::after {
-  content: "}";
+  content: " }";
 }
 .texts .button {
   display: inline;

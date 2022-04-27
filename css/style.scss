@@ -409,19 +409,19 @@ ABOUT INFO TABLE AREA
     margin: var(--pad) 0;
     text-transform: uppercase;
     --wght: 400;
-    .button::before{
-      position: static;
-    }
-    .button::after{
-      position: static;
-    }
+    // .button::before{
+    //   position: static;
+    // }
+    // .button::after{
+    //   position: static;
+    // }
     &:hover{
       cursor: pointer;
       .button::before{
-        content: "{"
+        content: "{ "
       }
       .button::after{
-        content: "}"
+        content: " }"
       }
     }
   }
