@@ -294,7 +294,6 @@ ABOUT INFO TABLE AREA
 
 .table, .texts {
   margin: var(--pad);
-  margin-bottom: calc( 3*var(--pad));
 }
 
 .star, .audio {
@@ -363,11 +362,10 @@ ABOUT INFO TABLE AREA
 .texts {
   margin-top: var(--pad);
   border-top: 1px solid white;
-  padding-top: var(--pad);
   --size: 0.9rem;
 }
 .texts h2 {
-  margin: var(--pad) 0;
+  margin-top: var(--pad);
   text-transform: uppercase;
   --wght: 400;
 }
