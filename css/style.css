@@ -22,9 +22,9 @@ BASIC VARIABLES & TYPOGRAPHY
   --grey: rgb(80,80,80);
   --size: 22px;
   --small: 16px;
-  --pad: 1.5rem;
+  --pad: 1rem;
   --button-width: 68px;
-  --nav-height: 70px;
+  --nav-height: 58px;
   font-size: var(--size);
 }
 
@@ -75,8 +75,8 @@ BASIC SECTION STRUCTURES
 header, footer {
   height: var(--nav-height);
   width: 100%;
-  position: fixed;
   padding: var(--pad);
+  position: fixed;
   display: flex;
   justify-content: space-between;
   text-transform: uppercase;
@@ -92,6 +92,7 @@ header {
 
 footer {
   bottom: 0;
+  padding-top: calc( 0.8*var(--pad));
 }
 
 footer .jp {
@@ -125,7 +126,7 @@ section {
   cursor: pointer;
 }
 #splash .intro {
-  max-width: 700px;
+  max-width: 550px;
   padding: var(--pad);
   font-size: var(--small);
   --wdth: 115;
@@ -219,10 +220,12 @@ section {
   position: relative;
 }
 .button::before {
+  position: relative;
   left: 0;
   content: "[ ";
 }
 .button::after {
+  position: relative;
   right: 0;
   content: " ]";
 }
