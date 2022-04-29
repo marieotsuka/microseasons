@@ -232,12 +232,6 @@ section {
 .button:hover {
   cursor: pointer;
 }
-.button:hover::before {
-  content: "{ ";
-}
-.button:hover::after {
-  content: " }";
-}
 
 .aboutbutton {
   text-align: center;
@@ -246,10 +240,10 @@ section {
   cursor: pointer;
 }
 .aboutbutton:hover::before {
-  content: "{ ";
+  content: "[ ";
 }
 .aboutbutton:hover::after {
-  content: " }";
+  content: " ]";
 }
 
 #weather:hover::before {
@@ -421,11 +415,11 @@ ABOUT INFO TABLE AREA
 -----------------------------*/
 #langbutton {
   text-transform: uppercase;
-  width: 82px;
+  width: auto;
 }
 
 #langselection {
-  display: block;
+  display: inline;
   -moz-appearance: none;
   -webkit-appearance: none;
   background: black;
@@ -434,9 +428,6 @@ ABOUT INFO TABLE AREA
   font-family: "Pentameter VF";
   font-size: var(--small);
   cursor: pointer;
-  position: absolute;
-  bottom: 13px;
-  padding: 5px;
 }
 #langselection:focus {
   outline: none;

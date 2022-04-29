@@ -430,9 +430,9 @@ function setupLanguages(){
 
       langselection.addEventListener('change', function(e){
         let selectedLang = e.target.value;
-        langselection.classList.add('hidden');
-        langbutton.classList.remove('hidden');
-        langbutton.innerText = selectedLang;
+        // langselection.classList.add('hidden');
+        // langbutton.classList.remove('hidden');
+        // langbutton.innerText = selectedLang;
 
         content.setAttribute('lang', selectedLang);
 
@@ -443,10 +443,10 @@ function setupLanguages(){
         player.play(season_index); //replay audio
       });
     });
-  langbutton.addEventListener('click', function(e){
-    langselection.classList.remove('hidden');
-    langbutton.classList.add('hidden');
-  });
+  // langbutton.addEventListener('click', function(e){
+  //   langselection.classList.remove('hidden');
+  //   langbutton.classList.add('hidden');
+  // });
 }
 setupLanguages();
 

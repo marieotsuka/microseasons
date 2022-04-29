@@ -251,12 +251,6 @@ section{
   }
   &:hover{
     cursor: pointer;
-    &::before{
-      content: "{ ";
-    }
-    &::after{
-      content: " }";
-    }
   }
 }
 
@@ -265,10 +259,10 @@ section{
   &:hover{
     cursor: pointer;
     &::before{
-      content: "{ "
+      content: "[ "
     }
     &::after{
-      content: " }"
+      content: " ]"
     }
   }
 }
@@ -474,11 +468,11 @@ ABOUT INFO TABLE AREA
 // use native html select element
 #langbutton{
   text-transform: uppercase;
-  width: 82px;
+  width: auto;
 }
 
 #langselection{
-  display: block;
+  display: inline;
   -moz-appearance: none;
   -webkit-appearance: none;
 
@@ -488,9 +482,9 @@ ABOUT INFO TABLE AREA
   font-family: 'Pentameter VF';
   font-size: var(--small);
   cursor: pointer;
-  position: absolute;
-  bottom: 13px;
-  padding: 5px;
+  // position: absolute;
+  // bottom: 13px;
+  // padding: 5px;
 
   &:focus{
     outline: none;
