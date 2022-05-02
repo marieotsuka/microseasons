@@ -1,5 +1,5 @@
 @font-face{
-  font-family: 'Pentameter VF';
+  font-family: 'PentameterVF';
   src: url('../fonts/Pentameter-VF.woff2') format('woff2-variations');
   font-style: normal;
 }
@@ -48,7 +48,7 @@ h1,h2,h3,h4,h5,h6{
 body, h2{
 	font-size: var(--size);
   line-height: 1.4;
-  font-family: "Pentameter VF";
+  font-family: "PentameterVF";
   font-weight: normal;
   background: black;
   color: white;
@@ -312,8 +312,8 @@ ABOUT INFO TABLE AREA
 
 #info{
   .back{
-    --wdth: 125;
     margin: var(--pad);
+    text-align: left;
   }
 }
 .container{
@@ -327,15 +327,31 @@ ABOUT INFO TABLE AREA
 //depending on indicator
 .star, .audio{
   visibility: hidden;
+}
+.star{
+  line-height: 1.0;
+  position: relative;
+  top: 7px;
   width: 30px;
   text-align: center;
 }
 .current .star{
-  line-height: 1.5;
   visibility: visible;
+}
+.audio{
+  width: calc( 1.2 * var(--button-width) );
+  text-align: left;
+  position: relative;
+  top: 5px;
 }
 .playing .audio{
   visibility: visible;
+  &::before{
+    content: "\00a0\00a0";
+  }
+  &::after{
+    content: "\00a0\00a0";
+  }
 }
 
 // table styling for
@@ -343,8 +359,9 @@ ABOUT INFO TABLE AREA
 .table {
   --wght: 350;
   margin-top: var(--pad);
-  border-top: 1px solid white;
+  // border-top: 1px solid white;
   padding-top: var(--pad);
+  padding-bottom: var(--pad);
 
   .row{
     margin-bottom: 2px;
@@ -369,6 +386,7 @@ ABOUT INFO TABLE AREA
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+      text-align: right;
     }
     .range{
       width: 290px;
@@ -394,12 +412,13 @@ ABOUT INFO TABLE AREA
 // about texts
 .texts{
   margin-top: var(--pad);
-  border-top: 1px solid white;
+  // border-top: 1px solid white;
   --size: 0.9rem;
 
   //accordion headings
   h2{
     margin-top: var(--pad);
+    margin-bottom: 20px;
     text-transform: uppercase;
     --wght: 400;
 
@@ -414,7 +433,8 @@ ABOUT INFO TABLE AREA
     }
   }
   .button{
-    display: inline;
+    width: auto;
+    text-align: left;
     --wght: 400;
     font-size: var(--size);
   }
@@ -479,7 +499,7 @@ ABOUT INFO TABLE AREA
   background: black;
   color: white;
   border: 0;
-  font-family: 'Pentameter VF';
+  font-family: 'PentameterVF';
   font-size: var(--small);
   cursor: pointer;
   // position: absolute;
@@ -505,6 +525,9 @@ ABOUT INFO TABLE AREA
   --ss09: 1;
 }
 
+.favitext{
+  font-family: 'PentameterVF';
+}
 /*-----------------------------
  MOBILE
 -----------------------------*/

@@ -64,9 +64,10 @@ function getPoem( ){
           rows[i].id = 'season'+i;
           rows[i].classList.add("row");
           rows[i].style.setProperty('--wght', season.weight);
-          rows[i].innerHTML=`<div class="cell star">*</div>
-              <div class="cell audio">♪</div>
+          rows[i].innerHTML=`
+              <div class="cell audio button">♪</div>
               <div class="cell text">${season['English']}</div> 
+              <div class="cell star">*</div>
               <div class="cell range">${formatDates(season.start, season.end)}</div>             
               <div class="cell name jp" lang="jp" title="${season['furigana']}">${season['name-jp']}</div>
               `;
@@ -199,7 +200,7 @@ async function displayTexts(season) {
   //after poem is typed up, show peripheral elements
   for (let i = 0; i < text_contents.length; i++) {
      let element = text_contents[i];
-     await waitForMs(150); //delay between showing each element
+     await waitForMs(100); //delay between showing each element
      element.style.visibility = 'visible';
      element.style.opacity = '1';
   }
@@ -430,10 +431,6 @@ function setupLanguages(){
 
       langselection.addEventListener('change', function(e){
         let selectedLang = e.target.value;
-        // langselection.classList.add('hidden');
-        // langbutton.classList.remove('hidden');
-        // langbutton.innerText = selectedLang;
-
         content.setAttribute('lang', selectedLang);
 
         active_lang = selectedLang;
@@ -443,10 +440,6 @@ function setupLanguages(){
         player.play(season_index); //replay audio
       });
     });
-  // langbutton.addEventListener('click', function(e){
-  //   langselection.classList.remove('hidden');
-  //   langbutton.classList.add('hidden');
-  // });
 }
 setupLanguages();
 
@@ -511,3 +504,22 @@ infobuttons.forEach(function(el){
     }
   });
 });
+
+/*-----------------------------------------
+Dynamic Favicons
+-----------------------------------------*/
+
+const faviconHref = star =>
+  `data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2280%22 class=%22favitext%22>*</text></svg>`
+
+const changeFavicon = star => {
+  // Ensure we have access to the document, i.e. we are in the browser.
+  if (typeof window === 'undefined') return
+  const link =
+    window.document.querySelector("link[rel*='icon']") ||
+    window.document.createElement("link")
+  link.type = "image/svg+xml"
+  link.rel = "shortcut icon"
+  link.href = faviconHref(star)
+  window.document.getElementsByTagName("head")[0].appendChild(link)
+}
