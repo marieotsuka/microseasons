@@ -108,7 +108,7 @@ header{
 }
 footer{
   bottom: 0;
-  padding-top: calc( 0.8*var(--pad));
+  padding-top: calc( 0.6*var(--pad));
 }
 
 footer .jp{
@@ -282,9 +282,11 @@ section{
 //vertically center symbols with brackets
 #weather:hover{
   &::before{
+    position: relative;
     top: -2px;
   }
   &::after{
+    position: relative;
     top: -2px;
   }
 }
@@ -453,7 +455,7 @@ ABOUT INFO TABLE AREA
 
   p{
     font-size: var(--size);
-    --slnt: 8;
+    --slnt: -8;
     max-width: 38em;
     font-feature-settings: "onum" 1;
     text-indent: 3em;
