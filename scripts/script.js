@@ -5,7 +5,7 @@ dayjs.extend(window.dayjs_plugin_isBetween);
 
 /* DOM elements */
 // Cache references to DOM elements.
-const elms = ['splash', 'stage', 'content', 'poem', 'home', 'dateinfo', 'langbutton', 'ko', 'weather', 'prev', 'next', 'playbutton', 'mutebutton', 'langselection', 'infotable', 'info'];
+const elms = ['splash', 'star', 'stage', 'content', 'poem', 'home', 'dateinfo', 'langbutton', 'ko', 'weather', 'prev', 'next', 'playbutton', 'mutebutton', 'langselection', 'infotable', 'info'];
 elms.forEach(function(elm) {
   window[elm] = document.getElementById(elm);
 });
@@ -78,8 +78,10 @@ function getPoem( ){
               let days = toplus.diff(today, 'day');
               setDaysLeft(days);
 
-              setupSocial(season_index);
+              //update season-specific elements
+              star.style.setProperty('--wght', season.weight);              
               setupFavicon(season_index);
+              setupSocial(season_index);
             }
           }
       }

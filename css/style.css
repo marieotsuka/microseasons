@@ -143,9 +143,9 @@ section {
   font-size: var(--small);
   --wdth: 115;
 }
-#splash h1 {
+#splash #star {
   font-size: 55px;
-  --wght: 200;
+  --wdth: 125;
 }
 
 /*-----------------------
