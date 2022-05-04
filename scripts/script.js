@@ -61,29 +61,7 @@ function getPoem( ){
           let season = json[i];
 
           //setup info table on about section
-          rows[i] = document.createElement('div');
-          rows[i].id = 'season'+i;
-          rows[i].classList.add("row");
-          rows[i].style.setProperty('--wght', season.weight);
-          rows[i].innerHTML=`
-              <div class="cell audio button">♪</div>
-              <div class="cell text">${season['English']}</div> 
-              <div class="cell star">*</div>
-              <div class="cell range">${formatDates(season.start, season.end)}</div>             
-              <div class="cell name jp" lang="jp" title="${season['furigana']}">${season['name-jp']}</div>
-              `;
-          rows[i].addEventListener('click', function(){
-            // clicking on each row plays that poem
-            // console.log(i);            
-            clearStage();  
-            body.setAttribute('data-mode', 'stage');   
-            Howler.stop();
-            setTimeout(function(){
-              season_index = i; 
-              displayPoem(data[i]); //display poem in selected language
-              player.play(i); //replay audio
-            }, 1000);            
-          });
+          setupTable(season, i);
         
           if(Object.keys(this_season).length === 0){
             //only evaluate if current season hasn’t been determined yet
@@ -91,7 +69,6 @@ function getPoem( ){
             let to_date = dayjs(year+'/'+season.end);
             let toplus = to_date.add(1, 'days');
 
-            // console.log(from_date, to_date, toplus);
             //determine current season by checking if today’s date falls
             //between the start and end date
             if( today.isBetween(from_date, toplus, null, '[)') ){
@@ -100,8 +77,9 @@ function getPoem( ){
               this_season = season;
               let days = toplus.diff(today, 'day');
               setDaysLeft(days);
+
               setupSocial(season_index);
-            // break;
+              setupFavicon(season_index);
             }
           }
       }
@@ -123,7 +101,35 @@ function getPoem( ){
 //get first season poem
 getPoem();
 
-
+/*-----------------------------------------
+  Table Display and Functionality
+-----------------------------------------*/
+// populates info table in the #info section
+function setupTable(season, i){
+  rows[i] = document.createElement('div');
+  rows[i].id = 'season'+i;
+  rows[i].classList.add("row");
+  rows[i].style.setProperty('--wght', season.weight);
+  rows[i].innerHTML=`
+      <div class="cell audio button">♪</div>
+      <div class="cell text">${season['English']}</div> 
+      <div class="cell star">*</div>
+      <div class="cell range">${formatDates(season.start, season.end)}</div>             
+      <div class="cell name jp" lang="jp" title="${season['furigana']}">${season['name-jp']}</div>
+      `;
+  rows[i].addEventListener('click', function(){
+    // clicking on each row plays that poem
+    // console.log(i);            
+    clearStage();  
+    body.setAttribute('data-mode', 'stage');   
+    Howler.stop();
+    setTimeout(function(){
+      season_index = i; 
+      displayPoem(data[i]); //display poem in selected language
+      player.play(i); //replay audio
+    }, 1000);            
+  });
+}
 /*-----------------------------------------
   Poem Display
 -----------------------------------------*/
@@ -507,20 +513,23 @@ infobuttons.forEach(function(el){
 /*-----------------------------------------
 Dynamic Favicons
 -----------------------------------------*/
+//style for darkmode
+const prefersDarkMode = window.matchMedia("(prefers-color-scheme:dark)").matches;
 
-const faviconHref = star =>
-  `data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2280%22 class=%22favitext%22>*</text></svg>`
-
-const changeFavicon = star => {
-  // Ensure we have access to the document, i.e. we are in the browser.
-  if (typeof window === 'undefined') return
-  const link =
-    window.document.querySelector("link[rel*='icon']") ||
-    window.document.createElement("link")
-  link.type = "image/svg+xml"
-  link.rel = "shortcut icon"
-  link.href = faviconHref(star)
-  window.document.getElementsByTagName("head")[0].appendChild(link)
+function setupFavicon(f){
+  let no = 0;
+  if (f<37 || f>=71){
+    no = f;
+  }else if (f<71){
+    no = 72-f
+  }
+  let color= "";
+  //use white icons for dark mode
+  if(prefersDarkMode){
+    color="white/"
+  }
+  let faviurl = '/img/icons/'+ color + 'star_' + no + '.svg';
+  document.querySelector("link[rel='icon']").href = faviurl;
 }
 
 /*-----------------------------------------
@@ -542,4 +551,5 @@ function setupSocial(n){
   meta.content = imagesrc;  
   document.getElementsByTagName('head')[0].appendChild(meta);
 }
+
 
