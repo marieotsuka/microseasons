@@ -485,7 +485,7 @@ ABOUT INFO TABLE AREA
 /*-----------------------------
  MOBILE
 -----------------------------*/
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1100px) {
   .table .row .range {
     width: 100px;
   }
@@ -532,9 +532,6 @@ ABOUT INFO TABLE AREA
     width: 80px;
   }
 
-  .table .row .audio {
-    display: none;
-  }
   .table .row .text {
     width: 100%;
     padding-right: 0;
@@ -542,18 +539,15 @@ ABOUT INFO TABLE AREA
     font-size: 18px;
   }
   .table .row .name {
-    order: 6;
-    padding-left: 30px;
-    margin: 3px 0 12px auto;
-    font-size: 0.65rem;
-    width: auto;
+    display: none;
   }
   .table .row .range {
-    padding-left: 10px;
+    padding-left: 0;
     width: auto;
+    top: 0;
   }
   .table .row .star, .table .row .audio {
-    width: 15px;
+    display: none;
   }
   .table .row:hover .audio {
     visibility: hidden;

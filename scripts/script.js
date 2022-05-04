@@ -60,6 +60,7 @@ function getPoem( ){
 
           let season = json[i];
 
+          //setup info table on about section
           rows[i] = document.createElement('div');
           rows[i].id = 'season'+i;
           rows[i].classList.add("row");
@@ -99,6 +100,7 @@ function getPoem( ){
               this_season = season;
               let days = toplus.diff(today, 'day');
               setDaysLeft(days);
+              setupSocial(season_index);
             // break;
             }
           }
@@ -520,3 +522,24 @@ const changeFavicon = star => {
   link.href = faviconHref(star)
   window.document.getElementsByTagName("head")[0].appendChild(link)
 }
+
+/*-----------------------------------------
+Setup Social Share Image
+-----------------------------------------*/
+// dynamically adds a meta tag for a social share imagee
+// based on the current season
+function setupSocial(n){
+  let num = '01';
+  if (n<10){
+    num = 0+ n+1
+  }else{
+    num = n+1;
+  }
+  let imagesrc = '/img/penta-social-images/penta'+num+'.png';
+
+  let meta = document.createElement('meta'); 
+  meta.setAttribute('property', 'og:image');  
+  meta.content = imagesrc;  
+  document.getElementsByTagName('head')[0].appendChild(meta);
+}
+
