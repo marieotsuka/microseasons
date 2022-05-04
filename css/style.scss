@@ -28,7 +28,7 @@ BASIC VARIABLES & TYPOGRAPHY
   --small: 16px;
 
   --pad: 1rem;
-  --button-width: 68px;
+  --button-width: 60px;
 
   --nav-height: 58px;
 
@@ -67,7 +67,6 @@ body, h2{
 
 em{
   font-style: normal;
-  --slnt: 12;
 }
 
 a{
@@ -96,6 +95,16 @@ header, footer{
 
 header{
   top: 0;
+}
+//show fully spelled-out dates by default
+.shortdate{
+  display: none;
+}
+#home, #langbutton{
+  text-align: left;
+}
+#playbutton, #mutebutton{
+  text-align: right;
 }
 footer{
   bottom: 0;
@@ -206,7 +215,7 @@ section{
   padding: 0 20%;
   font-size: 40px;
   --ss01: 1;
-  --slnt: 10;
+  --slnt: -10;
   font-feature-settings: "ss01" var(--ss01), "ss03" var(--ss03), "ss04" var(--ss04), "ss05" var(--ss05), "ss06" var(--ss06), "ss07" var(--ss07), "ss08" var(--ss08), "ss09" var(--ss09);
   text-align: center;
   letter-spacing: -0.01em;
@@ -234,6 +243,9 @@ section{
 //hover effects
 .button{
   font-size: var(--small);
+  letter-spacing: 0;
+  white-space: nowrap;
+  --wdth: 100;
   display: block;
   width: var(--button-width);
   height: 20px; 
@@ -371,7 +383,7 @@ ABOUT INFO TABLE AREA
       flex: none;
       overflow: hidden;
       flex: 1;
-      --slnt: 8;
+      --slnt: -8;
       position: relative;
       padding-right: 1em;
       white-space: nowrap;
@@ -486,10 +498,6 @@ ABOUT INFO TABLE AREA
 
 // language selection dropdown
 // use native html select element
-#langbutton{
-  text-transform: uppercase;
-  width: auto;
-}
 
 #langselection{
   display: inline;
@@ -531,6 +539,22 @@ ABOUT INFO TABLE AREA
 /*-----------------------------
  MOBILE
 -----------------------------*/
+@media screen and (max-width: 900px){
+  .table .row {
+    .range{
+      width: 100px; 
+      .longdate{
+        display: none;
+      }
+      .shortdate{
+        display: inline;
+      }
+    }
+    .name{
+      width: 12%;
+    }
+  }  
+}
 @media screen and (max-width: 600px){
   :root{
     --pad: 1rem;
@@ -546,6 +570,12 @@ ABOUT INFO TABLE AREA
   .kana{      
     display: none;
   }
+  .shortdate{
+    display: inline;
+  }
+  .longdate{
+    display: none;
+  }
   .daysleft{
     display: block;
   }
@@ -555,17 +585,21 @@ ABOUT INFO TABLE AREA
 
 
   .table .row {
+    .audio{
+      display: none;
+    }
     .text{
-      flex: 1;
+      width: 100%;
       padding-right: 0;
-      // font-size: 18px;
+      flex: none;
+      font-size: 18px;
     }
     .name{
       order: 6;
       padding-left: 30px;
-      margin-bottom: 12px;
-      margin-top: -2px;
+      margin: 3px 0  12px auto;
       font-size: 0.65rem;
+      width: auto;
     }
     .range{
       padding-left: 10px;

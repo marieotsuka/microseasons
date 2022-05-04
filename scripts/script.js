@@ -48,7 +48,7 @@ function getPoem( ){
     .then(response => response.json())
     .then(json => {
       data = json;
-      console.log(data);
+      // console.log(data);
       infotable.innerHTML = ""; //clear table from placeholder text
 
       for(let i = 0; i<json.length; i++){
@@ -131,11 +131,11 @@ function formatDates(start,end){
   let from_date = dayjs(year+'/'+start);
   let to_date = dayjs(year+'/'+end);
   if( to_date.month() != from_date.month() ){
-    to_date = to_date.format('MMMM D');
+    to_date = `<span class="longdate">${to_date.format('MMMM D')}</span><span class="shortdate">${to_date.format('M/D')}</span>`;
   }else{
     to_date = to_date.format('D');
   }
-  let date_text = `${from_date.format('MMMM D')}—${to_date}`;
+  let date_text = `<span class="longdate">${from_date.format('MMMM D')}</span><span class="shortdate">${from_date.format('M/D')}</span>—${to_date}`;
   return date_text;
 }
 
@@ -154,7 +154,7 @@ async function displayPoem(season){
 
   //clear timeouts and stage area
   clearStage();
-  console.log(season);
+  // console.log(season);
   //adjust font weight for all elements
   stage.style.setProperty('--wght', season['weight']);
 
@@ -289,11 +289,10 @@ Player.prototype = {
    * @param  {Number} index Index of the song in the playlist (leave empty to play the first or current).
    */
   play: function(index) {
-    console.log('play', index, all);
+    // console.log('play', index, all);
     
     let self = this;
     let sound;
-
     index = typeof index === 'number' ? index : self.index;
     let data = self.playlist[index];
 
@@ -338,8 +337,7 @@ Player.prototype = {
    */
   skip: function(direction) {
     var self = this;
-
-    console.log(self.index);
+    // console.log(self.index);
     // Get the next track based on the direction of the track.
     if (direction === 'prev') {
       index = self.index - 1;
@@ -425,7 +423,7 @@ function setupLanguages(){
         langElement.className = 'language';
         langElement.setAttribute('value', key);
         langElement.setAttribute('title', language);
-        langElement.innerText = language;
+        langElement.innerText = key.toUpperCase();
         langselection.appendChild(langElement);
       });
 
@@ -480,7 +478,6 @@ Info Table Toggles
 let aboutbuttons = document.querySelectorAll('.aboutbutton');
 aboutbuttons.forEach(function(el){
   el.addEventListener('click', function(){
-    console.log('info show ');
     document.querySelector('#info .container').scrollTo({
       top: 0
     });
