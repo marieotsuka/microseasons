@@ -546,7 +546,7 @@ function setupSocial(n){
   }else{
     num = n+1;
   }
-  let imagesrc = '/img/penta-social-images/penta'+num+'.png';
+  let imagesrc = 'https://pentad.world/img/penta-social-images/penta'+num+'.png';
 
   let meta = document.getElementById('social'); 
   meta.content = imagesrc;
