@@ -136,6 +136,7 @@ section{
 
 //intro splash page
 #splash{
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -164,7 +165,6 @@ section{
 //which section is displayed
 .overlay{
   overflow: hidden;
-  z-index: 50; //these overlay on top of the poem area
   opacity: 0;
   max-height: 0;
   transition: opacity 1s ease-in-out;
@@ -325,6 +325,7 @@ ABOUT INFO TABLE AREA
 -----------------------------*/
 
 #info{
+  z-index: 50;
   .back{
     margin: var(--pad);
     text-align: left;

@@ -6,7 +6,7 @@ dayjs.extend(window.dayjs_plugin_isBetween);
 /* DOM elements */
 // Cache references to DOM elements.
 const elms = ['splash', 'star', 'stage', 'content', 'poem', 'home', 'dateinfo', 'langbutton', 'ko', 'weather', 'prev', 'next', 'playbutton', 'mutebutton', 'langselection', 'infotable', 'info'];
-elms.forEach(function(elm) {
+elms.forEach(elm => {
   window[elm] = document.getElementById(elm);
 });
 
@@ -19,6 +19,7 @@ let this_season = {};
 let from = "";
 let to = "";
 let daysleft = "";
+let rows = []; //table rows
 
 /* audio tracks */
 let player;
@@ -38,7 +39,7 @@ let active_lang = 'en';
 /*-----------------------------------------
   Setup Season Poems
 -----------------------------------------*/
-let rows = [];
+
 function getPoem( ){
 // from a seasons.json data file
 // populates info table in the #info section
@@ -60,7 +61,7 @@ function getPoem( ){
 
           let season = json[i];
 
-          //setup info table on about section
+          //setup info table rows for each season
           setupTable(season, i);
         
           if(Object.keys(this_season).length === 0){
@@ -72,7 +73,6 @@ function getPoem( ){
             //determine current season by checking if today’s date falls
             //between the start and end date
             if( today.isBetween(from_date, toplus, null, '[)') ){
-              // console.log(season);
               season_index = i; // store index of current season
               this_season = season;
               let days = toplus.diff(today, 'day');
@@ -81,15 +81,10 @@ function getPoem( ){
               //update season-specific elements
               star.style.setProperty('--wght', season.weight);              
               setupFavicon(season_index);
-              setupSocial(season_index);
+              setupSplash(this_season)
             }
           }
       }
-
-      //append row elements
-      rows.forEach(function(el){
-        infotable.append(el);
-      });
 
       //initialize player
       player = new Player(tracklist, season_index);
@@ -102,6 +97,23 @@ function getPoem( ){
 
 //get first season poem
 getPoem();
+
+
+/*-----------------------------------------
+Splash page and initial setup
+-----------------------------------------*/
+
+// display initial poem after clicking splash page
+function setupSplash(current_season){
+  splash.addEventListener('click', function(e){
+    body.setAttribute('data-mode', 'stage');
+    setTimeout(function(){
+      displayTexts(current_season);
+      player.play();
+    }, 1000);
+  });
+}
+
 
 /*-----------------------------------------
   Table Display and Functionality
@@ -119,9 +131,10 @@ function setupTable(season, i){
       <div class="cell range">${formatDates(season.start, season.end)}</div>             
       <div class="cell name jp" lang="jp" title="${season['furigana']}">${season['name-jp']}</div>
       `;
+
+  //bind click event to each row
   rows[i].addEventListener('click', function(){
-    // clicking on each row plays that poem
-    // console.log(i);            
+    // clicking the row plays that poem          
     clearStage();  
     body.setAttribute('data-mode', 'stage');   
     Howler.stop();
@@ -131,6 +144,9 @@ function setupTable(season, i){
       player.play(i); //replay audio
     }, 1000);            
   });
+
+  //append to table
+  infotable.append(rows[i]);
 }
 /*-----------------------------------------
   Poem Display
@@ -161,10 +177,9 @@ function clearStage(){
 async function displayPoem(season){
 // given a season object
 // populates the HTML elements accordingly
-
   //clear timeouts and stage area
   clearStage();
-  // console.log(season);
+
   //adjust font weight for all elements
   stage.style.setProperty('--wght', season['weight']);
 
@@ -173,16 +188,15 @@ async function displayPoem(season){
   //get language name from language data
   let lang_key = langlist[active_lang];
 
-  let daysleft_text = formatDates(season.start, season.end);
+  let date_text = formatDates(season.start, season.end);
   if (first){
     //if this is the first poem, current season, add how many days are left
-    daysleft_text += `<span class="daysleft"> … ${daysleft}</span>`;
-    first = false; //turn off first flag
+    date_text += `<span class="daysleft"> … ${daysleft}</span>`;
   }
 
   let text_updates = [
     {
-      text: daysleft_text,
+      text: date_text,
       container: dateinfo
     },
     {
@@ -192,11 +206,10 @@ async function displayPoem(season){
   ]
 
   //reset and populate date and sekki info
-  text_updates.forEach(function(t){
+  text_updates.forEach(t => {
     t.container.innerHTML = "";
     t.container.innerHTML = t.text;
   });
-
 
   //typeout poem for specified language
   await typeWriter(season[lang_key], poem);
@@ -214,6 +227,7 @@ async function displayTexts(season) {
      element.style.visibility = 'visible';
      element.style.opacity = '1';
   }
+  first = false; //turn off first flag
 }
 
 async function typeWriter(string, element, delay = 100) {
@@ -413,8 +427,6 @@ mutebutton.addEventListener('click', function() {
 
 
 
-
-
 /*-----------------------------------------
 Language options
 -----------------------------------------*/
@@ -426,7 +438,7 @@ function setupLanguages(){
     .then(response => response.json())
     .then(langJson => {
       langlist = langJson;
-      Object.keys(langJson).forEach(function(key){
+      Object.keys(langJson).forEach(key =>{
         //create lang option and assign event handler
         let language = langJson[key];
         let langElement = document.createElement("option");
@@ -452,20 +464,7 @@ function setupLanguages(){
 setupLanguages();
 
 
-/*-----------------------------------------
-Splash page and initial setup
------------------------------------------*/
 
-// display initial poem
-splash.addEventListener('click', function(){
-  body.setAttribute('data-mode', 'stage');
-  
-  setTimeout(function(){
-    displayTexts(this_season);
-    player.play();
-  }, 1000);
-
-});
 
 /*-----------------------------------------
 Navigational buttons
@@ -475,7 +474,7 @@ Navigational buttons
  */
 
 let backbutton = document.querySelectorAll('#info .back');
-backbutton.forEach(function(el){
+backbutton.forEach(el =>{
   el.addEventListener('click', function(){
     body.setAttribute('data-mode', 'stage');    
   });
@@ -486,7 +485,7 @@ backbutton.forEach(function(el){
 Info Table Toggles
 -----------------------------------------*/
 let aboutbuttons = document.querySelectorAll('.aboutbutton');
-aboutbuttons.forEach(function(el){
+aboutbuttons.forEach(el =>{
   el.addEventListener('click', function(){
     document.querySelector('#info .container').scrollTo({
       top: 0
@@ -499,9 +498,9 @@ aboutbuttons.forEach(function(el){
 About text/sound/font accordion toggles
 -----------------------------------------*/
 let infobuttons = document.querySelectorAll('#info h2');
-infobuttons.forEach(function(el){
+infobuttons.forEach(el =>{
   el.addEventListener('click', function(){
-    let text_element = el.nextElementSibling;// console.log('toggle');
+    let text_element = el.nextElementSibling; 
     text_element.classList.toggle('show');
     if( !text_element.classList.contains('show') ){
       text_element.style.setProperty('max-height', 'none');
@@ -534,24 +533,6 @@ function setupFavicon(f){
   document.querySelector("link[rel='icon']").href = faviurl;
 }
 
-/*-----------------------------------------
-Setup Social Share Image
------------------------------------------*/
-// dynamically adds a meta tag for a social share imagee
-// based on the current season
-function setupSocial(n){
-  let num = '01';
-  if (n<10){
-    num = 0+ n+1
-  }else{
-    num = n+1;
-  }
-  let imagesrc = 'https://pentad.world/img/penta-social-images/penta'+num+'.png';
 
-  // let meta = document.querySelectorAll('.social'); 
-  // meta.forEach(function(el){
-  //   el.content = imagesrc;
-  // });
-}
 
 
