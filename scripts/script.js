@@ -548,8 +548,10 @@ function setupSocial(n){
   }
   let imagesrc = 'https://pentad.world/img/penta-social-images/penta'+num+'.png';
 
-  let meta = document.getElementById('social'); 
-  meta.content = imagesrc;
+  // let meta = document.querySelectorAll('.social'); 
+  // meta.forEach(function(el){
+  //   el.content = imagesrc;
+  // });
 }
 
 
