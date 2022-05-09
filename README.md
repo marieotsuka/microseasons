@@ -26,4 +26,4 @@ The site relies on the following libraries:
 The dynamic social share image is provided by a proxy server at
 https://penta-proxy.herokuapp.com/image
 
-This will display the “season of the server”, and may be differrent from your current date depending on where you live. To reflect the original seasoons, the server’s timezone is set to Japan.
+This will display the “season of the server”, and may be differrent from your current date depending on where you live. As a reference to the original seasons, the server’s timezone is set to Japan.
