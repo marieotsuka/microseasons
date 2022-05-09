@@ -22,8 +22,7 @@ The site relies on the following libraries:
 - [Day.js](https://day.js.org/) for date management
 - [Howler.js](https://howlerjs.com/) for audio managemenet
 
-## Sharing
-The dynamic social share image is provided by a proxy server at
-https://penta-proxy.herokuapp.com/image
+### Sharing
+The dynamic social share image containing a “sticker” for the current season is provided by [a proxy server](https://penta-proxy.herokuapp.com/image).
 
-This will display the “season of the server”, and may be differrent from your current date depending on where you live. As a reference to the original seasons, the server’s timezone is set to Japan.
+The image will display the “season of the server”, which may be differrent from your current date depending on where you live. As a reference to the original seasons, the server’s timezone is set to Japan.
