@@ -1,6 +1,6 @@
 @font-face{
   font-family: 'PentameterVF';
-  src: url('../fonts/Pentameter-VF.woff2') format('woff2-variations');
+  src: url('https://occupantfonts.com/assets/fonts/Pentameter/PentameterVF.woff2') format('woff2-variations');
   font-style: normal;
 }
 
@@ -374,7 +374,6 @@ ABOUT INFO TABLE AREA
 .table {
   --wght: 350;
   margin-top: var(--pad);
-  // border-top: 1px solid white;
   padding-top: var(--pad);
   padding-bottom: var(--pad);
 
@@ -412,9 +411,6 @@ ABOUT INFO TABLE AREA
       flex: none;
       position: relative;
       top: 5px;
-
-      // width: 100%;
-      // padding-left: 61px;
     }
     &:hover{
       cursor: pointer;
@@ -465,16 +461,7 @@ ABOUT INFO TABLE AREA
       text-indent: 0;
     }
   }
-  // p.bio{
-  //   font-size: .85em;
-  //   position: absolute;
-  //   letter-spacing: 0.05em;
-  //   --wght: 380;
-  //   --slnt: 0;
-  //   left: 64%;
-  //   top: 0;
-  //   padding-right: var(--pad);
-  // }
+
   a{
     font-feature-settings: "ss03" 1;
     &:hover{
@@ -513,9 +500,6 @@ ABOUT INFO TABLE AREA
   font-family: 'PentameterVF';
   font-size: var(--small);
   cursor: pointer;
-  // position: absolute;
-  // bottom: 13px;
-  // padding: 5px;
 
   &:focus{
     outline: none;
@@ -596,11 +580,6 @@ ABOUT INFO TABLE AREA
     }
     .name{
       display: none;
-      // order: 6;
-      // padding-left: 30px;
-      // margin: 3px 0  12px auto;
-      // font-size: 0.65rem;
-      // width: auto;
     }
     .range{
       padding-left: 0;
@@ -622,13 +601,4 @@ ABOUT INFO TABLE AREA
     }
   }
 
-  //avoid adding {} on hover
-  .aboutbutton:hover{
-    &::before{
-      content: "";
-    }
-    &::after{
-      content: "";
-    }
-  }
 }

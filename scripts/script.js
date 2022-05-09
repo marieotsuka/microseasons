@@ -529,8 +529,11 @@ function setupFavicon(f){
   if(prefersDarkMode){
     color="white/"
   }
-  let faviurl = '/img/icons/'+ color + 'star_' + no + '.svg';
-  document.querySelector("link[rel='icon']").href = faviurl;
+  let svg_url = '/img/icons/'+ color + 'star_' + no + '.svg';
+  document.querySelector("link[rel='icon']").href = svg_url;
+
+  let png_url = '/img/icons/png/'+ no + '.png';
+  document.querySelector("link[rel='apple-touch-icon']").href = png_url;
 }
 
 
