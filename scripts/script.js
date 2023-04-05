@@ -534,6 +534,7 @@ function setupFavicon(f){
 
   let png_url = '/img/icons/png/'+ no + '.png';
   document.querySelector("link[rel='apple-touch-icon']").href = png_url;
+  document.querySelector("link[rel='icon'][type='image/png']").href = png_url;
 }
 
 
